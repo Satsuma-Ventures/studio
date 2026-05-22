@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Satsuma Ventures — App icon, Grove green background, simplified mark, 512px, centered -->
+  <rect width="512" height="512" rx="96" fill="#2E5428"/>
+  <g transform="translate(27.43, -16.86) scale(7.1429)">
+    <!-- Trunk -->
+    <line x1="32" y1="64" x2="32" y2="20" stroke="#EEF2E8" stroke-width="5.6" stroke-linecap="round"/>
+    <!-- Tier-1 branches -->
+    <line x1="32" y1="48" x2="10" y2="28" stroke="#EEF2E8" stroke-width="4.0" stroke-linecap="round"/>
+    <line x1="32" y1="48" x2="54" y2="28" stroke="#EEF2E8" stroke-width="4.0" stroke-linecap="round"/>
+    <!-- 3 fruit dots -->
+    <circle cx="10" cy="25" r="6" fill="#D4681E"/>
+    <circle cx="54" cy="25" r="6" fill="#D4681E"/>
+    <circle cx="32" cy="18" r="7" fill="#D4681E"/>
+  </g>
+</svg>

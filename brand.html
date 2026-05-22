@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satsuma Ventures — Brand Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design Tokens ─────────────────────────────────────────────────── */
+    :root {
+      --grove:       #2E5428;
+      --satsuma:     #D4681E;
+      --deep-ink:    #1C2818;
+      --mist:        #F6F8F3;
+      --sage:        #7AAA68;
+      --sage-label:  #4F7441;
+      --warm-bark:   #E8DED0;
+      --rule:        #D8DDD0;
+      --muted:       #5A6B52;
+      --white:       #FFFFFF;
+
+      --font-display: 'Libre Baskerville', Georgia, serif;
+      --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  3rem;
+      --space-xl:  5rem;
+
+      --max-width: 860px;
+      --content-width: 680px;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Base ──────────────────────────────────────────────────────────── */
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--mist);
+      color: var(--deep-ink);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ── Layout ────────────────────────────────────────────────────────── */
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* ── Nav ───────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--mist);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 0;
+    }
+
+    nav .page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--deep-ink);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--grove); }
+
+    /* ── Cover ─────────────────────────────────────────────────────────── */
+    .cover {
+      padding: var(--space-xl) 0 var(--space-lg);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .cover-mark {
+      width: 64px;
+      height: 64px;
+      margin-bottom: var(--space-md);
+    }
+
+    .cover-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400;
+      color: var(--deep-ink);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-md);
+    }
+
+    .cover-tagline {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    .cover-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Sections ──────────────────────────────────────────────────────── */
+    .section {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-number {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--sage);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--grove);
+      line-height: 1.2;
+    }
+
+    /* ── Section label ─────────────────────────────────────────────────── */
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-label);
+      margin-top: var(--space-md);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Body text ─────────────────────────────────────────────────────── */
+    p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--deep-ink);
+      max-width: var(--content-width);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Bullet lists ──────────────────────────────────────────────────── */
+    .brand-list {
+      list-style: none;
+      max-width: var(--content-width);
+      margin-bottom: 1rem;
+    }
+
+    .brand-list li {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--deep-ink);
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand-list li:first-child { border-top: 1px solid var(--rule); }
+
+    .brand-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+      font-weight: 300;
+    }
+
+    /* ── Color Swatches ────────────────────────────────────────────────── */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swatch-block {
+      height: 80px;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .swatch-name {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--deep-ink);
+      margin-bottom: 0.15rem;
+    }
+
+    .swatch-role {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── Spec table ────────────────────────────────────────────────────── */
+    .spec-table {
+      width: 100%;
+      max-width: var(--content-width);
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    .spec-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .spec-table td {
+      padding: 0.6rem 0;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+
+    .spec-table td:first-child {
+      width: 30%;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding-right: 1rem;
+    }
+
+    .spec-table td:nth-child(2) {
+      width: 40%;
+      font-weight: 500;
+      color: var(--deep-ink);
+      padding-right: 1rem;
+    }
+
+    .spec-table td:nth-child(3) {
+      width: 30%;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
+    .spec-table td code {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--grove);
+      background: var(--warm-bark);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+
+    /* ── Logo display ──────────────────────────────────────────────────── */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .logo-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .logo-card.dark {
+      background: var(--deep-ink);
+      border-color: transparent;
+    }
+
+    .logo-card.grove {
+      background: var(--grove);
+      border-color: transparent;
+    }
+
+    .logo-card-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .logo-card.dark .logo-card-label,
+    .logo-card.grove .logo-card-label {
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── Type specimens ────────────────────────────────────────────────── */
+    .type-specimen {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-bottom: 1rem;
+      background: var(--white);
+    }
+
+    .specimen-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    .specimen-display {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--deep-ink);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .specimen-body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--deep-ink);
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+
+    .specimen-meta {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── CSS Variables block ───────────────────────────────────────────── */
+    .code-block {
+      background: var(--white);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+    }
+
+    .code-block pre {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--deep-ink);
+      white-space: pre;
+    }
+
+    .code-block .tok-comment { color: #8A9A7A; }
+    .code-block .tok-var     { color: var(--grove); }
+    .code-block .tok-val     { color: var(--satsuma); }
+    .code-block .tok-str     { color: #5A7050; }
+
+    /* ── Quick ref ─────────────────────────────────────────────────────── */
+    .quick-ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+    }
+
+    .quick-ref-cell {
+      background: var(--white);
+      padding: 1rem 1.25rem;
+    }
+
+    .quick-ref-cell .cell-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .quick-ref-cell .cell-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--deep-ink);
+    }
+
+    /* ── Inline SVG logo ───────────────────────────────────────────────── */
+    .logo-mark-full {
+      display: inline-block;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────────── */
+    footer {
+      padding: var(--space-lg) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: none;
+      margin: 0;
+    }
+
+    /* ── Print ─────────────────────────────────────────────────────────── */
+    @media print {
+      nav { display: none; }
+      .section { page-break-inside: avoid; }
+      .cover { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="page">
+    <a href="#" class="nav-brand">
+      <svg class="nav-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="32" y1="32" x2="16" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="32" y1="32" x2="48" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+        <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+        <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+        <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+        <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+      </svg>
+      
+    </a>
+    <ul class="nav-links">
+      <li><a href="#foundation">Foundation</a></li>
+      <li><a href="#logomark">Logomark</a></li>
+      <li><a href="#color">Color</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#principles">Principles</a></li>
+      <li><a href="#tokens">Tokens</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Cover ────────────────────────────────────────────────────────────── -->
+<div class="page">
+  <div class="cover">
+    <svg class="cover-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="32" y1="32" x2="16" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+      <line x1="32" y1="32" x2="48" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+      <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+      <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+      <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+      <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+    </svg>
+    <h1 class="cover-title">Satsuma Ventures</h1>
+    <p class="cover-subtitle">Brand Book &amp; Design System</p>
+    <p class="cover-tagline">A family venture studio cultivating ideas worth growing.</p>
+    <p class="cover-meta">Seattle, WA &nbsp;·&nbsp; satsumaventures.com &nbsp;·&nbsp; 2026</p>
+  </div>
+
+  <!-- ── 01 Brand Foundation ───────────────────────────────────────────── -->
+  <section class="section" id="foundation">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Brand Foundation</h2>
+    </div>
+
+    <div class="label">Name</div>
+    <p style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--deep-ink); margin-bottom: 0.75rem; line-height: 1.2;">Satsuma Ventures</p>
+    <p>A variety of mandarin orange — easy to peel, naturally sweet, grown in groves. The name grounds the studio in something tangible and seasonal: the idea that good things take time to cultivate, and that the fruit is worth finding.</p>
+
+    <div class="label">Tagline</div>
+    <p style="font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--grove);">A family venture studio cultivating ideas worth growing.</p>
+
+    <div class="label">Mission</div>
+    <p>Satsuma Ventures is a private family holding studio based in Seattle. It serves as the parent entity for a portfolio of internally ideated and built businesses — concepts developed, validated, and spun out as independent entities over time. The studio may also support select angel investments.</p>
+
+    <div class="label">Positioning</div>
+    <p>Satsuma sits at the intersection of founder thinking and patient capital. It is not a fund, not seeking outside investment, and not optimizing for volume. The studio cultivates a small number of ideas with genuine care — building the structure that lets them bear fruit.</p>
+
+    <div class="label">Tone of voice</div>
+    <p>Warm but substantive. Lightly narrative — a studio with a point of view, not a corporate holding vehicle. Confident without being boastful. Speaks like a thoughtful founder, not a fund manager.</p>
+    <ul class="brand-list">
+      <li>Write as a person, not an institution</li>
+      <li>Use plain language — no jargon, no buzzwords</li>
+      <li>Be specific rather than vague about what the studio does</li>
+      <li>Never sound like a VC pitch deck</li>
+      <li>Unhurried — the studio thinks in years, not quarters</li>
+    </ul>
+  </section>
+
+  <!-- ── 02 Logomark ───────────────────────────────────────────────────── -->
+  <section class="section" id="logomark">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Logomark</h2>
+    </div>
+
+    <div class="label">Primary mark — icon only</div>
+    <div class="logo-showcase">
+      <div class="logo-card">
+        <span class="logo-card-label">On Mist</span>
+        <svg width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="16" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="48" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+        </svg>
+        
+      </div>
+      <div class="logo-card dark">
+        <span class="logo-card-label">On Deep Ink</span>
+        <svg width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <line x1="32" y1="64" x2="32" y2="20" stroke="#EEF2E8" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="10" y2="28" stroke="#EEF2E8" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="54" y2="28" stroke="#EEF2E8" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="16" y2="16" stroke="#C8D9B8" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="48" y2="16" stroke="#C8D9B8" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+        </svg>
+        
+      </div>
+    </div>
+
+    <div class="label">Lockups</div>
+
+    
+
+    <div style="padding: 2rem; border: 1px solid var(--rule); border-radius: 8px; margin-bottom: 1.5rem; background: var(--white); display: inline-flex; flex-direction: column; align-items: center; gap: 14px; min-width: 220px;">
+      <p style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-label); margin-bottom: 0; align-self: flex-start;">Stacked</p>
+      <svg width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="16" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="48" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+        </svg>
+      <span style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: #1C2818; line-height: 1; white-space: nowrap;">Satsuma Ventures</span>
+    </div>
+
+    <div style="padding: 2rem; border: 1px solid var(--rule); border-radius: 8px; margin-bottom: 1.5rem; background: var(--white);">
+      <p style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-label); margin-bottom: 1.25rem;">Horizontal</p>
+      <div style="display: inline-flex; align-items: center; gap: 10px;">
+        <svg width="37" height="38.4" viewBox="6 11.5 52 53.9" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; display: block;">
+          <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="16" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="48" y2="16" stroke="#3A6830" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="10" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="54" cy="25" r="4" fill="#D4681E"/>
+          <circle cx="16" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="48" cy="13" r="3.5" fill="#D4681E"/>
+          <circle cx="32" cy="16" r="4.5" fill="#D4681E"/>
+        </svg>
+        <span style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; color: var(--deep-ink); line-height: 1; white-space: nowrap;">Satsuma Ventures</span>
+      </div>
+    </div>
+
+    <div class="label">App icon</div>
+    <div class="logo-showcase">
+      <div class="logo-card grove" style="flex-direction: row; align-items: center; gap: 1.5rem;">
+        <span class="logo-card-label" style="position: absolute; opacity: 0;">App icon</span>
+        <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" style="border-radius: 10px; background: #2E5428; flex-shrink: 0;">
+          <g transform="translate(4, 2) scale(0.6875)">
+            <line x1="32" y1="64" x2="32" y2="20" stroke="#EEF2E8" stroke-width="5.6" stroke-linecap="round"/>
+            <line x1="32" y1="48" x2="10" y2="28" stroke="#EEF2E8" stroke-width="4.0" stroke-linecap="round"/>
+            <line x1="32" y1="48" x2="54" y2="28" stroke="#EEF2E8" stroke-width="4.0" stroke-linecap="round"/>
+            <circle cx="10" cy="25" r="6" fill="#D4681E"/>
+            <circle cx="54" cy="25" r="6" fill="#D4681E"/>
+            <circle cx="32" cy="18" r="7" fill="#D4681E"/>
+          </g>
+        </svg>
+        <div>
+          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">Grove bg · Recommended</p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin: 0;">Simplified mark — trunk, tier-1 branches, three fruit dots</p>
+        </div>
+      </div>
+      <div class="logo-card" style="flex-direction: row; align-items: center; gap: 1.5rem;">
+        <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" style="border-radius: 10px; border: 1px solid var(--rule); flex-shrink: 0;">
+          <g transform="translate(4, 2) scale(0.6875)">
+            <line x1="32" y1="64" x2="32" y2="20" stroke="#2E5428" stroke-width="5.6" stroke-linecap="round"/>
+            <line x1="32" y1="48" x2="10" y2="28" stroke="#2E5428" stroke-width="4.0" stroke-linecap="round"/>
+            <line x1="32" y1="48" x2="54" y2="28" stroke="#2E5428" stroke-width="4.0" stroke-linecap="round"/>
+            <circle cx="10" cy="25" r="6" fill="#D4681E"/>
+            <circle cx="54" cy="25" r="6" fill="#D4681E"/>
+            <circle cx="32" cy="18" r="7" fill="#D4681E"/>
+          </g>
+        </svg>
+        <div>
+          <p style="font-size: 0.75rem; color: var(--muted); margin-bottom: 0.25rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">Mist bg · Light contexts</p>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0;">Use when Grove bg would clash with surrounding UI</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="label">Export files</div>
+    <ul class="brand-list">
+      <li><code>satsuma-mark-512.svg/png</code> — primary mark, transparent background, 512px</li>
+      <li><code>satsuma-icon-grove-512.svg/png</code> — app icon, Grove background, 512px</li>
+      <li>Wordmark and lockup SVGs with outlined paths available on request for print/production use</li>
+    </ul>
+
+    <div class="label">Size rules</div>
+    <table class="spec-table">
+      <tr><td><code>≥ 64px</code></td><td>Full mark</td><td>Trunk, two branch tiers, five fruit dots</td></tr>
+      <tr><td><code>32 – 63px</code></td><td>Simplified mark</td><td>Trunk, tier-1 branches, three fruit, heavier strokes</td></tr>
+      <tr><td><code>&lt; 32px</code></td><td>Simplified on Grove tile</td><td>Grove bg, rounded corners, favicon crop</td></tr>
+    </table>
+
+    <div class="label">Usage rules</div>
+    <ul class="brand-list">
+      <li>Use Grove green branches on light backgrounds; use Mist (#EEF2E8) branches on dark backgrounds</li>
+      <li>Never recolor the fruit dots — Satsuma orange (#D4681E) only</li>
+      <li>Maintain clear space equal to one fruit dot width on all sides</li>
+      <li>Never distort, rotate, or apply effects to the mark</li>
+      <li>Never place orange elements adjacent to the fruit dots</li>
+    </ul>
+  </section>
+
+  <!-- ── 03 Color ──────────────────────────────────────────────────────── -->
+  <section class="section" id="color">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Color</h2>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-block" style="background: #2E5428;"></div>
+        <div class="swatch-hex">#2E5428</div>
+        <div class="swatch-name">Grove</div>
+        <div class="swatch-role">Primary brand color</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #D4681E;"></div>
+        <div class="swatch-hex">#D4681E</div>
+        <div class="swatch-name">Satsuma</div>
+        <div class="swatch-role">Accent only</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #1C2818;"></div>
+        <div class="swatch-hex">#1C2818</div>
+        <div class="swatch-name">Deep Ink</div>
+        <div class="swatch-role">Body text &amp; high contrast</div>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-block" style="background: #F6F8F3; border: 1px solid #D8DDD0;"></div>
+        <div class="swatch-hex">#F6F8F3</div>
+        <div class="swatch-name">Mist</div>
+        <div class="swatch-role">Primary background</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #7AAA68;"></div>
+        <div class="swatch-hex">#7AAA68</div>
+        <div class="swatch-name">Sage</div>
+        <div class="swatch-role">Labels &amp; supporting color</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #E8DED0;"></div>
+        <div class="swatch-hex">#E8DED0</div>
+        <div class="swatch-name">Warm Bark</div>
+        <div class="swatch-role">Cards &amp; secondary surfaces</div>
+      </div>
+    </div>
+
+    
+    
+    <div class="label">Shade scales</div>
+    <p>Full 11-stop scales for each primary color, generated from HSL values per the color-palette design system standard. Use these for hover states, disabled states, borders, and tinted surfaces.</p>
+
+    <table class="spec-table" style="max-width: 100%;">
+<tr><td style="font-weight:600;color:var(--grove)">Grove</td><td style="font-weight:600;color:var(--satsuma)">Satsuma</td><td style="font-weight:600;color:var(--sage-label)">Sage</td></tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F7F8F7;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F7F8F7</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F9F7F6;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F9F7F6</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F7F8F7;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F7F8F7</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#EBF0EB;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#EBF0EB</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F3ECE8;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#F3ECE8</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#ECEFEB;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#ECEFEB</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D6E2D4;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#D6E2D4</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#EAD9CD;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#EAD9CD</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D9E1D6;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#D9E1D6</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#B4CFAF;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#B4CFAF</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#E1B99E;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#E1B99E</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#BACCB3;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#BACCB3</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#8CBD84;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#8CBD84</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#DD9564;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#DD9564</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#96B78A;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#96B78A</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2E5428;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#2E5428</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D4681E;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#D4681E</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#7AAA68;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#7AAA68</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#264521;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#264521</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#AE5519;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#AE5519</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#629051;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#629051</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#1E371A;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">700</code> <span style="color:var(--muted);font-size:0.75rem;">#1E371A</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#8C4514;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">700</code> <span style="color:var(--muted);font-size:0.75rem;">#8C4514</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#4F7441;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">700 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#4F7441</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#182C15;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#182C15</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#6E3610;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#6E3610</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#3E5B33;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#3E5B33</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#11200F;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#11200F</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#51280B;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#51280B</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2D4325;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#2D4325</span></td>
+    </tr>
+<tr>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#0A1209;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#0A1209</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2F1707;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#2F1707</span></td>
+      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#1A2716;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#1A2716</span></td>
+    </tr>
+</table>
+<p style="font-size:0.8rem;color:var(--muted);">★ = brand token. Grove-500 and Satsuma-500 are the primary palette values. Sage-700 is used for label text to meet WCAG AA.</p>
+
+    <div class="label">WCAG 2.2 contrast analysis</div>
+    <table class="spec-table" style="max-width: 100%;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--rule);">
+          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem;">Foreground</td>
+          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem;">Background</td>
+          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: right;">Ratio</td>
+          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: center;">Normal</td>
+          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: center;">Large</td>
+        </tr>
+      </thead>
+      <tr>
+        <td>Deep Ink</td><td>Mist</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">14.38</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>Grove</td><td>Mist</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.13</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>Satsuma</td><td>Mist</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">3.39</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
+      </tr>
+      <tr>
+        <td>Sage ★</td><td>Mist</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">5.03</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
+      </tr>
+      <tr>
+        <td>Deep Ink</td><td>Warm Bark</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">11.56</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>Grove</td><td>Warm Bark</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">6.54</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>Satsuma</td><td>Warm Bark</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">2.72</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDECEA;color:#C0392B;">FAIL</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDECEA;color:#C0392B;">FAIL</span></td>
+      </tr>
+      <tr>
+        <td>White</td><td>Grove</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.70</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>Mist</td><td>Grove</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.13</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
+      </tr>
+      <tr>
+        <td>White</td><td>Satsuma</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">3.62</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
+      </tr>
+      <tr>
+        <td>Deep Ink</td><td>Satsuma</td>
+        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">4.24</td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
+        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
+      </tr>
+    </table>
+    <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;">★ Sage label token uses <code>#4F7441</code> (Sage-700) for body text — not the brand <code>#7AAA68</code>. Satsuma on Warm Bark fails: use Deep Ink for text in that context.</p>
+
+    <div class="label">Usage principles</div>
+    <ul class="brand-list">
+      <li>Grove is the dominant color — navigation, headings, structural elements</li>
+      <li>Satsuma is used sparingly — CTAs, links, the fruit in the mark, and meaningful highlights only</li>
+      <li>Orange should never dominate a composition — it earns its place</li>
+      <li>Mist is the default page background — not white, not gray</li>
+      <li>Sage is for subheadings, labels, and secondary text — never body copy</li>
+      <li>Warm Bark works as card backgrounds and warm surface areas</li>
+    </ul>
+  </section>
+
+  <!-- ── 04 Typography ─────────────────────────────────────────────────── -->
+  <section class="section" id="typography">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Typography</h2>
+    </div>
+
+    <div class="type-specimen">
+      <div class="specimen-label">Display — Libre Baskerville</div>
+      <div class="specimen-display">Ideas worth growing.</div>
+      <p class="specimen-body" style="font-family: var(--font-display); font-style: italic; color: var(--muted);">A family venture studio cultivating ideas worth growing.</p>
+      <div class="specimen-meta">Warm classical serif · Regular &amp; Italic · Editorial weight, never rigid</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="specimen-label">Body / UI — Plus Jakarta Sans</div>
+      <p class="specimen-body">Satsuma Ventures is a private family holding studio based in Seattle. It serves as the parent entity for a portfolio of internally ideated and built businesses — concepts developed, validated, and spun out as independent entities over time.</p>
+      <div class="specimen-meta">Geometric humanist sans · 300 / 400 / 500 / 600 · Clean, friendly, contemporary</div>
+    </div>
+
+    <div class="label">Typographic scale</div>
+    <table class="spec-table">
+      <tr><td>Display / Hero</td><td>48 – 64px</td><td>Libre Baskerville, regular</td></tr>
+      <tr><td>H1</td><td>36 – 42px</td><td>Libre Baskerville, regular</td></tr>
+      <tr><td>H2</td><td>24 – 28px</td><td>Plus Jakarta Sans, 500</td></tr>
+      <tr><td>H3</td><td>18 – 20px</td><td>Plus Jakarta Sans, 500</td></tr>
+      <tr><td>Body</td><td>16 – 17px</td><td>Plus Jakarta Sans, 400, line-height 1.75</td></tr>
+      <tr><td>Label / Caption</td><td>12 – 13px</td><td>Plus Jakarta Sans, 500, tracked +0.1em</td></tr>
+    </table>
+
+    <div class="label">Principles</div>
+    <ul class="brand-list">
+      <li>Headlines set in Libre Baskerville — regular weight as default; bold only for deliberate emphasis</li>
+      <li>Body copy in Plus Jakarta Sans — generous line height (1.75), comfortable measure (60–75 characters)</li>
+      <li>Labels and section markers: Plus Jakarta Sans, light tracking, Sage color, uppercase</li>
+      <li>Avoid more than two type sizes on a single composition</li>
+      <li>Never use all-caps for body copy — reserve for labels and nav only</li>
+      <li>No fonts other than Libre Baskerville and Plus Jakarta Sans in brand contexts</li>
+    </ul>
+  </section>
+
+  <!-- ── 05 Visual Principles ──────────────────────────────────────────── -->
+  <section class="section" id="principles">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Visual Principles</h2>
+    </div>
+
+    <div class="label">Layout</div>
+    <ul class="brand-list">
+      <li>White space is the primary design element — let compositions breathe</li>
+      <li>Generous margins and line height at all times</li>
+      <li>Left-aligned text as default — centered only for intentional hero moments</li>
+      <li>Open, unhurried page structures — not information-dense</li>
+    </ul>
+
+    <div class="label">Imagery</div>
+    <ul class="brand-list">
+      <li>Prefer typography-led layouts over photography</li>
+      <li>When photography is used: natural light, organic textures, never staged or stock-feeling</li>
+      <li>Botanical and natural references are welcome — they reinforce the brand metaphor</li>
+      <li>Avoid heavy full-bleed photography, dark hero sections, or high-contrast graphic treatments</li>
+    </ul>
+
+    <div class="label">References</div>
+    <p>The visual neighborhood Satsuma belongs in: <a href="https://www.matterfamilyoffice.com" style="color: var(--grove);">matterfamilyoffice.com</a>, <a href="https://www.whiteoakoffice.com" style="color: var(--grove);">whiteoakoffice.com</a>. Open feel, generous white space, not rigid or corporate. Typography-led, calm, and considered.</p>
+
+    <div class="label">What to avoid</div>
+    <ul class="brand-list">
+      <li>Anything that reads as VC fund or institutional investor</li>
+      <li>Aggressive CTAs or conversion-optimized language</li>
+      <li>Orange used prominently — it is an accent, not a theme color</li>
+      <li>Rigid grids, corporate templates, or stiff layouts</li>
+      <li>Gradients, drop shadows, or heavy decorative effects</li>
+    </ul>
+  </section>
+
+  <!-- ── 06 Design Tokens ──────────────────────────────────────────────── -->
+  <section class="section" id="tokens">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Design Tokens</h2>
+    </div>
+
+    <p>Copy these CSS variables into any project to instantiate the Satsuma design system. All components built for the brand should reference these tokens rather than hardcoded values.</p>
+
+    <div class="code-block">
+      <pre><span class="tok-comment">/* Satsuma Ventures — Design Tokens */</span>
+<span class="tok-comment">/* satsumaventures.com · 2026        */</span>
+
+:root {
+  <span class="tok-comment">/* Color */</span>
+  <span class="tok-var">--color-grove</span>:      <span class="tok-val">#2E5428</span><span class="tok-str">; /* Primary brand    */</span>
+  <span class="tok-var">--color-satsuma</span>:    <span class="tok-val">#D4681E</span><span class="tok-str">; /* Accent only      */</span>
+  <span class="tok-var">--color-deep-ink</span>:   <span class="tok-val">#1C2818</span><span class="tok-str">; /* Body text        */</span>
+  <span class="tok-var">--color-mist</span>:       <span class="tok-val">#F6F8F3</span><span class="tok-str">; /* Background       */</span>
+  <span class="tok-var">--color-sage</span>:       <span class="tok-val">#7AAA68</span><span class="tok-str">; /* Labels           */</span>
+  <span class="tok-var">--color-warm-bark</span>:  <span class="tok-val">#E8DED0</span><span class="tok-str">; /* Surfaces         */</span>
+  <span class="tok-var">--color-rule</span>:       <span class="tok-val">#D8DDD0</span><span class="tok-str">; /* Dividers         */</span>
+  <span class="tok-var">--color-muted</span>:      <span class="tok-val">#8A9A7A</span><span class="tok-str">; /* Secondary text   */</span>
+
+  <span class="tok-comment">/* Typography */</span>
+  <span class="tok-var">--font-display</span>:  <span class="tok-val">'Libre Baskerville'</span>, Georgia, serif;
+  <span class="tok-var">--font-body</span>:     <span class="tok-val">'Plus Jakarta Sans'</span>, Arial, sans-serif;
+
+  <span class="tok-comment">/* Spacing */</span>
+  <span class="tok-var">--space-xs</span>:  <span class="tok-val">0.5rem</span>;
+  <span class="tok-var">--space-sm</span>:  <span class="tok-val">1rem</span>;
+  <span class="tok-var">--space-md</span>:  <span class="tok-val">2rem</span>;
+  <span class="tok-var">--space-lg</span>:  <span class="tok-val">3rem</span>;
+  <span class="tok-var">--space-xl</span>:  <span class="tok-val">5rem</span>;
+
+  <span class="tok-comment">/* Layout */</span>
+  <span class="tok-var">--max-width</span>:      <span class="tok-val">860px</span>;
+  <span class="tok-var">--content-width</span>: <span class="tok-val">680px</span>;
+  <span class="tok-var">--border-radius</span>: <span class="tok-val">6px</span>;
+
+  <span class="tok-comment">/* Type scale */</span>
+  <span class="tok-var">--text-display</span>: clamp(<span class="tok-val">2.5rem</span>, 6vw, <span class="tok-val">4rem</span>);
+  <span class="tok-var">--text-h1</span>:      clamp(<span class="tok-val">2rem</span>, 4vw, <span class="tok-val">2.75rem</span>);
+  <span class="tok-var">--text-h2</span>:      <span class="tok-val">1.75rem</span>;
+  <span class="tok-var">--text-h3</span>:      <span class="tok-val">1.2rem</span>;
+  <span class="tok-var">--text-body</span>:    <span class="tok-val">1rem</span>;
+  <span class="tok-var">--text-label</span>:   <span class="tok-val">0.7rem</span>;
+
+  <span class="tok-comment">/* Line heights */</span>
+  <span class="tok-var">--lh-display</span>: <span class="tok-val">1.1</span>;
+  <span class="tok-var">--lh-heading</span>: <span class="tok-val">1.2</span>;
+  <span class="tok-var">--lh-body</span>:    <span class="tok-val">1.75</span>;
+}</pre>
+    </div>
+
+    <div class="label">Quick reference</div>
+    <div class="quick-ref-grid">
+      <div class="quick-ref-cell">
+        <div class="cell-label">Name</div>
+        <div class="cell-value">Satsuma Ventures</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Tagline</div>
+        <div class="cell-value" style="font-style: italic; font-family: var(--font-display); font-weight: 400;">A family venture studio cultivating ideas worth growing.</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Primary color</div>
+        <div class="cell-value" style="color: var(--grove);">#2E5428 Grove</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Accent color</div>
+        <div class="cell-value" style="color: var(--satsuma);">#D4681E Satsuma</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Background</div>
+        <div class="cell-value">#F6F8F3 Mist</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Display font</div>
+        <div class="cell-value" style="font-family: var(--font-display); font-weight: 400;">Libre Baskerville</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Body font</div>
+        <div class="cell-value">Plus Jakarta Sans</div>
+      </div>
+      <div class="quick-ref-cell">
+        <div class="cell-label">Website</div>
+        <div class="cell-value">satsumaventures.com</div>
+      </div>
+    </div>
+
+    <p style="color: var(--muted); font-style: italic; font-size: 0.85rem;">This document is a living reference. Update it as the brand evolves.</p>
+  </section>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="page">
+    <p>Satsuma Ventures &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; satsumaventures.com &nbsp;·&nbsp; Confidential 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
