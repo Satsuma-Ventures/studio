@@ -13,6 +13,7 @@
       --grove:       #2E5428;
       --satsuma:     #D4681E;
       --deep-ink:    #1C2818;
+      --linen:       #F2ECDD;
       --mist:        #F6F8F3;
       --sage:        #7AAA68;
       --sage-label:  #4F7441;
@@ -33,567 +34,243 @@
 
       --max-width:     860px;
       --content-width: 680px;
-      --border-radius: 6px;
-
-      --text-display: clamp(2.5rem, 6vw, 4rem);
-      --text-h1:      clamp(2rem, 4vw, 2.75rem);
-      --text-h2:      1.75rem;
-      --text-h3:      1.2rem;
-      --text-body:    1rem;
-      --text-label:   0.7rem;
-
-      --lh-display: 1.1;
-      --lh-heading: 1.2;
-      --lh-body:    1.75;
     }
 
-    /* ── Reset ──────────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── Base ───────────────────────────────────────────────────────────────── */
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body { background: var(--linen); color: var(--deep-ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.75; }
 
-    body {
-      background: var(--mist);
-      color: var(--deep-ink);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: var(--lh-body);
-    }
-
-    /* ── Layout ─────────────────────────────────────────────────────────────── */
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--space-md);
-    }
+    .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-md); }
 
     /* ── Nav ────────────────────────────────────────────────────────────────── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--mist);
-      border-bottom: 1px solid var(--rule);
+      position: sticky; top: 0; z-index: 100;
+      background: var(--linen); border-bottom: 1px solid var(--rule);
       padding: 0.875rem 0;
     }
-
-    nav .page {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
+    nav .page { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .nav-brand { text-decoration: none; display: flex; align-items: center; }
-
-    /* Horizontal lockup in nav */
-    .nav-brand .logo-lockup-h {
-      height: 28px;
-      width: auto;
-      display: block;
-    }
-
-    /* Mark-only logo — hidden on desktop, shown on mobile */
-    .nav-brand .logo-mark-mobile {
-      height: 28px;
-      width: auto;
-      display: none;
-    }
-
-    /* Desktop nav links */
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
+    .nav-brand img { height: 28px; width: auto; display: block; }
+    .nav-brand .logo-mark-mobile { display: none; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
     .nav-links a {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
     }
+    .nav-links a:hover { color: var(--grove); }
 
-    .nav-links a:hover  { color: var(--grove); }
-    .nav-links a.active { color: var(--grove); }
-
-    /* Mobile hamburger button — hidden on desktop */
-    .nav-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      color: var(--deep-ink);
-      flex-direction: column;
-      gap: 5px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-menu-btn span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--deep-ink);
-      border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-
-    /* Open state */
+    .nav-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+    .nav-menu-btn span { display: block; width: 22px; height: 2px; background: var(--deep-ink); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
     .nav-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-menu-btn.open span:nth-child(2) { opacity: 0; }
     .nav-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Mobile dropdown */
-    .nav-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--mist);
-      border-bottom: 1px solid var(--rule);
-      padding: 0.5rem 0 1rem;
-      z-index: 99;
-    }
-
+    .nav-dropdown { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--linen); border-bottom: 1px solid var(--rule); padding: 0.5rem 0 1rem; z-index: 99; }
     .nav-dropdown.open { display: block; }
-
-    .nav-dropdown ul {
-      list-style: none;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .nav-dropdown li a {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--rule);
-      transition: color 0.2s;
-    }
-
+    .nav-dropdown ul { list-style: none; max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+    .nav-dropdown li a { display: block; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0.65rem 0; border-bottom: 1px solid var(--rule); }
     .nav-dropdown li:last-child a { border-bottom: none; }
-    .nav-dropdown li a:hover  { color: var(--grove); }
-    .nav-dropdown li a.active { color: var(--grove); font-weight: 600; }
 
     /* ── Cover ──────────────────────────────────────────────────────────────── */
-    .cover {
-      padding: var(--space-xl) 0 var(--space-lg);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    /* Stacked lockup on cover */
-    .cover .logo-lockup-s {
-      height: clamp(10rem, 28vw, 18rem);
-      width: auto;
-      display: block;
-      margin-bottom: var(--space-lg);
-    }
-
-    .cover-subtitle {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sage-label);
-      margin-bottom: var(--space-sm);
-    }
-
-    .cover-tagline {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--muted);
-      max-width: 500px;
-      line-height: 1.6;
-      margin-bottom: var(--space-md);
-    }
-
-    .cover-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
+    .cover { padding: var(--space-xl) 0 var(--space-lg); border-bottom: 1px solid var(--rule); }
+    .cover .logo-lockup-s { height: clamp(10rem, 28vw, 18rem); width: auto; display: block; margin-bottom: var(--space-lg); }
+    .cover-subtitle { font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--satsuma); margin-bottom: var(--space-sm); }
+    .cover-tagline { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.6; margin-bottom: var(--space-md); }
+    .cover-meta { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em; }
 
     /* ── Sections ───────────────────────────────────────────────────────────── */
-    .section {
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
+    .section { padding: var(--space-lg) 0; border-bottom: 1px solid var(--rule); }
     .section:last-child { border-bottom: none; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: var(--space-md); padding-bottom: var(--space-sm); border-bottom: 1px solid var(--rule); }
+    .section-number { font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; color: var(--satsuma); text-transform: uppercase; flex-shrink: 0; }
+    .section-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; color: var(--grove); line-height: 1.2; }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: var(--space-md);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid var(--rule);
-    }
+    .label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deep-ink); margin-top: var(--space-md); margin-bottom: 0.75rem; }
 
-    .section-number {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: var(--sage-label);
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
+    p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--deep-ink); max-width: var(--content-width); margin-bottom: 1rem; }
 
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: var(--grove);
-      line-height: 1.2;
-    }
-
-    /* ── Label ──────────────────────────────────────────────────────────────── */
-    .label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sage-label);
-      margin-top: var(--space-md);
-      margin-bottom: 0.75rem;
-    }
-
-    /* ── Body text ──────────────────────────────────────────────────────────── */
-    p {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--deep-ink);
-      max-width: var(--content-width);
-      margin-bottom: 1rem;
-    }
-
-    /* ── Lists ──────────────────────────────────────────────────────────────── */
-    .brand-list {
-      list-style: none;
-      max-width: var(--content-width);
-      margin-bottom: 1rem;
-    }
-
-    .brand-list li {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--deep-ink);
-      padding: 0.35rem 0 0.35rem 1.5rem;
-      position: relative;
-      border-bottom: 1px solid var(--rule);
-    }
-
+    .brand-list { list-style: none; max-width: var(--content-width); margin-bottom: 1rem; }
+    .brand-list li { font-size: 1rem; line-height: 1.75; padding: 0.35rem 0 0.35rem 1.5rem; position: relative; border-bottom: 1px solid var(--rule); }
     .brand-list li:first-child { border-top: 1px solid var(--rule); }
+    .brand-list li::before { content: '–'; position: absolute; left: 0; color: var(--satsuma); font-weight: 400; }
 
-    .brand-list li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--sage);
-      font-weight: 300;
-    }
+    /* ── Logo cards ────────────────────────────────────────────────────────── */
+    .logo-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .logo-card { border: 1px solid var(--rule); border-radius: 8px; padding: var(--space-md); display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; background: var(--white); }
+    .logo-card.dark { background: var(--deep-ink); border-color: transparent; }
+    .logo-card.grove { background: var(--grove); border-color: transparent; }
+    .logo-card-label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .logo-card.dark .logo-card-label, .logo-card.grove .logo-card-label { color: rgba(255,255,255,0.45); }
+    .logo-card .logo-mark { height: 120px; width: auto; }
+    .logo-card .logo-lockup-h { height: 64px; width: auto; max-width: 100%; }
+    .logo-card .logo-lockup-s { height: 160px; width: auto; }
 
-    /* ── Logo showcase cards ────────────────────────────────────────────────── */
-    .logo-showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .logo-card {
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: var(--space-md);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--white);
-    }
-
-    .logo-card.dark {
-      background: var(--deep-ink);
-      border-color: transparent;
-    }
-
-    .logo-card.grove {
-      background: var(--grove);
-      border-color: transparent;
-    }
-
-    .logo-card-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .logo-card.dark .logo-card-label,
-    .logo-card.grove .logo-card-label { color: rgba(255,255,255,0.45); }
-
-    /* Logo SVG sizing inside cards */
-    .logo-card .logo-mark      { height: 120px; width: auto; }
-    .logo-card .logo-lockup-h  { height: 64px;  width: auto; max-width: 100%; }
-    .logo-card .logo-lockup-s  { height: 160px; width: auto; }
-
-    /* ── Color Swatches ─────────────────────────────────────────────────────── */
-    .swatches {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
+    /* ── Color Swatches ────────────────────────────────────────────────────── */
+    .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
     .swatch { display: flex; flex-direction: column; }
+    .swatch-block { height: 80px; border-radius: 6px; margin-bottom: 0.75rem; }
+    .swatch-hex { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .swatch-name { font-size: 0.875rem; font-weight: 600; color: var(--deep-ink); margin-bottom: 0.15rem; }
+    .swatch-role { font-size: 0.75rem; color: var(--muted); }
 
-    .swatch-block {
-      height: 80px;
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-    }
+    /* ── Shade scale grid ──────────────────────────────────────────────────── */
+    .shade-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .shade-col-title { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .shade-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+    .shade-chip { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.08); }
+    .shade-step { font-family: var(--font-mono); font-size: 0.7rem; color: var(--deep-ink); min-width: 32px; }
+    .shade-step.star { font-weight: 600; }
+    .shade-hex { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
 
-    .swatch-hex  { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
-    .swatch-name { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--deep-ink); margin-bottom: 0.15rem; }
-    .swatch-role { font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); }
-
-    /* ── Spec table ─────────────────────────────────────────────────────────── */
-    .spec-table {
-      width: 100%;
-      max-width: var(--content-width);
-      border-collapse: collapse;
-      margin-bottom: 1.5rem;
-    }
-
+    /* ── Spec table ────────────────────────────────────────────────────────── */
+    .spec-table { width: 100%; max-width: var(--content-width); border-collapse: collapse; margin-bottom: 1.5rem; }
     .spec-table tr { border-bottom: 1px solid var(--rule); }
-
-    .spec-table td {
-      padding: 0.6rem 0;
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      vertical-align: top;
-    }
-
-    .spec-table td:first-child  { width: 30%; color: var(--muted); font-size: 0.8rem; padding-right: 1rem; }
-    .spec-table td:nth-child(2) { width: 40%; font-weight: 500; color: var(--deep-ink); padding-right: 1rem; }
+    .spec-table td { padding: 0.6rem 0; font-size: 0.875rem; vertical-align: top; }
+    .spec-table td:first-child { width: 30%; color: var(--muted); font-size: 0.8rem; padding-right: 1rem; }
+    .spec-table td:nth-child(2) { width: 40%; font-weight: 500; padding-right: 1rem; }
     .spec-table td:nth-child(3) { width: 30%; color: var(--muted); font-style: italic; font-size: 0.8rem; }
+    .spec-table td code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--grove); background: var(--warm-bark); padding: 0.1rem 0.35rem; border-radius: 3px; }
 
-    .spec-table td code {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--grove);
-      background: var(--warm-bark);
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-    }
+    /* ── Type specimens ────────────────────────────────────────────────────── */
+    .type-specimen { border: 1px solid var(--rule); border-radius: 8px; padding: var(--space-md); margin-bottom: 1rem; background: var(--white); }
+    .specimen-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--deep-ink); margin-bottom: 0.75rem; }
+    .specimen-display { font-family: var(--font-display); font-size: 2.5rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+    .specimen-body { font-size: 1rem; line-height: 1.75; margin-bottom: 0.5rem; }
+    .specimen-meta { font-size: 0.75rem; color: var(--muted); }
 
-    /* ── Type specimens ─────────────────────────────────────────────────────── */
-    .type-specimen {
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: var(--space-md);
-      margin-bottom: 1rem;
-      background: var(--white);
-    }
+    /* ── Spacing visuals ───────────────────────────────────────────────────── */
+    .spacing-scale { display: flex; align-items: flex-end; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .spacing-tok { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .spacing-bar { background: var(--grove); height: 28px; border-radius: 2px; }
+    .spacing-size { font-size: 0.75rem; font-weight: 600; }
+    .spacing-name { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
 
-    .specimen-label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-label); margin-bottom: 0.75rem; }
-    .specimen-display { font-family: var(--font-display); font-size: 2.5rem; font-weight: 400; color: var(--deep-ink); line-height: 1.2; margin-bottom: 0.5rem; }
-    .specimen-body { font-family: var(--font-body); font-size: 1rem; color: var(--deep-ink); line-height: 1.75; margin-bottom: 0.5rem; }
-    .specimen-meta { font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); }
+    .radii-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .radii-tok { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+    .radii-box { width: 88px; height: 88px; background: var(--warm-bark); border: 1px solid var(--rule); }
+    .radii-size { font-size: 0.75rem; font-weight: 600; }
+    .radii-name { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
 
-    /* ── Code block ─────────────────────────────────────────────────────────── */
-    .code-block {
-      background: var(--white);
-      border-radius: 8px;
-      padding: var(--space-md);
-      margin-bottom: 1.5rem;
-      overflow-x: auto;
-      border: 1px solid var(--rule);
-    }
+    /* ── Elevation surfaces ────────────────────────────────────────────────── */
+    .elev-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .elev-surface { padding: 1.5rem; border-radius: 8px; }
+    .elev-surface.bark { background: var(--warm-bark); }
+    .elev-surface.dark { background: var(--deep-ink); color: var(--mist); }
+    .elev-surface h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 400; }
+    .elev-surface .meta { font-size: 0.8rem; color: var(--muted); }
+    .elev-surface.dark .meta { color: rgba(246,248,243,0.55); }
 
-    .code-block pre {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--deep-ink);
-      white-space: pre;
-    }
+    /* ── Component samples ─────────────────────────────────────────────────── */
+    .comp-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .comp-state { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .comp-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); }
 
+    .btn { font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; padding: 0.75rem 1.4rem; border-radius: 6px; border: 1px solid transparent; cursor: pointer; transition: background 220ms cubic-bezier(0.22,0.61,0.36,1), color 220ms cubic-bezier(0.22,0.61,0.36,1); }
+    .btn-primary { background: var(--grove); color: var(--mist); }
+    .btn-primary:hover { background: #264521; }
+    .btn-primary:active { background: #1E371A; }
+    .btn-ghost { background: transparent; border-color: var(--grove); color: var(--grove); }
+    .btn-ghost:hover { background: #EBF0EB; }
+    .btn-ghost:active { background: #D6E2D4; }
+
+    .demo-link { color: var(--grove); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: color 220ms cubic-bezier(0.22,0.61,0.36,1); }
+    .demo-link:hover { color: var(--satsuma); }
+
+    .demo-card { padding: 1.5rem; border-radius: 8px; border: 1px solid var(--rule); background: var(--white); }
+    .demo-card.bark { background: var(--warm-bark); border-color: transparent; }
+    .demo-card .card-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deep-ink); margin-bottom: 0.5rem; }
+    .demo-card .card-title { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.35rem; line-height: 1.3; }
+    .demo-card .card-body { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .demo-cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+    code.inline { font-family: var(--font-mono); font-size: 0.85em; color: var(--grove); background: var(--warm-bark); padding: 0.1em 0.4em; border-radius: 3px; }
+
+    /* ── Code block ────────────────────────────────────────────────────────── */
+    .code-block { background: var(--white); border-radius: 8px; padding: var(--space-md); margin-bottom: 1.5rem; overflow-x: auto; border: 1px solid var(--rule); }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; color: var(--deep-ink); white-space: pre; }
     .code-block .tok-comment { color: #8A9A7A; }
-    .code-block .tok-var     { color: var(--grove); }
-    .code-block .tok-val     { color: var(--satsuma); }
-    .code-block .tok-str     { color: #5A7050; }
+    .code-block .tok-var { color: var(--grove); }
+    .code-block .tok-val { color: var(--satsuma); }
+    .code-block .tok-str { color: #5A7050; }
 
-    /* ── Quick reference grid ───────────────────────────────────────────────── */
-    .quick-ref-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: var(--space-md);
-    }
-
-    .quick-ref-cell { background: var(--white); padding: 1rem 1.25rem; }
-    .quick-ref-cell .cell-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
-    .quick-ref-cell .cell-value { font-size: 0.9rem; font-weight: 500; color: var(--deep-ink); }
-
-    /* ── Footer ─────────────────────────────────────────────────────────────── */
-    footer {
-      padding: var(--space-lg) 0;
-      border-top: 1px solid var(--rule);
-    }
-
+    footer { padding: var(--space-lg) 0; border-top: 1px solid var(--rule); }
     footer p { font-size: 0.8rem; color: var(--muted); max-width: none; margin: 0; }
 
-    /* ── Responsive ─────────────────────────────────────────────────────────── */
-
-    /* Tablet: ~768px and below */
+    /* ── Responsive ────────────────────────────────────────────────────────── */
     @media (max-width: 768px) {
-      :root {
-        --space-xl: 3rem;
-        --space-lg: 2rem;
-        --space-md: 1.5rem;
-        --max-width: 100%;
-      }
-
+      :root { --space-xl: 3rem; --space-lg: 2rem; --space-md: 1.5rem; --max-width: 100%; }
       .page { padding: 0 1.25rem; }
-
-      /* Nav: swap lockup for mark, show hamburger, hide desktop links */
-      .nav-brand .logo-lockup-h  { display: none; }
+      .nav-brand .logo-lockup-h { display: none; }
       .nav-brand .logo-mark-mobile { display: block; }
-      .nav-links  { display: none; }
+      .nav-links { display: none; }
       .nav-menu-btn { display: flex; }
-
-      /* Nav needs relative positioning for dropdown */
-      nav { position: sticky; }
-
-      /* Cover: smaller lockup */
       .cover .logo-lockup-s { height: clamp(8rem, 40vw, 12rem); }
-
-      /* Logo showcase: single column */
       .logo-showcase { grid-template-columns: 1fr; }
-
-      /* Color swatches: 2 columns */
       .swatches { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-
-      /* Quick ref: single column */
-      .quick-ref-grid { grid-template-columns: 1fr; }
-
-      /* Spec table: hide third column */
+      .shade-grid { grid-template-columns: 1fr; }
+      .elev-row { grid-template-columns: 1fr; }
+      .demo-cards-row { grid-template-columns: 1fr; }
       .spec-table td { font-size: 0.8rem; }
-      .spec-table td:first-child  { width: 35%; }
+      .spec-table td:first-child { width: 35%; }
       .spec-table td:nth-child(2) { width: 65%; }
       .spec-table td:nth-child(3) { display: none; }
-
-      /* Stacked lockup cards: stack vertically */
-      .lockup-stacked-row { flex-direction: column; }
     }
-
-    /* Mobile: ~480px and below */
     @media (max-width: 480px) {
-      :root {
-        --space-xl: 2.5rem;
-        --space-lg: 1.75rem;
-      }
-
-      .page { padding: 0 1rem; }
-
       .section-header { flex-direction: column; gap: 0.25rem; }
-
-      /* Color swatches: single column on very small screens */
       .swatches { grid-template-columns: 1fr; }
-
-      /* Hide section numbers on tiny screens */
       .section-number { display: none; }
-
-      .code-block { padding: 1rem; }
-      .code-block pre { font-size: 0.75rem; }
-
-      /* Type specimen: scale down display text */
       .specimen-display { font-size: 1.75rem; }
-    }
-
-    /* Print ─────────────────────────────────────────────────────────────────── */
-    @media print {
-      nav { display: none; }
-      .section { page-break-inside: avoid; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Nav ──────────────────────────────────────────────────────────────────── -->
 <nav id="main-nav">
   <div class="page">
     <a href="#" class="nav-brand">
-      <img src="/assets/satsuma-lockup.svg" alt="Satsuma Ventures" class="logo-lockup-h">
-      <img src="/assets/satsuma-logomark.svg" alt="Satsuma Ventures" class="logo-mark-mobile">
+      <img src="assets/satsuma-lockup.svg" alt="Satsuma Ventures" class="logo-lockup-h">
+      <img src="assets/satsuma-logomark.svg" alt="Satsuma Ventures" class="logo-mark-mobile">
     </a>
-    <ul class="nav-links" id="nav-links">
+    <ul class="nav-links">
       <li><a href="#foundation">Foundation</a></li>
       <li><a href="#logomark">Logomark</a></li>
       <li><a href="#color">Color</a></li>
-      <li><a href="#typography">Typography</a></li>
+      <li><a href="#typography">Type</a></li>
+      <li><a href="#spacing">Spacing</a></li>
+      <li><a href="#elevation">Elevation</a></li>
+      <li><a href="#components">Components</a></li>
       <li><a href="#principles">Principles</a></li>
       <li><a href="#tokens">Tokens</a></li>
     </ul>
-    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
     </button>
   </div>
-  <!-- Mobile dropdown -->
   <div class="nav-dropdown" id="nav-dropdown">
     <ul>
       <li><a href="#foundation">Foundation</a></li>
       <li><a href="#logomark">Logomark</a></li>
       <li><a href="#color">Color</a></li>
-      <li><a href="#typography">Typography</a></li>
+      <li><a href="#typography">Type</a></li>
+      <li><a href="#spacing">Spacing</a></li>
+      <li><a href="#elevation">Elevation</a></li>
+      <li><a href="#components">Components</a></li>
       <li><a href="#principles">Principles</a></li>
       <li><a href="#tokens">Tokens</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ── Cover ─────────────────────────────────────────────────────────────────── -->
 <div class="page">
   <div class="cover">
-    <img src="/assets/satsuma-lockup-stacked.svg" alt="Satsuma Ventures stacked lockup" class="logo-lockup-s">
+    <img src="assets/satsuma-lockup-stacked.svg" alt="Satsuma Ventures" class="logo-lockup-s">
     <p class="cover-subtitle">Brand Book &amp; Design System</p>
     <p class="cover-tagline">A family venture studio cultivating ideas worth growing.</p>
     <p class="cover-meta">Seattle, WA &nbsp;·&nbsp; satsumaventures.com &nbsp;·&nbsp; 2026</p>
   </div>
 
-  <!-- ── 01 Brand Foundation ────────────────────────────────────────────────── -->
+  <!-- ── 01 Brand Foundation ───────────────────────────────────────────────── -->
   <section class="section" id="foundation">
     <div class="section-header">
       <span class="section-number">01</span>
@@ -601,7 +278,7 @@
     </div>
 
     <div class="label">Name</div>
-    <p style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--deep-ink); margin-bottom: 0.75rem; line-height: 1.2;">Satsuma Ventures</p>
+    <p style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem;">Satsuma Ventures</p>
     <p>A variety of mandarin orange — easy to peel, naturally sweet, grown in groves. The name grounds the studio in something tangible and seasonal: the idea that good things take time to cultivate, and that the fruit is worth finding.</p>
 
     <div class="label">Tagline</div>
@@ -611,7 +288,7 @@
     <p>Satsuma Ventures is a private family holding studio based in Seattle. It serves as the parent entity for a portfolio of internally ideated and built businesses — concepts developed, validated, and spun out as independent entities over time. The studio may also support select angel investments.</p>
 
     <div class="label">Positioning</div>
-    <p>Satsuma sits at the intersection of founder thinking and patient capital. It is not a fund, not seeking outside investment, and not optimizing for volume. The studio cultivates a small number of ideas with genuine care — building the structure that lets them bear fruit.</p>
+    <p>Satsuma sits at the intersection of founder thinking and patient capital. The studio cultivates a small number of ideas with genuine care, on a long horizon — building the structure that lets them bear fruit.</p>
 
     <div class="label">Tone of voice</div>
     <p>Warm but substantive. Lightly narrative — a studio with a point of view, not a corporate holding vehicle. Confident without being boastful. Speaks like a thoughtful founder, not a fund manager.</p>
@@ -624,7 +301,7 @@
     </ul>
   </section>
 
-  <!-- ── 02 Logomark ────────────────────────────────────────────────────────── -->
+  <!-- ── 02 Logomark ───────────────────────────────────────────────────────── -->
   <section class="section" id="logomark">
     <div class="section-header">
       <span class="section-number">02</span>
@@ -635,33 +312,33 @@
     <div class="logo-showcase">
       <div class="logo-card">
         <span class="logo-card-label">On Mist</span>
-        <img src="/assets/satsuma-logomark.svg" alt="Satsuma Ventures mark" class="logo-mark">
+        <img src="assets/satsuma-logomark.svg" alt="Mark" class="logo-mark">
       </div>
       <div class="logo-card dark">
         <span class="logo-card-label">On Deep Ink</span>
-        <img src="/assets/satsuma-logomark-light.svg" alt="Satsuma Ventures mark — light" class="logo-mark">
+        <img src="assets/satsuma-logomark-light.svg" alt="Mark — light" class="logo-mark">
       </div>
     </div>
 
     <div class="label">Horizontal lockup</div>
     <div class="logo-card" style="margin-bottom:1rem;">
       <span class="logo-card-label">On Mist</span>
-      <img src="/assets/satsuma-lockup.svg" alt="Satsuma Ventures horizontal lockup" class="logo-lockup-h">
+      <img src="assets/satsuma-lockup.svg" alt="Horizontal lockup" class="logo-lockup-h">
     </div>
     <div class="logo-card dark" style="margin-bottom:1.5rem;">
       <span class="logo-card-label">On Deep Ink</span>
-      <img src="/assets/satsuma-lockup-light.svg" alt="Satsuma Ventures horizontal lockup — light" class="logo-lockup-h">
+      <img src="assets/satsuma-lockup-light.svg" alt="Horizontal lockup — light" class="logo-lockup-h">
     </div>
 
     <div class="label">Stacked lockup</div>
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;" class="lockup-stacked-row">
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
       <div class="logo-card" style="flex:1;min-width:180px;">
         <span class="logo-card-label">On Mist</span>
-        <img src="/assets/satsuma-lockup-stacked.svg" alt="Satsuma Ventures stacked lockup" class="logo-lockup-s">
+        <img src="assets/satsuma-lockup-stacked.svg" alt="Stacked lockup" class="logo-lockup-s">
       </div>
       <div class="logo-card dark" style="flex:1;min-width:180px;">
         <span class="logo-card-label">On Deep Ink</span>
-        <img src="/assets/satsuma-lockup-stacked-light.svg" alt="Satsuma Ventures stacked lockup — light" class="logo-lockup-s">
+        <img src="assets/satsuma-lockup-stacked-light.svg" alt="Stacked lockup — light" class="logo-lockup-s">
       </div>
     </div>
 
@@ -676,7 +353,7 @@
     </ul>
   </section>
 
-<!-- ── 03 Color ──────────────────────────────────────────────────────── -->
+  <!-- ── 03 Color ──────────────────────────────────────────────────────────── -->
   <section class="section" id="color">
     <div class="section-header">
       <span class="section-number">03</span>
@@ -684,204 +361,83 @@
     </div>
 
     <div class="swatches">
-      <div class="swatch">
-        <div class="swatch-block" style="background: #2E5428;"></div>
-        <div class="swatch-hex">#2E5428</div>
-        <div class="swatch-name">Grove</div>
-        <div class="swatch-role">Primary brand color</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-block" style="background: #D4681E;"></div>
-        <div class="swatch-hex">#D4681E</div>
-        <div class="swatch-name">Satsuma</div>
-        <div class="swatch-role">Accent only</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-block" style="background: #1C2818;"></div>
-        <div class="swatch-hex">#1C2818</div>
-        <div class="swatch-name">Deep Ink</div>
-        <div class="swatch-role">Body text &amp; high contrast</div>
-      </div>
+      <div class="swatch"><div class="swatch-block" style="background:#2E5428;"></div><div class="swatch-hex">#2E5428</div><div class="swatch-name">Grove</div><div class="swatch-role">Primary brand color</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#D4681E;"></div><div class="swatch-hex">#D4681E</div><div class="swatch-name">Satsuma</div><div class="swatch-role">Accent only</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#1C2818;"></div><div class="swatch-hex">#1C2818</div><div class="swatch-name">Deep Ink</div><div class="swatch-role">Body text &amp; high contrast</div></div>
     </div>
-
     <div class="swatches">
-      <div class="swatch">
-        <div class="swatch-block" style="background: #F6F8F3; border: 1px solid #D8DDD0;"></div>
-        <div class="swatch-hex">#F6F8F3</div>
-        <div class="swatch-name">Mist</div>
-        <div class="swatch-role">Primary background</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-block" style="background: #7AAA68;"></div>
-        <div class="swatch-hex">#7AAA68</div>
-        <div class="swatch-name">Sage</div>
-        <div class="swatch-role">Labels &amp; supporting color</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-block" style="background: #E8DED0;"></div>
-        <div class="swatch-hex">#E8DED0</div>
-        <div class="swatch-name">Warm Bark</div>
-        <div class="swatch-role">Cards &amp; secondary surfaces</div>
-      </div>
+      <div class="swatch"><div class="swatch-block" style="background:#F2ECDD; border:1px solid #D8DDD0;"></div><div class="swatch-hex">#F2ECDD</div><div class="swatch-name">Linen</div><div class="swatch-role">Primary page background</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#E8DED0;"></div><div class="swatch-hex">#E8DED0</div><div class="swatch-name">Warm Bark</div><div class="swatch-role">Cards &amp; surfaces</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#F6F8F3; border:1px solid #D8DDD0;"></div><div class="swatch-hex">#F6F8F3</div><div class="swatch-name">Mist</div><div class="swatch-role">Cool surface alt</div></div>
+    </div>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-block" style="background:#7AAA68;"></div><div class="swatch-hex">#7AAA68</div><div class="swatch-name">Sage</div><div class="swatch-role">Decorative</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#4F7441;"></div><div class="swatch-hex">#4F7441</div><div class="swatch-name">Sage-700</div><div class="swatch-role">Decorative · AA on Linen</div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#5A6B52;"></div><div class="swatch-hex">#5A6B52</div><div class="swatch-name">Muted</div><div class="swatch-role">Secondary text</div></div>
     </div>
 
-    
-    
     <div class="label">Shade scales</div>
-    <p>Full 11-stop scales for each primary color, generated from HSL values per the color-palette design system standard. Use these for hover states, disabled states, borders, and tinted surfaces.</p>
+    <p>Full 11-stop scales for each primary color. Use these for hover states, disabled states, borders, and tinted surfaces. The 500 step is the brand token in each scale.</p>
 
-    <table class="spec-table" style="max-width: 100%;">
-<tr><td style="font-weight:600;color:var(--grove)">Grove</td><td style="font-weight:600;color:var(--satsuma)">Satsuma</td><td style="font-weight:600;color:var(--sage-label)">Sage</td></tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F7F8F7;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F7F8F7</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F9F7F6;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F9F7F6</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F7F8F7;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">50</code> <span style="color:var(--muted);font-size:0.75rem;">#F7F8F7</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#EBF0EB;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#EBF0EB</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#F3ECE8;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#F3ECE8</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#ECEFEB;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">100</code> <span style="color:var(--muted);font-size:0.75rem;">#ECEFEB</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D6E2D4;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#D6E2D4</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#EAD9CD;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#EAD9CD</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D9E1D6;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">200</code> <span style="color:var(--muted);font-size:0.75rem;">#D9E1D6</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#B4CFAF;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#B4CFAF</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#E1B99E;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#E1B99E</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#BACCB3;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">300</code> <span style="color:var(--muted);font-size:0.75rem;">#BACCB3</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#8CBD84;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#8CBD84</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#DD9564;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#DD9564</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#96B78A;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">400</code> <span style="color:var(--muted);font-size:0.75rem;">#96B78A</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2E5428;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#2E5428</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#D4681E;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#D4681E</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#7AAA68;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">500 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#7AAA68</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#264521;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#264521</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#AE5519;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#AE5519</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#629051;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">600</code> <span style="color:var(--muted);font-size:0.75rem;">#629051</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#1E371A;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">700</code> <span style="color:var(--muted);font-size:0.75rem;">#1E371A</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#8C4514;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">700</code> <span style="color:var(--muted);font-size:0.75rem;">#8C4514</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#4F7441;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style=" font-weight:600">700 ★</code> <span style="color:var(--muted);font-size:0.75rem;">#4F7441</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#182C15;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#182C15</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#6E3610;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#6E3610</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#3E5B33;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">800</code> <span style="color:var(--muted);font-size:0.75rem;">#3E5B33</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#11200F;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#11200F</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#51280B;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#51280B</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2D4325;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">900</code> <span style="color:var(--muted);font-size:0.75rem;">#2D4325</span></td>
-    </tr>
-<tr>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#0A1209;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#0A1209</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#2F1707;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#2F1707</span></td>
-      <td style="padding:4px 0;"><span style="display:inline-block;width:16px;height:16px;background:#1A2716;border-radius:3px;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><code style="">950</code> <span style="color:var(--muted);font-size:0.75rem;">#1A2716</span></td>
-    </tr>
-</table>
-<p style="font-size:0.8rem;color:var(--muted);">★ = brand token. Grove-500 and Satsuma-500 are the primary palette values. Sage-700 is used for label text to meet WCAG AA.</p>
-
-    <div class="label">WCAG 2.2 contrast analysis</div>
-    <table class="spec-table" style="max-width: 100%;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--rule);">
-          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem;">Foreground</td>
-          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem;">Background</td>
-          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: right;">Ratio</td>
-          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: center;">Normal</td>
-          <td style="font-weight: 600; color: var(--deep-ink); font-size: 0.8rem; text-align: center;">Large</td>
-        </tr>
-      </thead>
-      <tr>
-        <td>Deep Ink</td><td>Mist</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">14.38</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>Grove</td><td>Mist</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.13</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>Satsuma</td><td>Mist</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">3.39</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
-      </tr>
-      <tr>
-        <td>Sage ★</td><td>Mist</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">5.03</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
-      </tr>
-      <tr>
-        <td>Deep Ink</td><td>Warm Bark</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">11.56</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>Grove</td><td>Warm Bark</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">6.54</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>Satsuma</td><td>Warm Bark</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">2.72</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDECEA;color:#C0392B;">FAIL</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDECEA;color:#C0392B;">FAIL</span></td>
-      </tr>
-      <tr>
-        <td>White</td><td>Grove</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.70</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>Mist</td><td>Grove</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">8.13</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#EEF5EB;color:#2E5428;">AAA</span></td>
-      </tr>
-      <tr>
-        <td>White</td><td>Satsuma</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">3.62</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
-      </tr>
-      <tr>
-        <td>Deep Ink</td><td>Satsuma</td>
-        <td style="text-align:right; font-family: 'JetBrains Mono', 'Courier New', monospace;">4.24</td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA Large</span></td>
-        <td style="text-align:center;"><span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:#FDF0E6;color:#AE5519;">AA</span></td>
-      </tr>
-    </table>
-    <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;">★ Sage label token uses <code>#4F7441</code> (Sage-700) for body text — not the brand <code>#7AAA68</code>. Satsuma on Warm Bark fails: use Deep Ink for text in that context.</p>
+    <div class="shade-grid">
+      <div>
+        <div class="shade-col-title" style="color:var(--grove)">Grove</div>
+        <div class="shade-row"><span class="shade-chip" style="background:#F7F8F7"></span><span class="shade-step">50</span><span class="shade-hex">#F7F8F7</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#EBF0EB"></span><span class="shade-step">100</span><span class="shade-hex">#EBF0EB</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#D6E2D4"></span><span class="shade-step">200</span><span class="shade-hex">#D6E2D4</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#B4CFAF"></span><span class="shade-step">300</span><span class="shade-hex">#B4CFAF</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#8CBD84"></span><span class="shade-step">400</span><span class="shade-hex">#8CBD84</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#2E5428"></span><span class="shade-step star">500 ★</span><span class="shade-hex">#2E5428</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#264521"></span><span class="shade-step">600</span><span class="shade-hex">#264521</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#1E371A"></span><span class="shade-step">700</span><span class="shade-hex">#1E371A</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#182C15"></span><span class="shade-step">800</span><span class="shade-hex">#182C15</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#11200F"></span><span class="shade-step">900</span><span class="shade-hex">#11200F</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#0A1209"></span><span class="shade-step">950</span><span class="shade-hex">#0A1209</span></div>
+      </div>
+      <div>
+        <div class="shade-col-title" style="color:var(--satsuma)">Satsuma</div>
+        <div class="shade-row"><span class="shade-chip" style="background:#F9F7F6"></span><span class="shade-step">50</span><span class="shade-hex">#F9F7F6</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#F3ECE8"></span><span class="shade-step">100</span><span class="shade-hex">#F3ECE8</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#EAD9CD"></span><span class="shade-step">200</span><span class="shade-hex">#EAD9CD</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#E1B99E"></span><span class="shade-step">300</span><span class="shade-hex">#E1B99E</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#DD9564"></span><span class="shade-step">400</span><span class="shade-hex">#DD9564</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#D4681E"></span><span class="shade-step star">500 ★</span><span class="shade-hex">#D4681E</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#AE5519"></span><span class="shade-step">600</span><span class="shade-hex">#AE5519</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#8C4514"></span><span class="shade-step">700</span><span class="shade-hex">#8C4514</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#6E3610"></span><span class="shade-step">800</span><span class="shade-hex">#6E3610</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#51280B"></span><span class="shade-step">900</span><span class="shade-hex">#51280B</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#2F1707"></span><span class="shade-step">950</span><span class="shade-hex">#2F1707</span></div>
+      </div>
+      <div>
+        <div class="shade-col-title" style="color:var(--sage-label)">Sage</div>
+        <div class="shade-row"><span class="shade-chip" style="background:#F7F8F7"></span><span class="shade-step">50</span><span class="shade-hex">#F7F8F7</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#ECEFEB"></span><span class="shade-step">100</span><span class="shade-hex">#ECEFEB</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#D9E1D6"></span><span class="shade-step">200</span><span class="shade-hex">#D9E1D6</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#BACCB3"></span><span class="shade-step">300</span><span class="shade-hex">#BACCB3</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#96B78A"></span><span class="shade-step">400</span><span class="shade-hex">#96B78A</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#7AAA68"></span><span class="shade-step star">500 ★</span><span class="shade-hex">#7AAA68</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#629051"></span><span class="shade-step">600</span><span class="shade-hex">#629051</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#4F7441"></span><span class="shade-step star">700 ★</span><span class="shade-hex">#4F7441</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#3E5B33"></span><span class="shade-step">800</span><span class="shade-hex">#3E5B33</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#2D4325"></span><span class="shade-step">900</span><span class="shade-hex">#2D4325</span></div>
+        <div class="shade-row"><span class="shade-chip" style="background:#1A2716"></span><span class="shade-step">950</span><span class="shade-hex">#1A2716</span></div>
+      </div>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--muted);">★ marks the brand token. Sage-700 is used for label text where Sage-500 would fail AA contrast.</p>
 
     <div class="label">Usage principles</div>
     <ul class="brand-list">
-      <li>Grove is the dominant color — navigation, headings, structural elements</li>
-      <li>Satsuma is used sparingly — CTAs, links, the fruit in the mark, and meaningful highlights only</li>
-      <li>Orange should never dominate a composition — it earns its place</li>
-      <li>Mist is the default page background — not white, not gray</li>
-      <li>Sage is for subheadings, labels, and secondary text — never body copy</li>
-      <li>Warm Bark works as card backgrounds and warm surface areas</li>
+      <li>Grove is the dominant structural color — navigation, headings, buttons, links</li>
+      <li>Satsuma is used sparingly but visibly — section numbers, eyebrows, en-dash bullets, the fruit in the mark</li>
+      <li>Orange should never fill a large region — it earns its place through small, repeated moments</li>
+      <li>Linen is the default page background — warm and paper-like, never plain white</li>
+      <li>Warm Bark is for cards and inline code chips — adds warmth at smaller surfaces</li>
+      <li>Mist remains available as a cool, lighter surface alternative — used rarely, for contrast</li>
+      <li>Sage is decorative — it appears in its own showcase and rare moments, not as a default label color</li>
     </ul>
   </section>
 
-  <!-- ── 04 Typography ─────────────────────────────────────────────────── -->
+  <!-- ── 04 Typography ─────────────────────────────────────────────────────── -->
   <section class="section" id="typography">
     <div class="section-header">
       <span class="section-number">04</span>
@@ -922,20 +478,139 @@
     </ul>
   </section>
 
-  <!-- ── 05 Visual Principles ──────────────────────────────────────────── -->
-  <section class="section" id="principles">
+  <!-- ── 05 Spacing & Layout ───────────────────────────────────────────────── -->
+  <section class="section" id="spacing">
     <div class="section-header">
       <span class="section-number">05</span>
-      <h2 class="section-title">Visual Principles</h2>
+      <h2 class="section-title">Spacing &amp; Layout</h2>
     </div>
 
-    <div class="label">Layout</div>
+    <p>White space is the primary design element. Spacing follows an 8px base, with named tokens that map predictably across surfaces. Generous margins and line heights at all times — the brand thinks in years, not quarters, and the page should feel that way.</p>
+
+    <div class="label">Spacing scale</div>
+    <div class="spacing-scale">
+      <div class="spacing-tok"><div class="spacing-bar" style="width:8px"></div><div class="spacing-size">8</div><div class="spacing-name">--space-xs</div></div>
+      <div class="spacing-tok"><div class="spacing-bar" style="width:16px"></div><div class="spacing-size">16</div><div class="spacing-name">--space-sm</div></div>
+      <div class="spacing-tok"><div class="spacing-bar" style="width:32px"></div><div class="spacing-size">32</div><div class="spacing-name">--space-md</div></div>
+      <div class="spacing-tok"><div class="spacing-bar" style="width:48px"></div><div class="spacing-size">48</div><div class="spacing-name">--space-lg</div></div>
+      <div class="spacing-tok"><div class="spacing-bar" style="width:80px"></div><div class="spacing-size">80</div><div class="spacing-name">--space-xl</div></div>
+      <div class="spacing-tok"><div class="spacing-bar" style="width:128px"></div><div class="spacing-size">128</div><div class="spacing-name">--space-2xl</div></div>
+    </div>
+
+    <div class="label">Layout rules</div>
     <ul class="brand-list">
-      <li>White space is the primary design element — let compositions breathe</li>
-      <li>Generous margins and line height at all times</li>
+      <li>Page content caps at 860px; reading copy caps at 680px or 60ch, whichever is tighter</li>
       <li>Left-aligned text as default — centered only for intentional hero moments</li>
       <li>Open, unhurried page structures — not information-dense</li>
+      <li>One column of content per page section unless a comparison is explicitly required</li>
+      <li>Hairline rules (1px Rule color) separate sections; no heavy dividers</li>
     </ul>
+
+    <div class="label">Corner radii</div>
+    <p>Four radii. Nothing fully rounded — pill chips and circular containers are not part of the brand.</p>
+    <div class="radii-row">
+      <div class="radii-tok"><div class="radii-box" style="border-radius:3px"></div><div class="radii-size">3px</div><div class="radii-name">chips · code</div></div>
+      <div class="radii-tok"><div class="radii-box" style="border-radius:6px"></div><div class="radii-size">6px</div><div class="radii-name">buttons</div></div>
+      <div class="radii-tok"><div class="radii-box" style="border-radius:8px"></div><div class="radii-size">8px</div><div class="radii-name">cards</div></div>
+      <div class="radii-tok"><div class="radii-box" style="border-radius:12px"></div><div class="radii-size">12px</div><div class="radii-name">large surface</div></div>
+    </div>
+  </section>
+
+  <!-- ── 06 Elevation & Motion ─────────────────────────────────────────────── -->
+  <section class="section" id="elevation">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Elevation &amp; Motion</h2>
+    </div>
+
+    <p>Satsuma has no drop-shadow system. Elevation is communicated through color (Warm Bark surfaces against Mist) and hairline borders. Drop shadows, glows, and glassmorphism all read as corporate and are excluded from the brand.</p>
+
+    <div class="label">Surface tiers</div>
+    <div class="elev-row">
+      <div class="elev-surface bark"><h4>Warm Bark</h4><p class="meta">Card surface against the Mist page background. Hairline border optional. No shadow.</p></div>
+      <div class="elev-surface dark"><h4>Deep Ink</h4><p class="meta">High-contrast surface. Used for logo cards on dark, occasional inverted moments.</p></div>
+    </div>
+
+    <div class="label">Motion</div>
+    <p>Quiet. Almost imperceptible. The studio thinks in years; motion should reinforce that pace.</p>
+    <table class="spec-table">
+      <tr><td>Easing</td><td><code>cubic-bezier(0.22, 0.61, 0.36, 1)</code></td><td>Soft ease-out</td></tr>
+      <tr><td>Duration · fast</td><td>160ms</td><td>Color transitions, hover</td></tr>
+      <tr><td>Duration · base</td><td>220ms</td><td>Buttons, links, focus rings</td></tr>
+      <tr><td>Duration · slow</td><td>400ms</td><td>Rare, considered moments only</td></tr>
+    </table>
+    <ul class="brand-list">
+      <li>Permitted: color transitions on links and buttons (fade to Satsuma or darker Grove)</li>
+      <li>Forbidden: bounces, springs, scale-on-hover, parallax, page-load reveal sequences</li>
+      <li>Focus rings: 2px Sage outline with 2px offset — no glow, no animation</li>
+      <li>No opacity-based hover states — color shifts only</li>
+    </ul>
+  </section>
+
+  <!-- ── 07 Components ─────────────────────────────────────────────────────── -->
+  <section class="section" id="components">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Components</h2>
+    </div>
+
+    <p>A small, opinionated kit. Each component honors the visual principles: hairlines instead of shadows, color shifts instead of motion, Grove for structure and Satsuma for accent.</p>
+
+    <div class="label">Button · primary</div>
+    <p>Grove fill, Mist text, 6px radius. Hover darkens to Grove-600; press to Grove-700. No scale, no shadow.</p>
+    <div class="comp-row" style="margin-bottom:1.25rem;">
+      <div class="comp-state"><button class="btn btn-primary">Get in touch</button><span class="comp-tag">default · Grove-500</span></div>
+      <div class="comp-state"><button class="btn btn-primary" style="background:#264521;">Get in touch</button><span class="comp-tag">hover · Grove-600</span></div>
+      <div class="comp-state"><button class="btn btn-primary" style="background:#1E371A;">Get in touch</button><span class="comp-tag">press · Grove-700</span></div>
+    </div>
+
+    <div class="label">Button · ghost</div>
+    <p>Transparent fill, Grove border, Grove text. Hover fills with Grove-100; press with Grove-200.</p>
+    <div class="comp-row" style="margin-bottom:1.25rem;">
+      <div class="comp-state"><button class="btn btn-ghost">Read more</button><span class="comp-tag">default</span></div>
+      <div class="comp-state"><button class="btn btn-ghost" style="background:#EBF0EB;">Read more</button><span class="comp-tag">hover · Grove-100</span></div>
+      <div class="comp-state"><button class="btn btn-ghost" style="background:#D6E2D4;">Read more</button><span class="comp-tag">press · Grove-200</span></div>
+    </div>
+
+    <div class="label">Inline link</div>
+    <p>Underlined at 3px offset. Default Grove; hover fades to Satsuma. The accent earns its place here — links are the one place orange appears reliably in body copy.</p>
+    <p style="font-size: 0.95rem;">Read the <a class="demo-link" href="#">brand book</a> for the full set of tokens, or browse the <a class="demo-link" href="#">component kit</a> below.</p>
+
+    <div class="label">Card surfaces</div>
+    <p>White or Warm Bark fill, 1px Rule border (white only), 8px corner radius, generous internal padding. No drop shadow under any circumstance.</p>
+    <div class="demo-cards-row">
+      <div class="demo-card">
+        <div class="card-label">Portfolio</div>
+        <div class="card-title">Internally built businesses</div>
+        <div class="card-body">Concepts developed, validated, and spun out as independent entities over time.</div>
+      </div>
+      <div class="demo-card bark">
+        <div class="card-label">Approach</div>
+        <div class="card-title">Patient capital</div>
+        <div class="card-body">A small number of ideas cultivated with genuine care, on a long horizon.</div>
+      </div>
+    </div>
+
+    <div class="label">Inline code chip</div>
+    <p>Mono type at 0.85em, Grove color, Warm Bark fill, 3px radius. Used for tokens, hex codes, and short technical references — never decorative.</p>
+    <p style="font-size: 0.95rem;">The brand background token is <code class="inline">--color-mist</code>. Use it as the page fill — never plain white.</p>
+
+    <div class="label">Brand list</div>
+    <p>The default list style for principles, rules, and short enumerations. En-dash prefix in Sage, hairline rule below each item.</p>
+    <ul class="brand-list">
+      <li>White space is the primary design element</li>
+      <li>Grove is structural; Satsuma is accent — never the other way around</li>
+      <li>Hairlines and color carry hierarchy; shadows do not exist</li>
+      <li>Motion is quiet — color transitions only, never scale or spring</li>
+    </ul>
+  </section>
+
+  <!-- ── 08 Visual Principles ──────────────────────────────────────────────── -->
+  <section class="section" id="principles">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2 class="section-title">Visual Principles</h2>
+    </div>
 
     <div class="label">Imagery</div>
     <ul class="brand-list">
@@ -943,184 +618,103 @@
       <li>When photography is used: natural light, organic textures, never staged or stock-feeling</li>
       <li>Botanical and natural references are welcome — they reinforce the brand metaphor</li>
       <li>Avoid heavy full-bleed photography, dark hero sections, or high-contrast graphic treatments</li>
+      <li>No protection gradients over photos — composition handles legibility instead</li>
     </ul>
 
+    <div class="label">Iconography</div>
+    <p>Satsuma's source brand uses no iconography. Words and white space carry the meaning. If an icon is genuinely required, use <a class="demo-link" href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> at 1.5px stroke, 20–24px, Grove color. Never Material Icons, Font Awesome, emoji, or decorative Unicode beyond <code class="inline">·</code> <code class="inline">—</code> <code class="inline">–</code> <code class="inline">★</code>.</p>
+
     <div class="label">References</div>
-    <p>The visual neighborhood Satsuma belongs in: <a href="https://www.matterfamilyoffice.com" style="color: var(--grove);">matterfamilyoffice.com</a>, <a href="https://www.whiteoakoffice.com" style="color: var(--grove);">whiteoakoffice.com</a>. Open feel, generous white space, not rigid or corporate. Typography-led, calm, and considered.</p>
+    <p>The visual neighborhood Satsuma belongs in: <a class="demo-link" href="https://www.matterfamilyoffice.com">matterfamilyoffice.com</a>, <a class="demo-link" href="https://www.whiteoakoffice.com">whiteoakoffice.com</a>. Open feel, generous white space, not rigid or corporate. Typography-led, calm, and considered.</p>
 
     <div class="label">What to avoid</div>
     <ul class="brand-list">
-      <li>Anything that reads as VC fund or institutional investor</li>
+      <li>Anything that reads as a VC fund or institutional investor</li>
       <li>Aggressive CTAs or conversion-optimized language</li>
       <li>Orange used prominently — it is an accent, not a theme color</li>
       <li>Rigid grids, corporate templates, or stiff layouts</li>
-      <li>Gradients, drop shadows, or heavy decorative effects</li>
+      <li>Gradients, drop shadows, glassmorphism, neumorphism</li>
+      <li>Emoji, sticker-style decoration, hand-drawn doodles</li>
     </ul>
   </section>
 
-    <!-- ── 06 Design Tokens ───────────────────────────────────────────────────── -->
+  <!-- ── 09 Design Tokens ──────────────────────────────────────────────────── -->
   <section class="section" id="tokens">
     <div class="section-header">
-      <span class="section-number">06</span>
+      <span class="section-number">09</span>
       <h2 class="section-title">Design Tokens</h2>
     </div>
 
     <p>Copy these CSS variables into any project to instantiate the Satsuma design system. All components built for the brand should reference these tokens rather than hardcoded values.</p>
 
     <div class="code-block">
-      <pre><span class="tok-comment">/* Satsuma Ventures — Design Tokens */</span>
+<pre><span class="tok-comment">/* Satsuma Ventures — Design Tokens */</span>
 <span class="tok-comment">/* satsumaventures.com · 2026        */</span>
 
 :root {
-  <span class="tok-comment">/* Color */</span>
-  <span class="tok-var">--color-grove</span>:      <span class="tok-val">#2E5428</span><span class="tok-str">; /* Primary brand    */</span>
-  <span class="tok-var">--color-satsuma</span>:    <span class="tok-val">#D4681E</span><span class="tok-str">; /* Accent only      */</span>
-  <span class="tok-var">--color-deep-ink</span>:   <span class="tok-val">#1C2818</span><span class="tok-str">; /* Body text        */</span>
-  <span class="tok-var">--color-mist</span>:       <span class="tok-val">#F6F8F3</span><span class="tok-str">; /* Background       */</span>
-  <span class="tok-var">--color-sage</span>:       <span class="tok-val">#7AAA68</span><span class="tok-str">; /* Labels           */</span>
-  <span class="tok-var">--color-sage-label</span>: <span class="tok-val">#4F7441</span><span class="tok-str">; /* Label text AA    */</span>
-  <span class="tok-var">--color-warm-bark</span>:  <span class="tok-val">#E8DED0</span><span class="tok-str">; /* Surfaces         */</span>
-  <span class="tok-var">--color-rule</span>:       <span class="tok-val">#D8DDD0</span><span class="tok-str">; /* Dividers         */</span>
-  <span class="tok-var">--color-muted</span>:      <span class="tok-val">#5A6B52</span><span class="tok-str">; /* Secondary text   */</span>
+  <span class="tok-comment">/* Color — brand */</span>
+  <span class="tok-var">--color-grove</span>:      <span class="tok-val">#2E5428</span><span class="tok-str">;  /* Primary brand    */</span>
+  <span class="tok-var">--color-satsuma</span>:    <span class="tok-val">#D4681E</span><span class="tok-str">;  /* Accent only      */</span>
+  <span class="tok-var">--color-deep-ink</span>:   <span class="tok-val">#1C2818</span><span class="tok-str">;  /* Body text        */</span>
+  <span class="tok-var">--color-mist</span>:       <span class="tok-val">#F6F8F3</span><span class="tok-str">;  /* Background       */</span>
+  <span class="tok-var">--color-sage</span>:       <span class="tok-val">#7AAA68</span><span class="tok-str">;  /* Decorative       */</span>
+  <span class="tok-var">--color-sage-label</span>: <span class="tok-val">#4F7441</span><span class="tok-str">;  /* Label text (AA)  */</span>
+  <span class="tok-var">--color-warm-bark</span>:  <span class="tok-val">#E8DED0</span><span class="tok-str">;  /* Surfaces         */</span>
+  <span class="tok-var">--color-rule</span>:       <span class="tok-val">#D8DDD0</span><span class="tok-str">;  /* Dividers         */</span>
+  <span class="tok-var">--color-muted</span>:      <span class="tok-val">#5A6B52</span><span class="tok-str">;  /* Secondary text   */</span>
 
   <span class="tok-comment">/* Typography */</span>
   <span class="tok-var">--font-display</span>:  <span class="tok-val">'Libre Baskerville'</span>, Georgia, serif;
   <span class="tok-var">--font-body</span>:     <span class="tok-val">'Plus Jakarta Sans'</span>, Arial, sans-serif;
   <span class="tok-var">--font-mono</span>:     <span class="tok-val">'JetBrains Mono'</span>, 'Courier New', monospace;
 
-  <span class="tok-comment">/* Spacing */</span>
-  <span class="tok-var">--space-xs</span>:  <span class="tok-val">0.5rem</span>;
-  <span class="tok-var">--space-sm</span>:  <span class="tok-val">1rem</span>;
-  <span class="tok-var">--space-md</span>:  <span class="tok-val">2rem</span>;
-  <span class="tok-var">--space-lg</span>:  <span class="tok-val">3rem</span>;
-  <span class="tok-var">--space-xl</span>:  <span class="tok-val">5rem</span>;
+  <span class="tok-comment">/* Spacing — 8px base */</span>
+  <span class="tok-var">--space-xs</span>:   <span class="tok-val">0.5rem</span>;
+  <span class="tok-var">--space-sm</span>:   <span class="tok-val">1rem</span>;
+  <span class="tok-var">--space-md</span>:   <span class="tok-val">2rem</span>;
+  <span class="tok-var">--space-lg</span>:   <span class="tok-val">3rem</span>;
+  <span class="tok-var">--space-xl</span>:   <span class="tok-val">5rem</span>;
+  <span class="tok-var">--space-2xl</span>:  <span class="tok-val">8rem</span>;
 
-  <span class="tok-comment">/* Layout */</span>
-  <span class="tok-var">--max-width</span>:      <span class="tok-val">860px</span>;
-  <span class="tok-var">--content-width</span>: <span class="tok-val">680px</span>;
-  <span class="tok-var">--border-radius</span>: <span class="tok-val">6px</span>;
+  <span class="tok-comment">/* Radii */</span>
+  <span class="tok-var">--radius-xs</span>:  <span class="tok-val">3px</span><span class="tok-str">;   /* chips    */</span>
+  <span class="tok-var">--radius-sm</span>:  <span class="tok-val">6px</span><span class="tok-str">;   /* buttons  */</span>
+  <span class="tok-var">--radius-md</span>:  <span class="tok-val">8px</span><span class="tok-str">;   /* cards    */</span>
+  <span class="tok-var">--radius-lg</span>:  <span class="tok-val">12px</span><span class="tok-str">;  /* surface  */</span>
 
-  <span class="tok-comment">/* Type scale */</span>
-  <span class="tok-var">--text-display</span>: clamp(<span class="tok-val">2.5rem</span>, 6vw, <span class="tok-val">4rem</span>);
-  <span class="tok-var">--text-h1</span>:      clamp(<span class="tok-val">2rem</span>, 4vw, <span class="tok-val">2.75rem</span>);
-  <span class="tok-var">--text-h2</span>:      <span class="tok-val">1.75rem</span>;
-  <span class="tok-var">--text-h3</span>:      <span class="tok-val">1.2rem</span>;
-  <span class="tok-var">--text-body</span>:    <span class="tok-val">1rem</span>;
-  <span class="tok-var">--text-label</span>:   <span class="tok-val">0.7rem</span>;
-
-  <span class="tok-comment">/* Line heights */</span>
-  <span class="tok-var">--lh-display</span>: <span class="tok-val">1.1</span>;
-  <span class="tok-var">--lh-heading</span>: <span class="tok-val">1.2</span>;
-  <span class="tok-var">--lh-body</span>:    <span class="tok-val">1.75</span>;
+  <span class="tok-comment">/* Motion */</span>
+  <span class="tok-var">--ease-out</span>:    <span class="tok-val">cubic-bezier(0.22, 0.61, 0.36, 1)</span>;
+  <span class="tok-var">--dur-fast</span>:    <span class="tok-val">160ms</span>;
+  <span class="tok-var">--dur-base</span>:    <span class="tok-val">220ms</span>;
+  <span class="tok-var">--dur-slow</span>:    <span class="tok-val">400ms</span>;
 }</pre>
     </div>
 
-    <div class="label">Quick reference</div>
-    <div class="quick-ref-grid">
-      <div class="quick-ref-cell">
-        <div class="cell-label">Name</div>
-        <div class="cell-value">Satsuma Ventures</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Tagline</div>
-        <div class="cell-value" style="font-style:italic;font-family:var(--font-display);font-weight:400;">A family venture studio cultivating ideas worth growing.</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Primary color</div>
-        <div class="cell-value" style="color:var(--grove);">#2E5428 Grove</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Accent color</div>
-        <div class="cell-value" style="color:var(--satsuma);">#D4681E Satsuma</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Background</div>
-        <div class="cell-value">#F6F8F3 Mist</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Display font</div>
-        <div class="cell-value" style="font-family:var(--font-display);font-weight:400;">Libre Baskerville</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Body font</div>
-        <div class="cell-value">Plus Jakarta Sans</div>
-      </div>
-      <div class="quick-ref-cell">
-        <div class="cell-label">Website</div>
-        <div class="cell-value">satsumaventures.com</div>
-      </div>
-    </div>
-
-    <p style="color:var(--muted);font-style:italic;font-size:0.85rem;">This document is a living reference. Update it as the brand evolves.</p>
+    <p style="font-size: 0.85rem; color: var(--muted);">The full set, including 11-stop shade scales, lives in <code class="inline">colors_and_type.css</code> at the root of the design system.</p>
   </section>
 </div>
 
-<!-- ── Footer ────────────────────────────────────────────────────────────────── -->
 <footer>
   <div class="page">
-    <p>Satsuma Ventures &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; satsumaventures.com &nbsp;·&nbsp; Confidential 2026</p>
+    <p>Satsuma Ventures — Brand Book &amp; Design System · 2026</p>
   </div>
 </footer>
 
 <script>
-  // ── Active section tracking via IntersectionObserver ─────────────────────
-  const sections = document.querySelectorAll('section[id]');
-  const allNavLinks = document.querySelectorAll('#nav-links a, #nav-dropdown a');
-
-  function setActive(id) {
-    allNavLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+  // Mobile nav toggle
+  const btn = document.getElementById('nav-menu-btn');
+  const dd = document.getElementById('nav-dropdown');
+  if (btn && dd) {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      dd.classList.toggle('open');
     });
+    dd.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      dd.classList.remove('open');
+    }));
   }
-
-  // Use a map to track which sections are currently intersecting
-  const visible = new Map();
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      visible.set(entry.target.id, entry.isIntersecting);
-    });
-    // Set active to the first section that's currently visible
-    for (const section of sections) {
-      if (visible.get(section.id)) {
-        setActive(section.id);
-        break;
-      }
-    }
-  }, {
-    rootMargin: '-10% 0px -80% 0px',
-    threshold: 0
-  });
-
-  sections.forEach(s => observer.observe(s));
-
-  // ── Hamburger menu toggle ─────────────────────────────────────────────────
-  const menuBtn  = document.getElementById('nav-menu-btn');
-  const dropdown = document.getElementById('nav-dropdown');
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = dropdown.classList.toggle('open');
-    menuBtn.classList.toggle('open', isOpen);
-    menuBtn.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close dropdown when a link is tapped
-  dropdown.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      dropdown.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('#main-nav')) {
-      dropdown.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
 </script>
+
 </body>
 </html>

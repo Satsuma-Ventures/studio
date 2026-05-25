@@ -1,0 +1,47 @@
+/* Shared base for all preview cards */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --grove:      #2E5428;
+  --satsuma:    #D4681E;
+  --deep-ink:   #1C2818;
+  --linen:      #F2ECDD;
+  --mist:       #F6F8F3;
+  --sage:       #7AAA68;
+  --sage-label: #4F7441;
+  --warm-bark:  #E8DED0;
+  --rule:       #D8DDD0;
+  --muted:      #5A6B52;
+  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--linen);
+  color: var(--deep-ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  width: 700px;
+  padding: 28px 32px;
+  background: var(--linen);
+}
+
+.card-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--deep-ink);
+  margin-bottom: 18px;
+}
+
+.mono { font-family: var(--font-mono); }

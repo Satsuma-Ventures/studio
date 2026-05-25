@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.row { display: flex; flex-direction: column; gap: 22px; }
+.rule { height: 1px; background: var(--rule); }
+.demo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.surface { padding: 22px; border-radius: 8px; }
+.surface.mist { background: var(--mist); border: 1px solid var(--rule); }
+.surface.bark { background: var(--warm-bark); }
+.surface.dark { background: var(--deep-ink); color: var(--mist); }
+.surface .h { font-family: var(--font-display); font-size: 18px; margin-bottom: 6px; }
+.surface .p { font-family: var(--font-body); font-size: 12px; color: var(--muted); }
+.surface.dark .p { color: rgba(246,248,243,0.6); }
+.label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+.note { font-family: var(--font-body); font-size: 11px; color: var(--muted); font-style: italic; }
+</style></head><body><div class="card">
+  <div class="card-label">Elevation — hairlines, no shadow</div>
+  <div class="row">
+    <div>
+      <div class="label" style="margin-bottom:8px;">section divider · 1px Rule</div>
+      <div class="rule"></div>
+    </div>
+    <div class="demo">
+      <div class="surface bark"><div class="h">Warm Bark</div><div class="p">Card surface against Mist background.</div></div>
+      <div class="surface dark"><div class="h">Deep Ink</div><div class="p">High-contrast surface.</div></div>
+    </div>
+    <div class="note">Elevation is communicated through color (Warm Bark on Mist) and hairline borders. There is no drop-shadow system.</div>
+  </div>
+</div></body></html>

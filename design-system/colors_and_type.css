@@ -1,0 +1,229 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Satsuma Ventures — Colors & Type
+   A family venture studio cultivating ideas worth growing.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Brand colors ──────────────────────────────────────────────────── */
+  --grove:        #2E5428;   /* Primary brand color — Grove-500 */
+  --satsuma:      #D4681E;   /* Accent only — Satsuma-500 */
+  --deep-ink:     #1C2818;   /* Body text & high contrast */
+  --linen:        #F2ECDD;   /* Primary page background — warm, paper-like */
+  --mist:         #F6F8F3;   /* Cool surface alt — used sparingly */
+  --sage:         #7AAA68;   /* Decorative sage / supporting color */
+  --sage-label:   #4F7441;   /* Sage-700 — retained for decorative use */
+  --warm-bark:    #E8DED0;   /* Cards & secondary surfaces */
+  --rule:         #D8DDD0;   /* Hairline dividers */
+  --muted:        #5A6B52;   /* Secondary text */
+  --white:        #FFFFFF;
+
+  /* ── Grove scale (primary green) ───────────────────────────────────── */
+  --grove-50:  #F7F8F7;
+  --grove-100: #EBF0EB;
+  --grove-200: #D6E2D4;
+  --grove-300: #B4CFAF;
+  --grove-400: #8CBD84;
+  --grove-500: #2E5428;
+  --grove-600: #264521;
+  --grove-700: #1E371A;
+  --grove-800: #182C15;
+  --grove-900: #11200F;
+  --grove-950: #0A1209;
+
+  /* ── Satsuma scale (accent orange) ─────────────────────────────────── */
+  --satsuma-50:  #F9F7F6;
+  --satsuma-100: #F3ECE8;
+  --satsuma-200: #EAD9CD;
+  --satsuma-300: #E1B99E;
+  --satsuma-400: #DD9564;
+  --satsuma-500: #D4681E;
+  --satsuma-600: #AE5519;
+  --satsuma-700: #8C4514;
+  --satsuma-800: #6E3610;
+  --satsuma-900: #51280B;
+  --satsuma-950: #2F1707;
+
+  /* ── Sage scale (supporting green) ─────────────────────────────────── */
+  --sage-50:  #F7F8F7;
+  --sage-100: #ECEFEB;
+  --sage-200: #D9E1D6;
+  --sage-300: #BACCB3;
+  --sage-400: #96B78A;
+  --sage-500: #7AAA68;
+  --sage-600: #629051;
+  --sage-700: #4F7441;
+  --sage-800: #3E5B33;
+  --sage-900: #2D4325;
+  --sage-950: #1A2716;
+
+  /* ── Semantic color tokens ─────────────────────────────────────────── */
+  --bg:           var(--linen);
+  --bg-cool:      var(--mist);
+  --bg-surface:   var(--white);
+  --bg-warm:      var(--warm-bark);
+  --bg-dark:      var(--deep-ink);
+  --fg:           var(--deep-ink);
+  --fg-muted:     var(--muted);
+  --fg-label:     var(--deep-ink);    /* default label color — uppercase tracked */
+  --fg-eyebrow:   var(--satsuma);     /* section numbers, eyebrows — accent moments */
+  --fg-on-dark:   var(--mist);
+  --fg-link:      var(--grove);
+  --accent:       var(--satsuma);
+  --border:       var(--rule);
+
+  /* ── Type families ─────────────────────────────────────────────────── */
+  --font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
+
+  /* ── Type scale ────────────────────────────────────────────────────── */
+  --text-display: clamp(2.5rem, 6vw, 4rem);   /* 40–64px */
+  --text-h1:      clamp(2rem, 4vw, 2.625rem); /* 32–42px */
+  --text-h2:      1.5rem;                     /* 24px */
+  --text-h3:      1.125rem;                   /* 18px */
+  --text-body:    1rem;                       /* 16px */
+  --text-small:   0.875rem;                   /* 14px */
+  --text-label:   0.75rem;                    /* 12px */
+  --text-meta:    0.7rem;                     /* 11px */
+
+  --lh-display: 1.1;
+  --lh-heading: 1.2;
+  --lh-body:    1.75;
+  --lh-tight:   1.4;
+
+  --tracking-label: 0.14em;
+  --tracking-nav:   0.10em;
+
+  /* ── Spacing scale ─────────────────────────────────────────────────── */
+  --space-2xs: 0.25rem;   /*  4px */
+  --space-xs:  0.5rem;    /*  8px */
+  --space-sm:  1rem;      /* 16px */
+  --space-md:  2rem;      /* 32px */
+  --space-lg:  3rem;      /* 48px */
+  --space-xl:  5rem;      /* 80px */
+  --space-2xl: 8rem;      /* 128px */
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --max-width:     860px;
+  --content-width: 680px;
+  --reading-measure: 60ch;
+
+  /* ── Radii ─────────────────────────────────────────────────────────── */
+  --radius-xs:  3px;
+  --radius-sm:  6px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+
+  /* ── Motion ────────────────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --dur-fast:    160ms;
+  --dur-base:    220ms;
+  --dur-slow:    400ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Base element styles — opt-in via class="satsuma-prose" on a container
+   so these vars can also be used standalone.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.satsuma-prose,
+body.satsuma-prose {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.satsuma-prose h1,
+.satsuma-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  color: var(--fg);
+  letter-spacing: -0.005em;
+}
+
+.satsuma-prose h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  color: var(--grove);
+}
+
+.satsuma-prose h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  color: var(--fg);
+}
+
+.satsuma-prose h4 {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  color: var(--fg);
+}
+
+.satsuma-prose p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  max-width: var(--content-width);
+}
+
+.satsuma-prose .label,
+.satsuma-label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-label);
+}
+
+.satsuma-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-eyebrow);
+}
+
+.satsuma-prose code,
+.satsuma-code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--grove);
+  background: var(--warm-bark);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+}
+
+.satsuma-prose a {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.satsuma-prose a:hover { color: var(--satsuma); }
+
+.satsuma-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+}

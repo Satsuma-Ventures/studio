@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.row { display: flex; flex-direction: column; gap: 14px; }
+.line { font-family: var(--font-body); font-size: 15px; color: var(--deep-ink); line-height: 1.6; }
+.link { color: var(--grove); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: color 220ms cubic-bezier(0.22,0.61,0.36,1); }
+.link.hover { color: var(--satsuma); }
+.tag { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 4px; }
+</style></head><body><div class="card">
+  <div class="card-label">Inline link · text states</div>
+  <div class="row">
+    <div>
+      <div class="line">Read the <a class="link" href="#">brand book</a> for the full set of tokens.</div>
+      <div class="tag">default · Grove · underline 3px offset</div>
+    </div>
+    <div>
+      <div class="line">Read the <a class="link hover" href="#">brand book</a> for the full set of tokens.</div>
+      <div class="tag">hover · Satsuma</div>
+    </div>
+  </div>
+</div></body></html>

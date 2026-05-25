@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.btn { font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; padding: 12px 22px; border-radius: 6px; border: 1px solid transparent; cursor: pointer; transition: background 220ms cubic-bezier(0.22,0.61,0.36,1), color 220ms cubic-bezier(0.22,0.61,0.36,1); text-decoration: none; display: inline-flex; align-items: center; }
+.btn-primary { background: var(--grove); color: var(--mist); }
+.btn-primary.hover { background: #264521; }
+.btn-primary.press { background: #1E371A; }
+.state { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.tag { font-family: var(--font-mono); font-size: 9px; color: var(--muted); }
+</style></head><body><div class="card">
+  <div class="card-label">Button · primary (Grove)</div>
+  <div class="row">
+    <div class="state"><button class="btn btn-primary">Get in touch</button><div class="tag">default · Grove-500</div></div>
+    <div class="state"><button class="btn btn-primary hover">Get in touch</button><div class="tag">hover · Grove-600</div></div>
+    <div class="state"><button class="btn btn-primary press">Get in touch</button><div class="tag">press · Grove-700</div></div>
+  </div>
+</div></body></html>

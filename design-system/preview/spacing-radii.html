@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.row { display: flex; gap: 24px; align-items: flex-end; }
+.tok { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.box { width: 96px; height: 96px; background: var(--warm-bark); border: 1px solid var(--rule); }
+.name { font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+.size { font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--deep-ink); }
+</style></head><body><div class="card">
+  <div class="card-label">Corner radii</div>
+  <div class="row">
+    <div class="tok"><div class="box" style="border-radius:3px"></div><div class="size">3px</div><div class="name">--radius-xs · chips</div></div>
+    <div class="tok"><div class="box" style="border-radius:6px"></div><div class="size">6px</div><div class="name">--radius-sm · buttons</div></div>
+    <div class="tok"><div class="box" style="border-radius:8px"></div><div class="size">8px</div><div class="name">--radius-md · cards</div></div>
+    <div class="tok"><div class="box" style="border-radius:12px"></div><div class="size">12px</div><div class="name">--radius-lg · surface</div></div>
+  </div>
+</div></body></html>

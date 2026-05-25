@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.row { display: flex; flex-direction: column; gap: 4px; max-width: 100%; }
+.item { font-family: var(--font-body); font-size: 14px; color: var(--deep-ink); line-height: 1.75; padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--rule); }
+.item:first-child { border-top: 1px solid var(--rule); }
+.item::before { content: '–'; position: absolute; left: 4px; color: var(--satsuma); font-weight: 400; }
+</style></head><body><div class="card">
+  <div class="card-label">Brand list · en-dash bullet</div>
+  <div class="row">
+    <div class="item">Write as a person, not an institution</div>
+    <div class="item">Use plain language — no jargon, no buzzwords</div>
+    <div class="item">Be specific rather than vague</div>
+    <div class="item">Never sound like a VC pitch deck</div>
+  </div>
+</div></body></html>

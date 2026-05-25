@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.swatch-block { height: 86px; border-radius: 6px; }
+.swatch-block.bordered { border: 1px solid var(--rule); }
+.swatch-hex { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 10px; }
+.swatch-name { font-size: 13px; font-weight: 600; color: var(--deep-ink); margin-top: 3px; }
+.swatch-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+</style></head><body><div class="card">
+  <div class="swatches">
+    <div><div class="swatch-block" style="background:#2E5428"></div><div class="swatch-hex">#2E5428</div><div class="swatch-name">Grove</div><div class="swatch-role">Primary brand</div></div>
+    <div><div class="swatch-block" style="background:#D4681E"></div><div class="swatch-hex">#D4681E</div><div class="swatch-name">Satsuma</div><div class="swatch-role">Accent only</div></div>
+    <div><div class="swatch-block bordered" style="background:#F2ECDD"></div><div class="swatch-hex">#F2ECDD</div><div class="swatch-name">Linen</div><div class="swatch-role">Page background</div></div>
+  </div>
+</div></body></html>
