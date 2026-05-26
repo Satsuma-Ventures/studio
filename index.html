@@ -7,24 +7,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    /* ── Tokens ─────────────────────────────────────────────────── */
     :root {
-      --grove:      #2E5428;
-      --satsuma:    #D4681E;
-      --deep-ink:   #1C2818;
-      --linen:      #F2ECDD;
-      --mist:       #F6F8F3;
-      --sage-label: #4F7441;
-      --warm-bark:  #E8DED0;
-      --rule:       #D8DDD0;
-      --muted:      #5A6B52;
-      --font-display: 'Libre Baskerville', Georgia, serif;
-      --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
+      --grove:        #2E5428;
+      --grove-600:    #264521;
+      --satsuma:      #D4681E;
+      --deep-ink:     #1C2818;
+      --linen:        #F2ECDD;
+      --mist:         #F6F8F3;
+      --warm-bark:    #E8DED0;
+      --rule:         #D8DDD0;
+      --muted:        #5A6B52;
+
+      --font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+      --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --tracking-label: 0.14em;
+      --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+      --dur-base:    220ms;
+
+      --gutter:      clamp(1.5rem, 4vw, 3rem);
+      --shell-max:   980px;
+      --nav-h:       4.25rem;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; }
 
     body {
       background: var(--linen);
@@ -33,140 +43,578 @@
       font-size: 1rem;
       line-height: 1.75;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    .page {
-      max-width: 720px;
+    /* ── Shell ─────────────────────────────────────────────────── */
+    .shell {
+      max-width: var(--shell-max);
       width: 100%;
       margin: 0 auto;
-      padding: 0 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      padding: 0 var(--gutter);
     }
 
-    /* ── Hero ─────────────────────────────────────────────────────────── */
-    .hero {
-      flex: 1;
+    /* ── Top nav (fixed; condenses once you start scrolling) ───── */
+    .topnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background var(--dur-base) var(--ease-out),
+                  border-color var(--dur-base) var(--ease-out);
+    }
+    .topnav-inner {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: clamp(4rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem);
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem var(--gutter);
+      max-width: var(--shell-max);
+      width: 100%;
+      margin: 0 auto;
+      min-height: var(--nav-h);
+    }
+
+    .topnav-mark {
+      height: 2.34375rem;
+      width: auto;
+      display: block;
+      opacity: 0;
+      transform: translateY(-3px);
+      transition: opacity var(--dur-base) var(--ease-out),
+                  transform var(--dur-base) var(--ease-out);
+      pointer-events: none;
+    }
+    .topnav-mark-link {
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+
+    .topnav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 3vw, 2rem);
+      list-style: none;
+    }
+    .topnav-links a {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--deep-ink);
+      text-decoration: none;
+      transition: color var(--dur-base) var(--ease-out);
+    }
+    .topnav-links a:hover { color: var(--satsuma); }
+    .topnav-links .short { display: none; }
+
+    body.nav-condensed .topnav {
+      background: var(--linen);
+      border-bottom-color: var(--rule);
+    }
+    body.nav-condensed .topnav-mark {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ── Hero (contained, tucked close to the nav) ──────────────── */
+    .hero {
+      position: relative;
+      padding-top: calc(var(--nav-h) + clamp(1rem, 3vh, 2rem));
+      padding-bottom: clamp(3.5rem, 9vh, 6rem);
+      isolation: isolate;
+    }
+
+    /* The hero content cluster — lockup + eyebrow + tagline. The tree is
+       positioned inside this cluster so it matches the cluster's height. */
+    .hero-cluster {
+      position: relative;
+    }
+
+    /* ── Tree imagery ───────────────────────────────────────────────── */
+    .hero-tree {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 600ms var(--ease-out);
+    }
+    .hero-tree img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: right bottom;
+    }
+    /* Anchored bottom-right of the hero so the tree sits on the horizontal
+       rule that opens "How we work". Height matches the cluster (lockup
+       → tagline) via a JS-set custom property; fallback to a clamp. */
+    body[data-tree="right"] .hero-tree--right {
+      opacity: 0.09;
+      bottom: 0;
+      right: 0;
+      width: clamp(22.5rem, 52.5vw, 35rem);
+      height: calc(var(--hero-cluster-h, clamp(18rem, 36vw, 28rem)) * 1.25);
+    }
+
+    @media (max-width: 760px) {
+      body[data-tree] .hero-tree { opacity: 0 !important; }
     }
 
     .hero-lockup {
-      height: clamp(11rem, 28vw, 17rem);
+      /* The stacked lockup is the largest brand statement on the page.
+         Sized to feel anchor-weight without bleeding past the reading column. */
+      height: clamp(12.5rem, 27.5vw, 18.75rem);
       width: auto;
-      max-width: 100%;
-      flex-shrink: 0;
-      align-self: flex-start;
       display: block;
-      margin-bottom: clamp(3rem, 6vh, 4.5rem);
+      /* Generous gap before the tagline cluster sits on its own. */
+      margin-bottom: clamp(3.5rem, 8vh, 5.5rem);
     }
 
+    /* The eyebrow now pairs with the tagline, not the lockup. */
     .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: var(--tracking-label);
       text-transform: uppercase;
       color: var(--satsuma);
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.875rem;
     }
 
     .hero-tagline {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3.4vw, 2.125rem);
+      font-size: clamp(1.75rem, 3.6vw, 2.5rem);
       font-weight: 400;
       font-style: italic;
       color: var(--grove);
-      line-height: 1.35;
+      line-height: 1.3;
       max-width: 22ch;
-      margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
       text-wrap: pretty;
+      letter-spacing: -0.005em;
     }
 
-    .hero-position {
-      font-family: var(--font-body);
-      font-size: 1.0625rem;
-      line-height: 1.75;
-      color: var(--deep-ink);
-      max-width: 56ch;
-      text-wrap: pretty;
-    }
-
-    /* ── Contact / footer ─────────────────────────────────────────────── */
-    .contact {
+    /* ── Section scaffolding ────────────────────────────────────── */
+    .section {
+      padding: clamp(3.5rem, 9vh, 6rem) 0;
       border-top: 1px solid var(--rule);
-      padding: 2rem 0 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.75rem 2.25rem;
     }
 
-    .contact-label {
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: baseline;
+      margin-bottom: clamp(2rem, 4vh, 3rem);
+    }
+
+    .section-num {
       font-family: var(--font-body);
       font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
       color: var(--satsuma);
+      font-feature-settings: "tnum";
+      padding-top: 0.5rem;
     }
 
-    .contact-link {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 400;
+      color: var(--grove);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+
+    .section-body {
+      grid-column: 2;
+      max-width: 56ch;
+    }
+
+    .section-body p + p { margin-top: 1.25rem; }
+
+    .section-body p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
       color: var(--deep-ink);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: color 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
-                  border-color 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      text-wrap: pretty;
     }
 
-    .contact-link:hover {
+    /* ── Ventures (Ideas in cultivation) ────────────────────────── */
+    .ventures-rail {
+      grid-column: 1 / -1;
+      position: relative;
+      margin-top: clamp(0.5rem, 1.5vh, 1.25rem);
+    }
+    .ventures {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 0;
+      scroll-behavior: smooth;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      /* Visible items per viewport — 3 full + a peek of the 4th.
+         Steps down on narrower screens to keep items legible. */
+      --visible: 3.3;
+      /* Hide native scrollbar — affordance comes from the peeking 4th item. */
+      scrollbar-width: none;
+    }
+    .ventures::-webkit-scrollbar { display: none; }
+    @media (max-width: 900px) { .ventures-rail { --visible: 2.3; } .ventures { --visible: 2.3; } }
+    @media (max-width: 600px) { .ventures-rail { --visible: 1.3; } .ventures { --visible: 1.3; } }
+    .venture {
+      flex: 0 0 calc(100% / var(--visible));
+      scroll-snap-align: start;
+      padding: clamp(2.25rem, 5vh, 3.5rem) clamp(1rem, 2.5vw, 1.75rem);
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .venture + .venture { border-left: 1px solid var(--rule); }
+
+    /* Edge fades — only visible when there is more rail content in
+       that direction. Linen → transparent so the rail gracefully
+       exits the page color. Sits between the rule borders so the
+       top/bottom hairlines stay crisp. */
+    .ventures-rail::before,
+    .ventures-rail::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      bottom: 1px;
+      width: clamp(2.5rem, 6vw, 4.5rem);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--dur-base) var(--ease-out);
+      z-index: 1;
+    }
+    .ventures-rail::before {
+      left: 0;
+      background: linear-gradient(to right, var(--linen) 0%, rgba(242,236,221,0) 100%);
+    }
+    .ventures-rail::after {
+      right: 0;
+      background: linear-gradient(to left, var(--linen) 0%, rgba(242,236,221,0) 100%);
+    }
+    .ventures-rail[data-can-left="true"]::before { opacity: 1; }
+    .ventures-rail[data-can-right="true"]::after { opacity: 1; }
+
+    /* Scroll affordances — just a chevron, no chrome. Sit over the
+       fade so they read as an edge marker, not a UI control. Hidden
+       when there's nothing to scroll in that direction. */
+    .rail-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--grove);
+      border: 0;
+      padding: 0.5rem;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-base) var(--ease-out),
+                  color var(--dur-base) var(--ease-out),
+                  transform var(--dur-base) var(--ease-out);
+    }
+    .rail-btn svg {
+      width: 1.625rem;
+      height: 1.625rem;
+      stroke-width: 1.25;
+      display: block;
+    }
+    .rail-btn:hover { color: var(--satsuma); }
+    .rail-btn:focus-visible {
+      outline: 2px solid var(--sage);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .rail-btn--prev { left: clamp(0.25rem, 0.75vw, 0.5rem); }
+    .rail-btn--next { right: clamp(0.25rem, 0.75vw, 0.5rem); }
+    .ventures-rail[data-can-left="true"]  .rail-btn--prev,
+    .ventures-rail[data-can-right="true"] .rail-btn--next {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    @media (hover: none) {
+      .rail-btn { display: none; }
+    }
+    .venture-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+      color: var(--deep-ink);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      transition: color var(--dur-base) var(--ease-out);
+    }
+    .venture-tag {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .venture:hover .venture-name { color: var(--grove); }
+
+    body.ventures-regular .venture-name {
+      font-style: normal;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Contact ────────────────────────────────────────────────── */
+    .contact-copy {
+      max-width: 56ch;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+      text-wrap: pretty;
+    }
+    .contact-mail {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      color: var(--grove);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.2rem;
+      transition: color var(--dur-base) var(--ease-out),
+                  border-color var(--dur-base) var(--ease-out);
+    }
+    .contact-mail:hover {
       color: var(--satsuma);
       border-bottom-color: var(--satsuma);
     }
 
-    .contact-meta {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
+    /* ── Colophon ──────────────────────────────────────────────── */
+    .colophon {
+      border-top: 1px solid var(--rule);
+      padding: 1.75rem 0 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem 1rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-left: auto;
     }
+    .colophon-spacer { flex: 1; }
+    .colophon .dot { color: var(--rule); }
 
-    /* ── Responsive ───────────────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .page { padding: 0 1.5rem; }
-      .hero { padding: 3rem 0 2rem; }
-      .hero-lockup { height: clamp(9rem, 38vw, 12rem); margin-bottom: 2.5rem; }
-      .contact { padding: 1.5rem 0 2rem; gap: 0.5rem 1.5rem; }
-      .contact-meta { margin-left: 0; width: 100%; }
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 760px) {
+      .topnav-mark { height: 2.03125rem; }
+      .topnav-links { gap: 1.25rem; }
+      .topnav-links a { font-size: 0.65rem; letter-spacing: 0.12em; }
+      .section-head { grid-template-columns: 1fr; row-gap: 0.5rem; }
+      .section-num { padding-top: 0; }
+      .section-body { grid-column: 1; }
+      .ventures { grid-template-columns: 1fr; }
+      .venture + .venture { border-left: 0; border-top: 1px solid var(--rule); }
+    }
+    @media (max-width: 560px) {
+      :root { --nav-h: 3.5rem; }
+      .topnav-mark { height: 1.71875rem; }
+      .topnav-inner { padding: 0.75rem var(--gutter); }
+      .topnav-links { gap: 1rem; }
+      .topnav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
+      .topnav-links .full { display: none; }
+      .topnav-links .short { display: inline; }
     }
   </style>
 </head>
-<body>
-  <main class="page">
+<body data-screen-label="Satsuma home v2" id="top">
+
+  <!-- ── Fixed top nav ──────────────────────────────────────────── -->
+  <header class="topnav" role="banner">
+    <div class="topnav-inner">
+      <a href="#top" class="topnav-mark-link" aria-label="Satsuma — home">
+        <img src="assets/satsuma-lockup.svg" alt="" class="topnav-mark">
+      </a>
+      <ul class="topnav-links">
+        <li><a href="#how"><span class="full">How we work</span><span class="short">Work</span></a></li>
+        <li><a href="#ideas"><span class="full">Ideas in cultivation</span><span class="short">Ideas</span></a></li>
+        <li><a href="#contact"><span class="full">Contact</span><span class="short">Contact</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="shell">
+
+    <!-- ── Hero ─────────────────────────────────────────────────── -->
     <section class="hero" data-screen-label="01 Hero">
-      <img src="assets/satsuma-lockup-stacked.svg" alt="Satsuma Ventures" class="hero-lockup">
-
-      <p class="hero-eyebrow">Seattle, Washington</p>
-
-      <h1 class="hero-tagline">A family venture studio cultivating ideas worth growing.</h1>
-
-      <p class="hero-position">Satsuma is a private family holding studio — the parent entity for a small portfolio of internally ideated and built businesses. Concepts developed, validated, and spun out as independent entities over time. We are not a fund, not seeking outside investment, and not optimizing for volume.</p>
+      <div class="hero-tree hero-tree--right" aria-hidden="true">
+        <img src="assets/satsuma-tree-outline.svg" alt="">
+      </div>
+      <div class="hero-cluster">
+        <img src="assets/satsuma-lockup-stacked.svg" alt="Satsuma Ventures" class="hero-lockup">
+        <div class="hero-statement">
+          <p class="hero-eyebrow">Seattle, Washington</p>
+          <h1 class="hero-tagline">A family venture studio cultivating ideas worth growing.</h1>
+        </div>
+      </div>
     </section>
 
-    <footer class="contact">
-      <span class="contact-label">Inquiries</span>
-      <a class="contact-link" href="mailto:hello@satsumaventures.com">hello@satsumaventures.com</a>
-      <span class="contact-meta">© 2026 · Seattle, WA</span>
+    <!-- ── 01 How we work ───────────────────────────────────────── -->
+    <section class="section" id="how" data-screen-label="02 How we work">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">How we work</h2>
+      </div>
+      <div class="section-body">
+        <p>Ideas originate here, develop here, and earn their independence when they're ready. AI runs through the whole process — as the operating layer of the studio itself, not just as a feature we build into products: how we research, how we validate, how we move from insight to something real.</p>
+        <p>We choose problems where doing the work well makes things genuinely better — not just for the people paying for it. Value created, not just captured.</p>
+      </div>
+    </section>
+
+    <!-- ── 02 Ideas in cultivation ──────────────────────────────── -->
+    <section class="section" id="ideas" data-screen-label="03 Ideas in cultivation">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Ideas in cultivation</h2>
+      </div>
+      <div class="ventures-rail" data-can-left="false" data-can-right="true">
+        <div class="ventures" role="list">
+          <div class="venture" role="listitem">
+            <span class="venture-name">CareerChief</span>
+            <span class="venture-tag">In development</span>
+          </div>
+          <div class="venture" role="listitem">
+            <span class="venture-name">Cellarbook</span>
+            <span class="venture-tag">In development</span>
+          </div>
+          <div class="venture" role="listitem">
+            <span class="venture-name">Corner Street Commerce</span>
+            <span class="venture-tag">In development</span>
+          </div>
+          <div class="venture" role="listitem">
+            <span class="venture-name">Zavari</span>
+            <span class="venture-tag">In development</span>
+          </div>
+        </div>
+        <button type="button" class="rail-btn rail-btn--prev" aria-label="Scroll ideas left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="rail-btn rail-btn--next" aria-label="Scroll ideas right">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── 03 Contact ───────────────────────────────────────────── -->
+    <section class="section" id="contact" data-screen-label="04 Contact">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="section-body">
+        <p class="contact-copy">Satsuma is a private studio and not currently seeking outside investment. If something here resonates — a problem worth solving, a conversation worth having — we'd like to hear from you.</p>
+        <a class="contact-mail" href="/cdn-cgi/l/email-protection#a5cdc0c9c9cae5d6c4d1d6d0c8c4d3c0cbd1d0d7c0d68bc6cac8"><span class="__cf_email__" data-cfemail="adc5c8c1c1c2eddeccd9ded8c0ccdbc8c3d9d8dfc8de83cec2c0">[email&#160;protected]</span></a>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <span>Satsuma Ventures</span>
+      <span class="dot">·</span>
+      <span>Seattle, Washington</span>
+      <span class="colophon-spacer"></span>
+      <span>© 2026</span>
     </footer>
   </main>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.body.setAttribute('data-tree', 'right');
+
+    // Condense the nav as soon as the user scrolls — small threshold
+    // so the linen background + lockup appear early, not deep into the
+    // page.
+    (function setupNavCondense() {
+      const THRESHOLD = 24; // px scrolled before nav condenses
+      let ticking = false;
+      function update() {
+        const past = window.scrollY > THRESHOLD;
+        document.body.classList.toggle('nav-condensed', past);
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      update();
+    })();
+
+    // Ventures rail: track scroll position to fade edges + arm buttons,
+    // and let the buttons step the rail by one venture card at a time.
+    (function setupVenturesRail() {
+      const rail = document.querySelector('.ventures-rail');
+      if (!rail) return;
+      const scroller = rail.querySelector('.ventures');
+      const prev = rail.querySelector('.rail-btn--prev');
+      const next = rail.querySelector('.rail-btn--next');
+
+      function update() {
+        const max = scroller.scrollWidth - scroller.clientWidth;
+        const x = scroller.scrollLeft;
+        rail.setAttribute('data-can-left',  x > 1 ? 'true' : 'false');
+        rail.setAttribute('data-can-right', x < max - 1 ? 'true' : 'false');
+      }
+
+      function step(dir) {
+        const first = scroller.querySelector('.venture');
+        const delta = first ? first.offsetWidth : scroller.clientWidth * 0.8;
+        scroller.scrollBy({ left: dir * delta, behavior: 'smooth' });
+      }
+
+      prev && prev.addEventListener('click', () => step(-1));
+      next && next.addEventListener('click', () => step(1));
+      scroller.addEventListener('scroll', () => {
+        if (!scroller._raf) {
+          scroller._raf = requestAnimationFrame(() => {
+            scroller._raf = null;
+            update();
+          });
+        }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // Pin --hero-cluster-h to the live height of the hero content cluster
+    // so the tree's vertical extent tracks lockup-through-tagline at any
+    // viewport size.
+    (function trackClusterHeight() {
+      const cluster = document.querySelector('.hero-cluster');
+      if (!cluster) return;
+      const setH = () => {
+        document.body.style.setProperty(
+          '--hero-cluster-h', cluster.offsetHeight + 'px'
+        );
+      };
+      setH();
+      if (window.ResizeObserver) new ResizeObserver(setH).observe(cluster);
+      window.addEventListener('load', setH);
+      window.addEventListener('resize', setH);
+    })();
+  </script>
 </body>
 </html>
