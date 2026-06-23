@@ -79,7 +79,7 @@ mkdir -p skills
 echo "→ Making initial commit..."
 git add .
 git commit -m "chore: scaffold $VENTURE_NAME from studio template"
-git push
+git push --set-upstream origin main
 
 echo "✓ $VENTURE_NAME scaffolded and pushed to satsuma-ventures/$VENTURE_NAME"
 echo ""
