@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Signal Brief from Phase 1  
 **Output:** A Thesis Document — one page, ready for Phase 3
-**Version:** 1.2  
+**Version:** 1.3  
 **Compatible with:** 1-signal v1.0+  
 
 
@@ -211,3 +211,5 @@ If the founder kills or defers: document the reason.
 **Do not proceed without explicit founder confirmation.**
 
 **The Thesis Document is one page.** If the thesis cannot be stated in one page, it is not clear enough.
+
+**Phase boundary discipline.** Phase 2 produces a thesis and risk assessment. Phase 3 produces the concept, design system, and early user validation. Do not generate design direction, product concepts, or user validation requirements in Phase 2 — those are Phase 3's job. If the thesis work surfaces strong product intuitions, log them as a note ("Phase 3 should explore: [idea]") and stay at the thesis level.

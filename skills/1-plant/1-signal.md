@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.2  
+**Version:** 1.3  
 
 
 ---
@@ -142,11 +142,28 @@ Revise based on feedback. Do not proceed to Phase 2 until the founder explicitly
 
 ### 8. Gate: Proceed or kill
 
+The Phase 1 gate is deliberately narrow. Apply only these three criteria:
+
+| Criterion | Question |
+|---|---|
+| Problem is real | Is there a genuine problem, confirmed by research? |
+| User is specific | Is the target user specific enough to research and reach? |
+| Credible right to pursue | Is there at least one reason Satsuma should be the one to build this? |
+
+**What is not a Phase 1 criterion:**
+- Whether the market is large enough (Phase 2)
+- Whether the competitive landscape is navigable (Phase 2)
+- Whether the business model works (Phase 2)
+- Whether real users have validated the idea (Phase 3 output — the concept and optional proof-of-concept are what produce this)
+- Whether the timing is optimal (Phase 2)
+
+**Rich context is a head start, not a bar raise.** If the founder arrives with a competitive landscape, business plan, or prior research that is Phase 2-mature, that material belongs in Phase 2's agenda — not in Phase 1's gate. Log it as a note in the Signal Brief ("Phase 2 should examine: [findings]") and apply the Phase 1 gate only.
+
 Present the gate question directly:
 
 > Based on this Signal Brief, do you want to proceed to Phase 2 — Thesis — or kill/defer this idea?
 
-If the founder proceeds: save the Signal Brief as a project artifact.
+If the founder proceeds: save the Signal Brief as `artifacts/1-1-signal-brief.md`.
 
 If the founder kills or defers: document the reason. This is institutional memory.
 
@@ -169,3 +186,5 @@ If the founder kills or defers: document the reason. This is institutional memor
 **Do not proceed without explicit founder confirmation.**
 
 **The Signal Brief is one page.** Brevity is a discipline. If it cannot be stated in one page, the framing is not clear enough.
+
+**Phase boundary discipline.** Phase 1 produces a Signal Brief and a narrow gate decision. Phase 2 produces the thesis and risk assessment. Phase 3 produces the concept and early user validation. Do not do Phase 2's work in Phase 1, even when context invites it. Rich brownfield context is a head start on Phase 2 — it does not change Phase 1's bar.
