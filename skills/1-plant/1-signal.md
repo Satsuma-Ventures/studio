@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.4  
+**Version:** 1.6  
 
 
 ---
@@ -72,6 +72,8 @@ Before beginning any research, propose a plan to the founder and wait for approv
 - What you will do if a question cannot be answered with available sources
 
 Do not begin research until the founder explicitly approves the plan. This is a HITL checkpoint — not a formality.
+
+**Do not spawn subagents for research.** Conduct all web searches directly in this session, sequentially. Subagents fragment the synthesis process and consume more tokens coordinating results than they save in parallelism. The research in this phase is intentionally sequential — each finding informs the next.
 
 ### 4. Research the problem space
 
@@ -174,7 +176,7 @@ Present the gate question directly:
 
 > Based on this Signal Brief, do you want to proceed to Phase 2 — Thesis — or kill/defer this idea?
 
-If the founder proceeds: save the Signal Brief as `artifacts/1-1-signal-brief.md`.
+If the founder proceeds: rename `artifacts/1-1-signal-brief-WIP.md` to `artifacts/1-1-signal-brief.md` and commit.
 
 If the founder kills or defers: document the reason. This is institutional memory.
 

@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Thesis Document from Phase 2  
 **Output:** `DESIGN.md` (machine-readable design system, at repo root), `brand.html` (visual design system validation), concept screens (3–5), `artifacts/1-3-gate-brief.md`, and a Commit/Kill/Defer decision
-**Version:** 1.4  
+**Version:** 1.5  
 **Compatible with:** 2-thesis v1.0+  
 
 
@@ -37,9 +37,10 @@ This is the most important human gate in Track 1.
 
 Before beginning, check whether any Phase 3 artifacts already exist:
 - `DESIGN.md` at repo root
-- `artifacts/1-3-gate-brief.md`
+- `artifacts/1-3-gate-brief-WIP.md` — if found, work is in progress; ask whether to resume
+- `artifacts/1-3-gate-brief.md` — if found, phase is complete; ask whether to regenerate
 
-If they exist, read them and ask the founder whether to resume from the existing work or regenerate. Never silently overwrite a signed-off artifact.
+Never silently overwrite a signed-off artifact. Never silently overwrite a signed-off artifact.
 
 ### 2. Orient to the Thesis Document
 
