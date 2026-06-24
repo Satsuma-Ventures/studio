@@ -197,3 +197,9 @@ Current scope. Weekly brief, quarterly Rocks, cross-venture intelligence, backlo
 - Personified agents may support specific functions (GTM, technical, financial)
 - The operating rhythm formalizes into structured weekly and quarterly sessions with defined participants
 - Track 3 and 4 playbooks are fully developed and `satsuma.md` coordinates across all four tracks
+---
+
+## Changelog
+
+**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension; careerchief spelling corrected.
+**v1.0** — Initial skill. Weekly brief, quarterly Rocks, cross-venture intelligence, prioritization framework, future evolution section.

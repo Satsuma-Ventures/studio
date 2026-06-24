@@ -217,3 +217,17 @@ If the founder kills or defers: document the reason. This is institutional memor
 **The Signal Brief is one page.** Brevity is a discipline. If it cannot be stated in one page, the framing is not clear enough.
 
 **Phase boundary discipline.** Phase 1 produces a Signal Brief and a narrow gate decision. Phase 2 produces the thesis and risk assessment. Phase 3 produces the concept and early user validation. Do not do Phase 2's work in Phase 1, even when context invites it. Rich brownfield context is a head start on Phase 2 — it does not change Phase 1's bar.
+---
+
+## Changelog
+
+**v1.9** — Step 1 artifact check (check WIP then final before starting); explicit WIP path in write step; impact-filter contradiction resolved (net positive impact is carry-forward, not a Phase 1 gate criterion); version placeholder in artifact header.
+**v1.8** — Session management pointer added at gate step; Phase 2 agenda added as formal structured section to Signal Brief template.
+**v1.7** — Phase 2 agenda section constrained to 3–4 open questions maximum; wrong/right examples added to template.
+**v1.6** — No-subagents rule added to research plan step.
+**v1.5** — WIP file pattern: check for WIP before rebuilding; write to WIP incrementally during write step; rename WIP to final at gate.
+**v1.4** — Research plan HITL checkpoint added as new step before research begins.
+**v1.3** — Phase boundary discipline guardrails: 3-criterion gate table; explicit "what is not a Phase 1 criterion" list; "rich context is a head start, not a bar raise" principle.
+**v1.2** — Artifact path updated to `artifacts/1-1-signal-brief.md`; check-before-rebuild pattern added.
+**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension.
+**v1.0** — Initial skill.

@@ -205,3 +205,10 @@ Note in the Spec Amendment Log that Phase 7 is complete.
 **Do not instrument new Amplitude events in Phase 7.** Events added post-launch contaminate the baseline. Log any missing events to `BACKLOG.md` for the next iteration.
 
 **Do not proceed to Phase 8 without the 30-day framework defined and the review date set.**
+---
+
+## Changelog
+
+**v1.2** — Session management pointer added at gate step.
+**v1.1** — Tool updated; Claude Chat synthesis references updated to Claude Code VS Code extension; BugDrop setup step clarified.
+**v1.0** — Initial skill.

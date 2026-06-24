@@ -238,3 +238,16 @@ If the founder kills or defers: document the reason.
 **The Thesis Document is one page.** If the thesis cannot be stated in one page, it is not clear enough.
 
 **Phase boundary discipline.** Phase 2 produces a thesis and risk assessment. Phase 3 produces the concept, design system, and early user validation. Do not generate design direction, product concepts, or user validation requirements in Phase 2 — those are Phase 3's job. If the thesis work surfaces strong product intuitions, log them as a note ("Phase 3 should explore: [idea]") and stay at the thesis level.
+---
+
+## Changelog
+
+**v1.8** — No-subagents rule added to research plan step; Step 1 artifact check added; explicit WIP path in write step; version placeholder in artifact header; "Notes for Phase 3" optional section added to Thesis Document template; brownfield market sizing note (validate/adjust existing rather than regenerate).
+**v1.7** — Session management pointer added at gate step.
+**v1.6** — No-subagents rule initially attempted; session management pointer added to gate step.
+**v1.5** — WIP file pattern: check for WIP; write incrementally; rename at gate.
+**v1.4** — Research plan HITL checkpoint added as new step before competitive research.
+**v1.3** — Phase boundary discipline guardrail: do not do Phase 3 work (design direction, product concepts, user validation) in Phase 2; carry-forward logging pattern.
+**v1.2** — Artifact path updated to `artifacts/1-2-thesis.md`; check-before-rebuild added.
+**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension.
+**v1.0** — Initial skill.

@@ -206,3 +206,10 @@ Commit this to the venture's repo. For Kill decisions, also add a top-level entr
 **Graduate does not require perfection.** Fast-follow improvements go into `BACKLOG.md`. Do not hold back graduation for work that can be done while scaling.
 
 **Do not Iterate without a clear brief.** An Iterate decision that doesn't specify what the v2 spec should prioritise produces a directionless loop. The Phase 8 recommendation should make the v2 priorities explicit before returning to Phase 4.
+---
+
+## Changelog
+
+**v1.2** — Session management pointer added at gate step.
+**v1.1** — "Continue" renamed to "Iterate" throughout; "Graduate, with Iteration" added as distinct outcome; Graduate set as default on unclear signal; adversarial review via retro.md Mode C required before Kill/Pivot/Graduate confirmation; tool updated to Claude Code VS Code extension.
+**v1.0** — Initial skill.

@@ -159,3 +159,9 @@ For Kill decisions: also add a `BACKLOG.md` entry noting the venture was killed 
 **The adversarial review is before the decision, not after.** Running an adversarial review post-decision is a rationalisation exercise, not a review. Invoke this skill before confirming 1-way-door decisions.
 
 **This skill has no gate.** There is no output the founder must sign off on before proceeding. The value is in the thinking, not the document.
+---
+
+## Changelog
+
+**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension.
+**v1.0** — Initial skill. Three modes: Mode A (lightweight gate check), Mode B (intensive retrospective), Mode C (adversarial review for 1-way-door decisions).

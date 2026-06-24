@@ -271,3 +271,13 @@ When in doubt about which tier a change falls into, treat it as the more signifi
 **Do not proceed to Phase 5 without explicit founder sign-off.**
 
 **Out of scope is as important as in scope.** An explicit out-of-scope list prevents scope creep during Phase 6 more effectively than any other single artifact.
+---
+
+## Changelog
+
+**v1.5** — Session management pointer added at gate step.
+**v1.4** — WIP write instruction explicit in write step; Step 2 "Check for existing artifacts" added (pushed subsequent steps).
+**v1.3** — WIP file pattern: check WIP first; write incrementally; rename at gate; spec path updated to `artifacts/2-4-spec.md`.
+**v1.2** — Step 1 "Make repo private" added at Track 2 start; steps renumbered.
+**v1.1** — "What Claude Chat does" renamed to "What Claude Code does"; artifact path updated to `artifacts/2-4-spec.md`.
+**v1.0** — Initial skill.

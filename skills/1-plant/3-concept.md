@@ -330,3 +330,14 @@ Commit `artifacts/1-3-gate-brief.md` to the venture repo at phase close. Structu
 **A Defer is not a Kill.** Preserve all artifacts. Document the specific condition that would trigger revisiting.
 
 > **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
+---
+
+## Changelog
+
+**v1.6** — Session management pointer added at gate step.
+**v1.5** — WIP file pattern for gate brief; brand.html explicitly noted as the human-readable validation artifact for DESIGN.md; Step 1 artifact check added.
+**v1.4** — Artifact paths updated to `artifacts/1-3-gate-brief.md`; check-before-rebuild added.
+**v1.3** — Tool updated to Claude Code VS Code extension throughout; no CLI distinction.
+**v1.2** — Stitch removed; Claude Design (via `/design`) is the only screen generation path; brand.html generated in Phase 3 alongside concept screens; HITL checkpoint added before screen generation (Steps A–D structure).
+**v1.1** — Two-path design model (Claude Design vs Stitch); DESIGN.md as explicit phase output; gate brief template (`gate-brief-t1.md`) added; adversarial review (retro.md Mode C) required at commit gate.
+**v1.0** — Initial skill.

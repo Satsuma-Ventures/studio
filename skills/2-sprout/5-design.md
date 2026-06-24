@@ -211,3 +211,11 @@ On sign-off: note in the Spec Amendment Log that Phase 5 is complete.
 **Phase 5 produces designs, not implementation.** Claude Design HTML is a reference and specification for Claude Code — it is not deployed as production code.
 
 **Do not proceed to Phase 6 without complete founder sign-off.**
+---
+
+## Changelog
+
+**v1.3** — Session management pointer added at gate step.
+**v1.2** — Stitch fully removed; Claude Code VS Code extension as sole tool; all Stitch references replaced with Claude Design `/design`.
+**v1.1** — Stitch removed from two-path model; DESIGN.md replaces brand.html as primary design system artifact; Phase 3 DESIGN.md noted as starting point (not blank slate); explicit output: finalized DESIGN.md committed to repo.
+**v1.0** — Initial skill.

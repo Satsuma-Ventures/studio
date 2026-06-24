@@ -165,3 +165,12 @@ At the end of each session, confirm:
 **Maintain status files.** STATUS.md is only as useful as it is current. Update it at every meaningful change — don't defer to the end of a project cycle.
 
 **Routing is not execution.** This skill points to the right phase skill; the phase skill runs the work. Don't conflate orientation with execution.
+---
+
+## Changelog
+
+**v1.4** — Session management guidance formalised in routing section (within-phase, phase transition, track transition, usage limit); artifact check added to orient step.
+**v1.3** — Routing table Phases 1–2 updated to Claude Code VS Code extension (removed claude.ai distinction); skill-copying instruction added to routing step.
+**v1.2** — "How skills reach venture repo" section updated; DESIGN.md confirmed at repo root (not artifacts/); CLAUDE.md update triggers documented; routing table tool column added.
+**v1.1** — CLAUDE.md added to maintenance list and routing; DESIGN.md added to per-venture artifact registry; tool routing table updated with Tool column; per-venture config block removed (STATUS.md handles venture context).
+**v1.0** — Initial skill. Shared template: orients to venture state, routes to phase skill, maintains STATUS.md and BACKLOG.md.

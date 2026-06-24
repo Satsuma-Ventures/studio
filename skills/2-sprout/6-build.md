@@ -267,3 +267,11 @@ When in doubt about which tier a change falls into, treat it as the more signifi
 **Epic by epic, gate by gate.** Do not begin a new epic until the founder has reviewed and approved the previous one as working software.
 
 **Do not proceed to Phase 7 without explicit founder sign-off.**
+---
+
+## Changelog
+
+**v1.3** — Session management pointer added at gate step.
+**v1.2** — Tool updated to Claude Code VS Code extension; `spec.md` path updated to `artifacts/2-4-spec.md` throughout; `brand.html` references replaced with `DESIGN.md`.
+**v1.1** — CLAUDE.md mandatory read added at session start; task decomposition as first build action (spec → numbered task list → human approval); DESIGN.md noted as UX source of truth alongside screen designs; Amplitude MCP noted.
+**v1.0** — Initial skill.
