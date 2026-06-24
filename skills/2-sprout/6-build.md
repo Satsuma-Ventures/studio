@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension (primary) + Amplitude MCP (Step 5)  
 **Input:** Signed-off MVP Spec (`2-sprout/4-spec.md`), signed-off designs from `2-sprout/5-design.md` (`DESIGN.md` + HTML screens), Concept Summary from `1-plant/3-concept.md`  
 **Output:** Functional MVP on the Satsuma default stack, deployed to Vercel, ready for Phase 7
-**Version:** 1.2  
+**Version:** 1.3  
 **Compatible with:** 4-spec v1.0+, 5-design v1.0+  
 
 ---
@@ -227,6 +227,8 @@ Present the completed MVP to the founder for final review before Phase 7:
 > The MVP is implemented. Before moving to Phase 7 — Ship, please confirm you are satisfied that the build meets the signed-off spec and designs.
 
 On sign-off: note in the Spec Amendment Log that Phase 6 is complete.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 ---
 

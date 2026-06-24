@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension (orchestration + DESIGN.md); Claude Code CLI (integrated terminal) for `/design` invocation  
 **Input:** Signed-off MVP Spec from `2-sprout/4-spec.md`, concept screens from `1-plant/3-concept.md`  
 **Output:** `/docs/brand.html` in repo, complete MVP screen designs as HTML, component inventory — the UX source of truth for `2-sprout/6-build.md`
-**Version:** 1.2  
+**Version:** 1.3  
 **Compatible with:** 4-spec v1.0+  
 
 ---
@@ -189,6 +189,8 @@ Walk through the screen inventory as a checklist. Every item must be checked bef
 > Are you satisfied that these designs accurately represent the MVP scoped in Phase 4 and are ready to hand to Phase 6 — Build?
 
 On sign-off: note in the Spec Amendment Log that Phase 5 is complete.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 ---
 

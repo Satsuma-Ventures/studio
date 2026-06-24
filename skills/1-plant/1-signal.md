@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.7  
+**Version:** 1.8  
 
 
 ---
@@ -180,6 +180,8 @@ Present the gate question directly:
 > Based on this Signal Brief, do you want to proceed to Phase 2 — Thesis — or kill/defer this idea?
 
 If the founder proceeds: rename `artifacts/1-1-signal-brief-WIP.md` to `artifacts/1-1-signal-brief.md` and commit.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 If the founder kills or defers: document the reason. This is institutional memory.
 

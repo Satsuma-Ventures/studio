@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Thesis Document from Phase 2  
 **Output:** `DESIGN.md` (machine-readable design system, at repo root), `brand.html` (visual design system validation), concept screens (3–5), `artifacts/1-3-gate-brief.md`, and a Commit/Kill/Defer decision
-**Version:** 1.5  
+**Version:** 1.6  
 **Compatible with:** 2-thesis v1.0+  
 
 
@@ -328,3 +328,5 @@ Commit `artifacts/1-3-gate-brief.md` to the venture repo at phase close. Structu
 **Do not proceed to Track 2 without explicit founder confirmation.**
 
 **A Defer is not a Kill.** Preserve all artifacts. Document the specific condition that would trigger revisiting.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.

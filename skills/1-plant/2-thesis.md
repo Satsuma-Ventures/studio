@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Signal Brief from Phase 1  
 **Output:** A Thesis Document — one page, ready for Phase 3
-**Version:** 1.6  
+**Version:** 1.7  
 **Compatible with:** 1-signal v1.0+  
 
 
@@ -200,6 +200,8 @@ Revise based on feedback. Do not proceed to Phase 3 until the founder explicitly
 > Based on this Thesis Document, do you want to proceed to Phase 3 — Concept — or kill/defer this idea?
 
 If the founder proceeds: rename `artifacts/1-2-thesis-WIP.md` to `artifacts/1-2-thesis.md` and commit. Phase 3 will translate this thesis into a visual product concept.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 If the founder kills or defers: document the reason.
 

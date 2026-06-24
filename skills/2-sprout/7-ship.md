@@ -6,7 +6,7 @@
 **Tool:** Human-led; Claude Code VS Code extension (synthesis, framework support, BugDrop setup, Amplitude verification)  
 **Input:** Functional MVP from `2-sprout/6-build.md`, OKR and Amplitude event schema from `2-sprout/4-spec.md`  
 **Output:** Live MVP, beta cohort engaged, feedback infrastructure running, 30-day success framework defined — ready for `2-sprout/8-learn.md`
-**Version:** 1.1  
+**Version:** 1.2  
 **Compatible with:** 6-build v1.0+  
 
 ---
@@ -185,6 +185,8 @@ Present the gate to the founder:
 > The beta is live and the feedback infrastructure is running. Phase 8 — Learn — begins at the 30-day review date. In the meantime, weekly synthesis continues. Is there anything that needs to be resolved before we proceed?
 
 Note in the Spec Amendment Log that Phase 7 is complete.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 ---
 

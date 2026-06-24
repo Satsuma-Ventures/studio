@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** Concept Summary from `1-plant/3-concept.md`  
 **Output:** A signed-off MVP Spec — the functional source of truth for Phases 5 and 6
-**Version:** 1.4  
+**Version:** 1.5  
 **Compatible with:** 3-concept v1.0+  
 
 ---
@@ -233,6 +233,8 @@ Revise based on feedback. Do not proceed to Phase 5 until the founder explicitly
 Present the gate directly:
 
 > This Spec is now a contract. Changes after sign-off require a formal amendment. Are you ready to sign off and proceed to Phase 5 — Design?
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 On sign-off: save the MVP Spec as `spec-v1.0.md` in the venture's project folder. This is the source of truth for Phases 5 and 6.
 

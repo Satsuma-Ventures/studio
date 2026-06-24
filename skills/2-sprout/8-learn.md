@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension (synthesis, recommendation, Amplitude MCP queries); human judgment at the gate  
 **Input:** 30-day success framework and `beta-feedback-log.md` from `2-sprout/7-ship.md`, BugDrop issues labeled `beta-feedback`, Amplitude dashboard, direct cohort conversation notes  
 **Output:** A documented decision — Iterate, Pivot, Graduate, or Kill — with evidence and next steps
-**Version:** 1.1  
+**Version:** 1.2  
 **Compatible with:** 7-ship v1.0+  
 
 ---
@@ -164,6 +164,8 @@ Indicators that support graduation: meaningful retention, organic growth or refe
 ### 7. Document the outcome
 
 Regardless of the decision, produce a **Phase 8 Summary** — a short document committed to the venture's repo.
+
+> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 
 ```markdown
 # Phase 8 Summary — [Venture Name]
