@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Signal Brief from Phase 1  
 **Output:** A Thesis Document — one page, ready for Phase 3
-**Version:** 1.7  
+**Version:** 1.8  
 **Compatible with:** 1-signal v1.0+  
 
 
@@ -31,7 +31,16 @@ Turn the Signal Brief into a defensible investment thesis. The job is to map wha
 
 ## Behavior
 
-### 1. Orient to the Signal Brief
+### 1. Check for existing artifacts
+
+Before doing anything else, check the `artifacts/` folder:
+
+- `artifacts/1-2-thesis-WIP.md` — work is in progress; read it and ask the founder whether to resume or start fresh
+- `artifacts/1-2-thesis.md` — phase is complete; ask whether to regenerate
+
+If neither exists, proceed to Step 2.
+
+### 2. Orient to the Signal Brief
 
 Confirm you have reviewed the Signal Brief from Phase 1. Identify:
 
@@ -41,7 +50,7 @@ Confirm you have reviewed the Signal Brief from Phase 1. Identify:
 
 If no Signal Brief exists, do not proceed. Ask the founder to complete Phase 1 first.
 
-### 2. Propose a research plan
+### 3. Propose a research plan
 
 Before beginning competitive research, propose a plan to the founder and wait for approval:
 
@@ -52,7 +61,7 @@ Before beginning competitive research, propose a plan to the founder and wait fo
 
 Do not begin research until the founder explicitly approves the plan.
 
-### 3. Map the competitive context
+### 4. Map the competitive context
 
 Use the **Satsuma Competitive Context Framework** — a four-ring model designed for venture validation, not for analyzing established businesses:
 
@@ -70,9 +79,9 @@ Network effects, switching costs, regulatory dynamics, distribution moats, and o
 
 Present findings as a narrative. The goal is understanding the landscape, not producing a feature comparison matrix.
 
-### 4. Size the opportunity
+### 5. Size the opportunity
 
-Produce a directional market sizing. The purpose is not precision — it is a sense-check on whether the opportunity is worth pursuing. Be explicit that these are estimates, not financial projections.
+If the founder arrives with existing market sizing, validate and adjust it rather than regenerating from scratch — rich context is a head start. Otherwise, produce a directional market sizing. The purpose is not precision — it is a sense-check on whether the opportunity is worth pursuing. Be explicit that these are estimates, not financial projections.
 
 Structure as:
 
@@ -87,7 +96,7 @@ A realistic capture estimate for years 1–3, given competitive dynamics, Satsum
 
 If the market is too small to sustain a venture at SOM, say so directly. If the market is large but structurally difficult to penetrate, say that too.
 
-### 5. Identify the gap
+### 6. Identify the gap
 
 Based on the competitive context, articulate the specific gap this venture occupies:
 
@@ -97,7 +106,7 @@ Based on the competitive context, articulate the specific gap this venture occup
 
 Be specific. "No one does this well" is not a gap analysis. "Existing solutions require X, but the user actually needs Y, and no one has built for Y because of Z" is.
 
-### 6. Formulate the thesis
+### 7. Formulate the thesis
 
 Write the investment thesis as a set of beliefs. A thesis is not a description of what the product will do — it is a statement of what Satsuma believes to be true about the market, the user, and the timing that others have not yet acted on.
 
@@ -109,7 +118,7 @@ Structure as:
 
 The thesis must be falsifiable. If there is no way to be wrong, it is not a thesis — it is a mission statement.
 
-### 7. Evaluate net positive impact
+### 8. Evaluate net positive impact
 
 Apply the Satsuma impact filter with specificity:
 
@@ -119,7 +128,7 @@ Apply the Satsuma impact filter with specificity:
 
 A venture that only transfers value from one party to another — without creating net new value for the world — does not pass the Satsuma filter. Surface this finding honestly if the thesis does not clear this bar.
 
-### 8. Surface the top three risks
+### 9. Surface the top three risks
 
 Identify the three risks most likely to kill this venture, ordered by severity:
 
@@ -132,7 +141,7 @@ Categories to consider: market timing, user behavior change required, technical 
 
 Three risks is the discipline. If there are more than three existential risks, that is itself a finding.
 
-### 9. Assess right to win
+### 10. Assess right to win
 
 Assess Satsuma's specific, defensible advantage for this venture:
 
@@ -143,12 +152,12 @@ Assess Satsuma's specific, defensible advantage for this venture:
 
 Be honest. A weak right to win does not automatically kill the idea, but it belongs in the risk register.
 
-### 10. Write the Thesis Document
+### 11. Write the Thesis Document
 
 ---
 
 **Thesis Document: [Venture Name or Working Title]**
-*Date · Author: Satsuma Ventures · Skill: 2-thesis v1.0*
+*Date · Author: Satsuma Ventures · Skill: 2-thesis v[current version — see skill header]*
 
 **The Landscape**
 [2–3 sentences. The current state of the market and who the key players are.]
@@ -181,9 +190,12 @@ SOM (Yr 1–3): [estimate + assumptions]
 **Recommendation**
 [Proceed to Phase 3 / Kill / Defer — one sentence of honest reasoning.]
 
+**Notes for Phase 3** *(optional — 3–4 items maximum)*
+[Carry-forward intuitions or open questions Phase 3 should explore. Not analytical findings — those belong in the thesis body. Examples: a specific concept angle worth testing, a design direction to explore, a user scenario that kept surfacing. If nothing specific emerged, omit this section.]
+
 ---
 
-### 11. Present and discuss
+### 12. Present and discuss
 
 Share the Thesis Document. Focus the discussion on:
 
@@ -195,7 +207,7 @@ Share the Thesis Document. Focus the discussion on:
 
 Revise based on feedback. Do not proceed to Phase 3 until the founder explicitly confirms the Thesis Document is accurate.
 
-### 12. Gate: Proceed or kill
+### 13. Gate: Proceed or kill
 
 > Based on this Thesis Document, do you want to proceed to Phase 3 — Concept — or kill/defer this idea?
 
