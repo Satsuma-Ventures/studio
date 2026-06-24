@@ -5,7 +5,7 @@
 **Invoked:** At the start of any venture work session, or on-demand when asking "what's next?"  
 **Reads:** This venture's `STATUS.md`, `BACKLOG.md`, `retro-log.md`, and relevant phase artifacts  
 **References:** `PLAYBOOK.md`, shared phase skills in `skills/1-plant/` through `skills/4-harvest/`
-**Version:** 1.3  
+**Version:** 1.4  
 
 ---
 
@@ -59,6 +59,15 @@ Then ask: *What would you like to work on today?*
 If the founder says "what should I work on?" — recommend the next action based on the current phase and STATUS.md, and route to the appropriate skill.
 
 ### 2. Route to the right phase skill
+
+**Session management before routing**
+
+Before loading the next skill, assess session state:
+
+- **Within a phase** (resuming work): continue the current session. Run `/compact` if the conversation is long and context feels cluttered.
+- **Phase transition within a track**: recommend running `/compact` to compress history, or starting a new session if the current one is heavy. Either is acceptable.
+- **Track transition** (e.g. Track 1 → Track 2): always start a new session. The context requirements shift significantly between tracks. CLAUDE.md will re-orient Claude Code to the current state automatically.
+- **Usage limit approaching**: start a new session proactively rather than hitting the limit mid-phase.
 
 Based on current phase, **copy the skill from the studio repo before invoking it**:
 

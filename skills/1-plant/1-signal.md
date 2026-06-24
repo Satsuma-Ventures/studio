@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.3  
+**Version:** 1.4  
 
 
 ---
@@ -62,7 +62,18 @@ Continue until you have enough to conduct meaningful research. Before moving on,
 
 > I think I have enough to research this properly. Here's what I'm going to look into: [brief summary]. Does that sound right, or is there something specific you want me to focus on?
 
-### 3. Research the problem space
+### 3. Propose a research plan
+
+Before beginning any research, propose a plan to the founder and wait for approval:
+
+- What specific questions you are trying to answer
+- What sources you will consult (web search, specific domains, communities)
+- Approximately how many searches you expect to run
+- What you will do if a question cannot be answered with available sources
+
+Do not begin research until the founder explicitly approves the plan. This is a HITL checkpoint — not a formality.
+
+### 4. Research the problem space
 
 Research independently before writing anything. Do not simply reflect the founder's framing back at them — find corroborating evidence, contradicting evidence, and anything the founder may have missed. Research in this sequence:
 
@@ -74,7 +85,7 @@ Research independently before writing anything. Do not simply reflect the founde
 
 Research honestly. If the problem is well-solved by an existing product, say so. If the timing looks wrong, say so. The goal is an accurate picture, not a favorable one.
 
-### 4. Evaluate against Satsuma's impact filter
+### 5. Evaluate against Satsuma's impact filter
 
 Before writing the Signal Brief, apply the net positive impact filter explicitly:
 
@@ -84,7 +95,7 @@ Before writing the Signal Brief, apply the net positive impact filter explicitly
 
 If the answer to the first two questions is unclear or weak, surface that directly. This is a gate criterion, not a formality.
 
-### 5. Stress-test the premise
+### 6. Stress-test the premise
 
 Challenge the idea directly before writing the Signal Brief:
 
@@ -95,7 +106,7 @@ Challenge the idea directly before writing the Signal Brief:
 
 Surface honest answers. Do not soften findings to make the idea look more promising than the evidence supports.
 
-### 6. Write the Signal Brief
+### 7. Write the Signal Brief
 
 Produce a one-page document:
 
@@ -130,7 +141,7 @@ Produce a one-page document:
 
 ---
 
-### 7. Present and discuss
+### 8. Present and discuss
 
 Share the Signal Brief. Walk through each section. Ask:
 
@@ -140,7 +151,7 @@ Share the Signal Brief. Walk through each section. Ask:
 
 Revise based on feedback. Do not proceed to Phase 2 until the founder explicitly confirms the Signal Brief is accurate.
 
-### 8. Gate: Proceed or kill
+### 9. Gate: Proceed or kill
 
 The Phase 1 gate is deliberately narrow. Apply only these three criteria:
 
