@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.6  
+**Version:** 1.7  
 
 
 ---
@@ -140,6 +140,9 @@ Produce a one-page document:
 
 **Recommendation**
 [Proceed to Phase 2 / Kill / Defer — with one sentence of honest reasoning.]
+
+**Phase 2 Agenda** *(3–4 open questions maximum)*
+[Specific questions Phase 1 research surfaced that Phase 2 should examine — not analytical findings or competitive observations. Those belong in Phase 2. The Key Assumption already captures the primary thread; this section captures secondary threads only. If Phase 1 research surfaced more than 4 genuinely distinct open questions, that is a signal the research went deeper than Phase 1 requires.]
 
 ---
 
