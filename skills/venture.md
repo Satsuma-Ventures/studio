@@ -5,7 +5,7 @@
 **Invoked:** At the start of any venture work session, or on-demand when asking "what's next?"  
 **Reads:** This venture's `STATUS.md`, `BACKLOG.md`, `retro-log.md`, and relevant phase artifacts  
 **References:** `PLAYBOOK.md`, shared phase skills in `skills/1-plant/` through `skills/4-harvest/`
-**Version:** 1.4  
+**Version:** 1.5  
 
 ---
 
@@ -43,6 +43,7 @@ At the start of every session, read:
 - `BACKLOG.md` — any high-priority items relevant to the current phase
 - `DESIGN.md` — present once Phase 3 is complete; lives at repo root
 - `artifacts/` — phase outputs; check what exists before starting any phase
+- `context/` — prior art and background materials (business plans, research, positioning docs). **These are inputs, not source of truth.** Treat as hypotheses to validate through the Satsuma process. When context files and artifacts conflict, the artifact is correct.
 - The most recent entry in `retro-log.md` (if it exists) — any learnings from the last phase or iteration
 
 Produce a brief orientation for the founder:
@@ -55,6 +56,8 @@ Produce a brief orientation for the founder:
 > Relevant backlog: [Any high-priority items that surface at this phase, or "none"]
 
 Then ask: *What would you like to work on today?*
+
+**File hierarchy reminder:** `artifacts/` are the Satsuma source of truth. `context/` files are background color — prior art that informs but does not replace phase work. Rich context is a head start, not a conclusion.
 
 If the founder says "what should I work on?" — recommend the next action based on the current phase and STATUS.md, and route to the appropriate skill.
 
@@ -169,6 +172,7 @@ At the end of each session, confirm:
 
 ## Changelog
 
+**v1.5** — File hierarchy and source-of-truth clarification: context/ is background color, artifacts/ is Satsuma source of truth; added to orient step and artifact registry.
 **v1.4** — Session management guidance formalised in routing section (within-phase, phase transition, track transition, usage limit); artifact check added to orient step.
 **v1.3** — Routing table Phases 1–2 updated to Claude Code VS Code extension (removed claude.ai distinction); skill-copying instruction added to routing step.
 **v1.2** — "How skills reach venture repo" section updated; DESIGN.md confirmed at repo root (not artifacts/); CLAUDE.md update triggers documented; routing table tool column added.

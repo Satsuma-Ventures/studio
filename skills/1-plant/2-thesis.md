@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Signal Brief from Phase 1  
 **Output:** A Thesis Document — one page, ready for Phase 3
-**Version:** 1.8  
+**Version:** 1.9  
 **Compatible with:** 1-signal v1.0+  
 
 
@@ -242,6 +242,7 @@ If the founder kills or defers: document the reason.
 
 ## Changelog
 
+**v1.9** — Context/artifacts hierarchy made explicit in research plan step: context/ is background color, artifacts/ is source of truth.
 **v1.8** — No-subagents rule added to research plan step; Step 1 artifact check added; explicit WIP path in write step; version placeholder in artifact header; "Notes for Phase 3" optional section added to Thesis Document template; brownfield market sizing note (validate/adjust existing rather than regenerate).
 **v1.7** — Session management pointer added at gate step.
 **v1.6** — No-subagents rule initially attempted; session management pointer added to gate step.

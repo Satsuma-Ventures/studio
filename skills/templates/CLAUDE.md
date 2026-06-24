@@ -44,6 +44,19 @@ This file is read by Claude Code at the start of every session. It provides full
 
 ---
 
+## File hierarchy and source of truth
+
+These files have different authority levels. When they conflict, higher authority wins:
+
+| Priority | Location | What it is |
+|---|---|---|
+| 1 — Signed-off artifacts | `artifacts/*.md` (no -WIP suffix) | Satsuma-validated source of truth for this venture. These are the outputs of the playbook process. |
+| 2 — WIP artifacts | `artifacts/*-WIP.md` | In-progress phase work. Authoritative once complete. |
+| 3 — Phase skills | `skills/` | Operating instructions for the current phase. |
+| 4 — Context files | `context/` | Prior art, background research, and supporting materials the founder brought in. **Background color only — not conclusions.** Treat as hypotheses to validate against the Satsuma process, not as decisions already made. |
+
+**Context files are inputs, not outputs.** Rich prior art in `context/` (business plans, positioning documents, competitive research) should inform the work but not replace it. The phase artifact is the deliverable; the context file is a starting point. When context files and phase artifacts conflict, the artifact is correct.
+
 ## Operating instructions
 
 1. Read this file first, every session

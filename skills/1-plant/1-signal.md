@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.9  
+**Version:** 1.10  
 
 
 ---
@@ -81,6 +81,8 @@ Before beginning any research, propose a plan to the founder and wait for approv
 - What you will do if a question cannot be answered with available sources
 
 Do not begin research until the founder explicitly approves the plan. This is a HITL checkpoint — not a formality.
+
+**Context files are inputs, not conclusions.** If `context/` files exist (prior business plans, positioning documents, research), treat them as background color and starting hypotheses — not as conclusions. The Signal Brief is the Satsuma-validated output; context files inform it but do not replace the research. When context files and the Signal Brief conflict after research, the Signal Brief is correct.
 
 **Do not spawn subagents for research.** Conduct all web searches directly in this session, sequentially. Subagents fragment the synthesis process and consume more tokens coordinating results than they save in parallelism. The research in this phase is intentionally sequential — each finding informs the next.
 
@@ -221,6 +223,7 @@ If the founder kills or defers: document the reason. This is institutional memor
 
 ## Changelog
 
+**v1.10** — Context/artifacts hierarchy made explicit in research plan step: context/ is background color, artifacts/ is source of truth.
 **v1.9** — Step 1 artifact check (check WIP then final before starting); explicit WIP path in write step; impact-filter contradiction resolved (net positive impact is carry-forward, not a Phase 1 gate criterion); version placeholder in artifact header.
 **v1.8** — Session management pointer added at gate step; Phase 2 agenda added as formal structured section to Signal Brief template.
 **v1.7** — Phase 2 agenda section constrained to 3–4 open questions maximum; wrong/right examples added to template.
