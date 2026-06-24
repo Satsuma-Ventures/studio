@@ -32,7 +32,7 @@ Invoke `satsuma.md` to start the week. The brief takes ~10 minutes to review and
 
 For each venture folder in `skills/`:
 - `skills/cellarbook/STATUS.md`
-- `skills/careercheif/STATUS.md`
+- `skills/careerchief/STATUS.md`
 - `skills/zavari/STATUS.md`
 - `skills/weeknight-supper-club/STATUS.md`
 - `skills/corner-street-commerce/STATUS.md`
