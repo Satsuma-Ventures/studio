@@ -19,9 +19,8 @@ fi
 # ── 1. Create and scaffold venture repo ──────────────────────────────────────
 
 echo "→ Creating repo satsuma-ventures/$VENTURE_NAME..."
-gh repo create "satsuma-ventures/$VENTURE_NAME" --public
 cd "$PARENT_DIR"
-gh repo clone "satsuma-ventures/$VENTURE_NAME"
+gh repo create "satsuma-ventures/$VENTURE_NAME" --public --clone
 cd "$VENTURE_NAME"
 
 echo "→ Scaffolding from studio template..."
@@ -78,8 +77,26 @@ See \`CLAUDE.md\` for AI agent context.
 > **Visibility:** This repo is public during Track 1 (concept validation via GitHub Pages). It will be made private at the start of Track 2.
 READMEOF
 
-# skills/ stub
-mkdir -p skills
+# Directory structure
+mkdir -p skills/1-plant
+mkdir -p artifacts
+mkdir -p context
+
+# Copy PLAYBOOK.md (version-locked at scaffold time)
+cp "$STUDIO_DIR/PLAYBOOK.md" PLAYBOOK.md
+
+# Copy Phase 1 skill (version-locked at scaffold time)
+cp "$STUDIO_DIR/skills/1-plant/1-signal.md" skills/1-plant/1-signal.md
+
+# context/ README
+cat > context/README.md << CONTEXTEOF
+# $VENTURE_NAME — Context
+
+Drop background materials here: articles, prior research, competitor analysis,
+interview notes, or any other reference material Claude Code should be able to
+read during venture work. Files in this folder are not phase artifacts — they
+are inputs that inform the work.
+CONTEXTEOF
 
 echo "→ Making initial commit..."
 git add .

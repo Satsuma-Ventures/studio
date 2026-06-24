@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** Concept Summary from `1-plant/3-concept.md`  
 **Output:** A signed-off MVP Spec — the functional source of truth for Phases 5 and 6
-**Version:** 1.2  
+**Version:** 1.3  
 **Compatible with:** 3-concept v1.0+  
 
 ---

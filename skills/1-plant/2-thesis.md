@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Signal Brief from Phase 1  
 **Output:** A Thesis Document — one page, ready for Phase 3
-**Version:** 1.1  
+**Version:** 1.2  
 **Compatible with:** 1-signal v1.0+  
 
 

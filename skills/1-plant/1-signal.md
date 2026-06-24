@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension  
 **Input:** An initial idea, however rough  
 **Output:** A Signal Brief — one page, ready for Phase 2
-**Version:** 1.1  
+**Version:** 1.2  
 
 
 ---

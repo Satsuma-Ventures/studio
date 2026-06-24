@@ -5,7 +5,7 @@
 **Invoked:** At the start of any venture work session, or on-demand when asking "what's next?"  
 **Reads:** This venture's `STATUS.md`, `BACKLOG.md`, `retro-log.md`, and relevant phase artifacts  
 **References:** `PLAYBOOK.md`, shared phase skills in `skills/1-plant/` through `skills/4-harvest/`
-**Version:** 1.2  
+**Version:** 1.3  
 
 ---
 
@@ -41,7 +41,8 @@ At the start of every session, read:
 - `CLAUDE.md` — always first; it references all other context files
 - `STATUS.md` — current phase, last gate, next gate, blocking issues
 - `BACKLOG.md` — any high-priority items relevant to the current phase
-- `DESIGN.md` — present once Phase 3 is complete; confirms the design system is in place
+- `DESIGN.md` — present once Phase 3 is complete; lives at repo root
+- `artifacts/` — phase outputs; check what exists before starting any phase
 - The most recent entry in `retro-log.md` (if it exists) — any learnings from the last phase or iteration
 
 Produce a brief orientation for the founder:
@@ -59,7 +60,14 @@ If the founder says "what should I work on?" — recommend the next action based
 
 ### 2. Route to the right phase skill
 
-Based on current phase, invoke the appropriate skill:
+Based on current phase, **copy the skill from the studio repo before invoking it**:
+
+```bash
+# Example: transitioning to Phase 2
+cp ../studio/skills/1-plant/2-thesis.md skills/1-plant/2-thesis.md
+```
+
+Then invoke the skill:
 
 | Phase | Skill | Tool |
 |---|---|---|
@@ -87,9 +95,11 @@ Update `STATUS.md` whenever:
 
 Update `CLAUDE.md` whenever:
 - The venture advances to a new phase (update the current SKILL.md reference)
-- A new artifact is committed (`DESIGN.md`, `spec.md`)
+- A new artifact is committed (`DESIGN.md`, `artifacts/2-4-spec.md`)
 
-`DESIGN.md` is maintained by Phase 3 and Phase 5 skills — venture.md does not edit it directly, but confirms its presence before routing to Phase 4 or later.
+`DESIGN.md` is maintained by Phase 3 and Phase 5 skills — lives at repo root, not in artifacts/. venture.md confirms its presence before routing to Phase 4 or later.
+
+Check `artifacts/` at each phase start — if the current phase artifact already exists, read it and ask the founder whether to resume from it or regenerate. Never silently overwrite a signed-off artifact.
 
 **STATUS.md format:**
 

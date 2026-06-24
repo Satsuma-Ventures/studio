@@ -80,7 +80,7 @@ There is no manual step in repo creation. Human judgment is reserved for gate de
 
 **Output:** A Signal Brief. One page. Problem, who has it, why now, why Satsuma. No business plan. No financial model. Just enough to decide whether to go deeper.
 
-Artifact: `signal-brief.md`. Written to the venture repo root by Claude Code at phase close.
+Artifact: `artifacts/1-1-signal-brief.md`. Written by Claude Code at phase close.
 
 **Human input:** You provide the initial idea and any domain knowledge. You react to the Signal Brief and decide whether to continue to Phase 2.
 
@@ -102,7 +102,7 @@ Artifact: `signal-brief.md`. Written to the venture repo root by Claude Code at 
 
 **Output:** A Thesis Document. One page. Landscape, gap, belief, risks. Written as if you were making the case to yourself for why this is worth the next six months.
 
-Artifact: `thesis.md`. Written to the venture repo root by Claude Code at phase close.
+Artifact: `artifacts/1-2-thesis.md`. Written by Claude Code at phase close.
 
 **Human input:** React to the thesis. Refine the framing. Decide whether the gap is real and the risks are acceptable.
 
@@ -123,9 +123,9 @@ Artifact: `thesis.md`. Written to the venture repo root by Claude Code at phase 
 - Produce a Gate Brief: a structured one-page decision document surfacing the three key signals, three risk flags, and a go/no-go recommendation
 
 **Output:**
-- `DESIGN.md` in venture repo — the venture's design system, committed at phase close
-- Concept screens (3–5) — may optionally be deployed to GitHub Pages for early user validation before the commit gate (see 3-concept.md Step 7); otherwise serve as reference material for the gate decision
-- `gate-brief-t1.md` — structured decision document for the Commit or Kill gate
+- `DESIGN.md` at venture repo root — the venture's design system
+- Concept screens (3–5) — may optionally be deployed to GitHub Pages for early user validation (see 3-concept.md Step 7)
+- `artifacts/1-3-gate-brief.md` — structured decision document for the Commit or Kill gate
 
 **Human input:** Review the gate brief. This is the most important human judgment in Track 1. You are not approving a design — you are deciding whether the concept is compelling enough to commit to building. If yes, the idea moves to Track 2.
 
@@ -141,7 +141,7 @@ A conscious, explicit decision. Not drifting forward because momentum feels good
 
 **To defer:** The idea is real but the timing is wrong. Park it with the Signal Brief and Thesis Document intact. Revisit when conditions change.
 
-**Gate brief:** Claude Code produces a structured `gate-brief-t1.md` at the close of Phase 3. It contains: what was found, the three strongest signals, the three highest risks, and a go/no-go recommendation. The human decision is made against this brief, not the raw artifacts. Target review time: 15 minutes.
+**Gate brief:** Claude Code produces a structured `artifacts/1-3-gate-brief.md` at the close of Phase 3. It contains: what was found, the three strongest signals, the three highest risks, and a go/no-go recommendation. The human decision is made against this brief, not the raw artifacts. Target review time: 15 minutes.
 
 **Track 1 terminal gate — higher bar:** This gate commits the venture to Track 2. Run `retro.md` Mode C (adversarial review) before confirming. Track 2 requires meaningful investment of time across six phases; committing to it lightly is the most common source of wasted studio capacity.
 
@@ -174,7 +174,7 @@ A conscious, explicit decision. Not drifting forward because momentum feels good
 
 **Output:** An MVP Spec. Structured document. User stories, scope, out-of-scope, success metric. This becomes the source of truth for Phases 5 and 6.
 
-Artifact: `spec.md`. Written to the venture repo root. This is the functional source of truth for Phase 6. Sign-off is recorded in `STATUS.md`.
+Artifact: `artifacts/2-4-spec.md`. This is the functional source of truth for Phase 6. Sign-off is recorded in `STATUS.md`.
 
 **Human input:** Review and sign off on scope. This is a contract — changes after sign-off require returning to this gate.
 
@@ -212,7 +212,7 @@ Artifact: `spec.md`. Written to the venture repo root. This is the functional so
 
 **What Claude Code does:**
 - Make the venture repo private before any other action: `gh repo edit satsuma-ventures/[venture-name] --visibility private`. Track 1 is complete; GitHub Pages is no longer needed and the repo now contains strategic content worth protecting.
-- At phase start, decompose `spec.md` into a numbered task list and surface it for human review before executing. The task list is the implementation contract — changes require a new gate.
+- At phase start, decompose `artifacts/2-4-spec.md` into a numbered task list and surface it for human review before executing. The task list is the implementation contract — changes require a new gate.
 - Read `CLAUDE.md` on every session start. CLAUDE.md references `DESIGN.md`, `spec.md`, and the current SKILL.md. Claude Code should never need to be re-oriented mid-build.
 - Implement the MVP from the signed-off Spec and Design outputs
 - Use the preferred Satsuma stack (see Stack section below)
@@ -416,7 +416,7 @@ Claude Code should never need to be manually re-oriented to the current state of
 
 ### How to use this document with Claude Code
 
-Claude Code should treat `spec.md` as the functional source of truth and `DESIGN.md` as the UX source of truth. PLAYBOOK.md provides stack guidance, phase sequencing, and scope guardrails. Claude Code should flag conflicts between these documents before acting, not after.
+Claude Code should treat `artifacts/2-4-spec.md` as the functional source of truth and `DESIGN.md` as the UX source of truth. PLAYBOOK.md provides stack guidance, phase sequencing, and scope guardrails. Claude Code should flag conflicts between these documents before acting, not after.
 
 ### General guidance for all AI agents
 

@@ -5,8 +5,8 @@
 **Overall Phase:** 3  
 **Tool:** Claude Code VS Code extension  
 **Input:** A confirmed Thesis Document from Phase 2  
-**Output:** `DESIGN.md` (machine-readable design system), `brand.html` (visual design system validation), concept screens (3–5), `gate-brief-t1.md`, and a Commit/Kill/Defer decision
-**Version:** 1.3  
+**Output:** `DESIGN.md` (machine-readable design system, at repo root), `brand.html` (visual design system validation), concept screens (3–5), `artifacts/1-3-gate-brief.md`, and a Commit/Kill/Defer decision
+**Version:** 1.4  
 **Compatible with:** 2-thesis v1.0+  
 
 
@@ -33,7 +33,15 @@ This is the most important human gate in Track 1.
 
 ## Behavior
 
-### 1. Orient to the Thesis Document
+### 1. Check for existing artifacts
+
+Before beginning, check whether any Phase 3 artifacts already exist:
+- `DESIGN.md` at repo root
+- `artifacts/1-3-gate-brief.md`
+
+If they exist, read them and ask the founder whether to resume from the existing work or regenerate. Never silently overwrite a signed-off artifact.
+
+### 2. Orient to the Thesis Document
 
 Confirm you have reviewed the Thesis Document from Phase 2. Identify:
 
@@ -45,7 +53,7 @@ Confirm you have reviewed the Thesis Document from Phase 2. Identify:
 
 If no Thesis Document exists, do not proceed. Ask the founder to complete Phase 2 first.
 
-### 2. Define the core user journey
+### 3. Define the core user journey
 
 Before involving Claude Design, define the product concept at the journey level. Ask the founder:
 
@@ -57,7 +65,7 @@ From these answers, map 1–2 primary user flows as simple narrative sequences �
 
 Do not over-specify. Leave room for design interpretation.
 
-### 3. Generate DESIGN.md, brand.html, and concept screens
+### 4. Generate DESIGN.md, brand.html, and concept screens
 
 Phase 3 produces three sequential outputs: the machine-readable design system (`DESIGN.md`), its human-readable validation (`brand.html`), and concept screens anchored to the approved system.
 
@@ -96,7 +104,7 @@ Concept screens are committed to the repo. They can optionally be deployed to `/
 
 Claude Design is available on Pro and Max plans; no additional account or cost required.
 
-### 4. Define the screens to design
+### 5. Define the screens to design
 
 List 3–5 screens that together tell the product story. Prioritize screens that:
 
@@ -108,7 +116,7 @@ Do not list infrastructure screens (settings, account management, password reset
 
 For each screen, write a one-sentence brief: what it is, what the user is doing, and what the screen needs to communicate.
 
-### 5. Brief for screen generation
+### 6. Brief for screen generation
 
 Combine the concept brief from Step 3 with the screen definitions from Step 4 into a single handoff:
 
@@ -135,7 +143,7 @@ Combine the concept brief from Step 3 with the screen definitions from Step 4 in
 
 ---
 
-### 6. Generate screens and iterate
+### 7. Generate screens and iterate
 
 Pass the brief to Claude Design via `/design` (Step 3D). After receiving the initial output:
 
@@ -143,7 +151,7 @@ Pass the brief to Claude Design via `/design` (Step 3D). After receiving the ini
 - Ask for at least one alternative interpretation before finalizing. The first concept is rarely the best one.
 - If something does not feel right, diagnose whether the problem is in the brief or execution before revising.
 
-### 7. Optional — Proof-of-concept on GitHub Pages
+### 8. Optional — Proof-of-concept on GitHub Pages
 
 Before presenting the concept to the founder for the commit decision, consider whether early signal from real target users would improve the quality of that decision.
 
@@ -192,7 +200,7 @@ Review the GitHub Issues before the founder session in Step 8. Synthesize the he
 **Add to the Concept Summary if used:** Note that a proof-of-concept was run, how many users responded, and what the headline reaction was.
 ---
 
-### 8. Evaluate with the founder
+### 9. Evaluate with the founder
 
 Present the concept screens with context:
 
@@ -205,7 +213,7 @@ Present the concept screens with context:
 
 Do not defend the designs. The founder's reaction is the data. If the reaction is negative, diagnose whether it is a concept problem or a visual problem — they require different responses.
 
-### 9. Assess concept readiness
+### 10. Assess concept readiness
 
 Before presenting the gate, assess whether the concept is strong enough to support a commit decision:
 
@@ -221,7 +229,7 @@ Before presenting the gate, assess whether the concept is strong enough to suppo
 
 If revision is needed, identify the specific problem and update the Claude Design brief. Focus on concept-level clarity, not aesthetic preferences.
 
-### 10. Gate: Commit, Kill, or Defer
+### 11. Gate: Commit, Kill, or Defer
 
 This is a 1-way-door decision — committing to Track 2 is a significant investment of time and focus. Before presenting the gate question, run `retro.md` **Mode C (adversarial review)**:
 
@@ -246,7 +254,7 @@ Walk through the commit criteria from the Playbook:
 
 **To defer:** The idea is real but a specific dependency is unresolved or timing is wrong. Park all artifacts intact with a revisit condition stated explicitly.
 
-### 11. Prepare handoff to Track 2
+### 12. Prepare handoff to Track 2
 
 If committed, produce a Concept Summary:
 
@@ -277,11 +285,11 @@ If committed, produce a Concept Summary:
 [Anything the concept raised that the spec needs to resolve.]
 
 **Gate brief**
-Commit `gate-brief-t1.md` to the venture repo at phase close. Structure:
+Commit `artifacts/1-3-gate-brief.md` to the venture repo at phase close. Structure:
 
 ```markdown
 # Gate Brief — Track 1 / Phase 3
-*Date · Venture: [Name] · Skill: 3-concept v1.1*
+*Date · Venture: [Name] · Skill: 3-concept v1.4*
 
 ## What we found
 [2–3 sentences summarising the concept and design system output]

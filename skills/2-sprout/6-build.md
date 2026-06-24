@@ -6,7 +6,7 @@
 **Tool:** Claude Code VS Code extension (primary) + Amplitude MCP (Step 5)  
 **Input:** Signed-off MVP Spec (`2-sprout/4-spec.md`), signed-off designs from `2-sprout/5-design.md` (`DESIGN.md` + HTML screens), Concept Summary from `1-plant/3-concept.md`  
 **Output:** Functional MVP on the Satsuma default stack, deployed to Vercel, ready for Phase 7
-**Version:** 1.1  
+**Version:** 1.2  
 **Compatible with:** 4-spec v1.0+, 5-design v1.0+  
 
 ---
@@ -49,7 +49,7 @@ Before scaffolding or writing code, produce a **Build Plan** — a brief documen
 The Build Plan covers:
 
 **Task decomposition**
-Decompose `spec.md` into a numbered task list. Surface the full list for human review and approval before any implementation begins. The task list is the implementation contract — changes require a new gate, not a mid-build conversation.
+Decompose `artifacts/2-4-spec.md` into a numbered task list. Surface the full list for human review and approval before any implementation begins. The task list is the implementation contract — changes require a new gate, not a mid-build conversation.
 
 **Epic implementation order**
 Analyze technical dependencies across epics. Some epics must land before others can start:
@@ -254,7 +254,7 @@ When in doubt about which tier a change falls into, treat it as the more signifi
 
 **Never hardcode design values.** Every color, font, spacing value must come from `DESIGN.md` tokens. Hardcoded values create maintenance debt and break design system coherence.
 
-**Read `CLAUDE.md` at session start.** Every Claude Code session in a venture repo must start by reading `CLAUDE.md`. It references `DESIGN.md`, `spec.md`, and the current skill. If `CLAUDE.md` is incomplete, update it before proceeding.
+**Read `CLAUDE.md` at session start.** Every Claude Code session in a venture repo must start by reading `CLAUDE.md`. It references `DESIGN.md`, `artifacts/2-4-spec.md`, and the current skill. If `CLAUDE.md` is incomplete, update it before proceeding.
 
 **Supabase schema changes go through migration files.** Do not modify the database schema directly. Generate SQL migrations, founder reviews, founder applies.
 
