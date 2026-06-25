@@ -1,33 +1,36 @@
 # Concept
 
-**Track:** 1 — Plant the Seed  
-**Track Phase:** 3 of 3  
-**Overall Phase:** 3  
-**Tool:** Claude Code VS Code extension  
-**Input:** A confirmed Thesis Document from Phase 2  
-**Output:** `DESIGN.md` (machine-readable design system, at repo root), `brand.html` (visual design system validation), concept screens (3–5), `artifacts/1-3-gate-brief.md`, and a Commit/Kill/Defer decision
-**Version:** 1.6  
-**Compatible with:** 2-thesis v1.0+  
-
+**Track:** 1 — Plant the Seed
+**Track Phase:** 3 of 3
+**Overall Phase:** 3
+**Tool:** Claude Code VS Code extension (orchestration, DesignSync, DESIGN.md derivation); claude.ai/design (design system generation, concept screens — founder-driven)
+**Compatible with:** 2-thesis v1.0+
+**Version:** 2.0
+**Input:** `artifacts/1-2-thesis.md`, `artifacts/1-1-signal-brief.md`, studio design-system conventions from `../studio/design-system/`
+**Output:** `artifacts/1-3-design-system-brief.md`, `artifacts/1-3-concept-brief.md`, `DESIGN.md` (repo root), `artifacts/1-3-gate-brief.md`, synced Claude Design projects
 
 ---
 
 ## Playbook Context
 
-Read the **Principles**, **Stack**, and **Venture Lifecycle** sections of `PLAYBOOK.md` before beginning this phase. This skill consumes the Thesis Document produced by `1-plant/2-thesis.md` and produces the Concept Summary consumed by `2-sprout/4-spec.md`.
+Read the **Principles**, **Design Tooling**, and **Track 1** sections of `PLAYBOOK.md` before beginning.
 
-The principles most active in this phase:
+Principles most active in this phase:
 
-- **UX is not a phase — it is a thread** — the concept is the first moment design thinking becomes visible; it should reflect the product's core experience, not just its surface
-- **The AI-native advantage is real** — Claude Code + Claude Design compresses concept production from weeks to hours; use the speed to explore more interpretations, not to ship the first draft
-- **Kill early, kill cleanly** — a concept that does not compel commitment is a valid kill signal; cheaper to end here than after a spec has been written
+- **AI leads, humans govern** — Claude Code orchestrates the workflow and derives machine-readable artifacts. Claude Design generates the visual design system and concept screens. The founder reviews and approves at each HITL checkpoint.
+- **UX is not a phase — it is a thread** — Phase 3 establishes the visual and tonal foundation that all subsequent phases build from.
+- **Kill early, kill cleanly** — the gate at the end of this phase is the Track 1 terminal gate. Run `retro.md` Mode C (adversarial review) before confirming a commit decision.
+
+**Phase 3 tool model:**
+Claude Code orchestrates the workflow — it reads artifacts, generates briefs, manages DesignSync, derives DESIGN.md, and produces the gate brief. Claude Design (at claude.ai/design) does the design work — it generates the visual design system, brand.html, and concept screens. These are separate tools with a DesignSync bridge. Claude Code does not generate brand.html or concept screens directly.
+
+**File hierarchy:** `artifacts/` are source of truth. `context/` files are background color — prior art that informs but does not replace the phase work. Rich context is a head start, not a conclusion.
+
 ---
 
 ## Purpose
 
-Translate the Thesis Document into something the founder can see and react to. The job is not to design a product — it is to produce enough visual fidelity to make the Commit or Kill decision with confidence. Everything before this phase was research and reasoning. This phase produces something real.
-
-This is the most important human gate in Track 1.
+Translate the validated thesis into a visual design system and concept screens. Produce the gate brief the founder uses to make the commit-or-kill decision. Establish the design system foundation that Phases 5 and 6 extend and implement.
 
 ---
 
@@ -35,275 +38,402 @@ This is the most important human gate in Track 1.
 
 ### 1. Check for existing artifacts
 
-Before beginning, check whether any Phase 3 artifacts already exist:
-- `DESIGN.md` at repo root
-- `artifacts/1-3-gate-brief-WIP.md` — if found, work is in progress; ask whether to resume
-- `artifacts/1-3-gate-brief.md` — if found, phase is complete; ask whether to regenerate
+Before doing anything else, check:
 
-Never silently overwrite a signed-off artifact. Never silently overwrite a signed-off artifact.
+- `artifacts/1-3-design-system-brief-WIP.md` — work in progress; ask whether to resume
+- `artifacts/1-3-design-system-brief.md` — brief complete; ask whether to regenerate
+- `artifacts/1-3-gate-brief.md` — phase complete; confirm with founder before proceeding
 
-### 2. Orient to the Thesis Document
-
-Confirm you have reviewed the Thesis Document from Phase 2. Identify:
-
-- The core user and their primary need
-- The gap the venture fills
-- What the product must do at minimum to validate the thesis
-- What the product must *not* become (scope boundary)
-- The net positive impact framing
-
-If no Thesis Document exists, do not proceed. Ask the founder to complete Phase 2 first.
-
-### 3. Define the core user journey
-
-Before involving Claude Design, define the product concept at the journey level. Ask the founder:
-
-- What is the single most important thing the user comes to this product to do?
-- What does success look like for that user in the first five minutes?
-- What is the one moment where this product is most different from anything that exists today?
-
-From these answers, map 1–2 primary user flows as simple narrative sequences — not wireframes, not specs. "The user arrives → does X → sees Y → achieves Z." This gives Claude Design the right orientation before producing visuals.
-
-Do not over-specify. Leave room for design interpretation.
-
-### 4. Generate DESIGN.md, brand.html, and concept screens
-
-Phase 3 produces three sequential outputs: the machine-readable design system (`DESIGN.md`), its human-readable validation (`brand.html`), and concept screens anchored to the approved system.
-
-**Step A — Generate DESIGN.md**
-
-Claude Code translates the Thesis Document into a venture-specific design system POV and writes `DESIGN.md` to the venture repo. This file becomes the design source of truth for all subsequent phases. At minimum it should define: color palette, typography, spacing scale, component tone, and visual personality.
-
-Commit `DESIGN.md` before proceeding. Do not move to brand.html generation until it is in the repo.
-
-**Step B — Generate brand.html via `/design`**
-
-`DESIGN.md` is machine-readable markdown — the founder cannot meaningfully validate it visually. Run `/design` now to generate `brand.html`: the human-readable visual rendering of the design system.
-
-Brief Claude Design on the venture context (name, personality, target user) and ask it to produce `brand.html` from `DESIGN.md`. Claude Design reads the repo and applies `DESIGN.md` automatically.
-
-Commit `brand.html` to the repo (optionally to `/docs/brand.html` if GitHub Pages is being used).
-
-**Step C — HITL checkpoint: review brand.html before generating screens**
-
-Present `brand.html` to the founder. This is the meaningful design direction review — the visual palette, typographic system, and component tone are all visible here.
-
-Questions to ask:
-- Does the visual direction match the intended brand personality?
-- Is there anything tonally wrong before screens are generated?
-- Are there specific adjustments to make before proceeding?
-
-If the direction needs adjustment, update `DESIGN.md`, regenerate `brand.html`, and review again. This is the cheapest moment to change direction — before any screens exist.
-
-Confirm founder approval before proceeding to concept screens.
-
-**Step D — Generate concept screens via `/design`**
-
-Run `/design` again with a brief on the screens to generate (from Step 4 below). Claude Design applies the now-approved `DESIGN.md` and produces 3–5 concept screens.
-
-Concept screens are committed to the repo. They can optionally be deployed to `/docs/` as part of the GitHub Pages proof-of-concept (Step 7).
-
-Claude Design is available on Pro and Max plans; no additional account or cost required.
-
-### 5. Define the screens to design
-
-List 3–5 screens that together tell the product story. Prioritize screens that:
-
-- Show the core value proposition in action (not a marketing landing page)
-- Illustrate the key differentiation from existing solutions
-- Include at least one moment that would be meaningfully different from a competitor's equivalent screen
-
-Do not list infrastructure screens (settings, account management, password reset). Design the product, not the plumbing.
-
-For each screen, write a one-sentence brief: what it is, what the user is doing, and what the screen needs to communicate.
-
-### 6. Brief for screen generation
-
-Combine the concept brief from Step 3 with the screen definitions from Step 4 into a single handoff:
+If none exist, proceed to Step 2.
 
 ---
 
-**[Venture Name] — Concept Brief**
+### 2. Orient to Signal Brief and Thesis
 
-*Product context*
-[Name, what it does, who it's for, how it should feel — from Step 3]
+Read:
+- `artifacts/1-1-signal-brief.md` — problem, user, key assumption
+- `artifacts/1-2-thesis.md` — competitive landscape, gap, what we believe, top risks, Notes for Phase 3
 
-*Font and visual direction*
-[From Step 3 — font preferences if any, tone adjectives, references, what to avoid]
-
-*User journey*
-[1–2 sentence narrative of the primary user flow from Step 2]
-
-*Screens to design*
-1. [Screen name] — [what it is, what the user is doing, what it must communicate]
-2. [Screen name] — [same]
-3. [Screen name] — [same]
-[4–5 if applicable]
-
-*These are concept screens for a commit-or-kill decision, not production designs. Pass this brief to Claude Design via `/design` in Step 3D.*
+Extract from the Thesis:
+- The venture's emotional register — what it should feel like to use this product
+- The primary user and their context
+- Any visual or tonal carry-forward notes from "Notes for Phase 3"
+- The competitive context — what visual patterns the venture should distinguish itself from
 
 ---
 
-### 7. Generate screens and iterate
+### 3. Generate the Design System Brief
 
-Pass the brief to Claude Design via `/design` (Step 3D). After receiving the initial output:
+Write to `artifacts/1-3-design-system-brief-WIP.md` as each section completes — append incrementally. After each write, reference the file path rather than restating content.
 
-- Review for concept clarity first, aesthetic second. Does each screen communicate what it needs to communicate?
-- Ask for at least one alternative interpretation before finalizing. The first concept is rarely the best one.
-- If something does not feel right, diagnose whether the problem is in the brief or execution before revising.
+The Design System Brief is the creative brief Claude Design uses to generate the venture's visual identity. It must contain enough creative direction for Claude Design to make good decisions without being prescriptive about specific values (those are Claude Design's decisions).
 
-### 8. Optional — Proof-of-concept on GitHub Pages
+**Template:**
 
-Before presenting the concept to the founder for the commit decision, consider whether early signal from real target users would improve the quality of that decision.
+```markdown
+# Design System Brief: [Venture Name]
+*Date · Skill: 3-concept v2.0*
 
-**When to use this step:**
-- The founder has limited direct access to the target user and wants external signal before committing
-- The concept involves an unfamiliar user behavior and a real URL test would surface reactions that a static review would not
-- The founder wants to pressure-test a specific screen or flow before committing Track 2 time
+## Venture context
+[2–3 sentences: what the product does, who it's for, what it needs to feel like to use]
 
-**When to skip it:**
-- The founder has strong direct knowledge of the target user and high confidence in the concept
-- Speed to commit matters more than additional signal at this stage
-- The concept involves sensitive or proprietary ideas where sharing a URL introduces risk
+## Emotional register
+[How should this product feel? 5–7 adjectives. Not generic ("clean", "modern") — specific to this venture's position and user.]
+
+## What it should NOT feel like
+[Category clichés and visual patterns common in this space that this venture must distinguish itself from. Be specific.]
+
+## Reference points
+[2–3 products or brands whose aesthetic this venture should feel adjacent to — not identical to, but in the same emotional territory. Explain why each is a useful reference.]
+
+## User context
+[Where and how will users encounter this product? Desktop-first or mobile-first? High-focus environment or ambient? This informs spacing, density, and typographic hierarchy.]
+
+## Output expectations
+Produce a complete design system following the file conventions below. The design system will be used by Claude Code in Phase 6 to implement the product UI — every token and component definition you produce will be directly consumed by the implementation.
+
+### Required files and conventions
+
+**`SKILL.md`** — design system descriptor:
+```yaml
+---
+name: [venture-name]-design
+description: [One sentence describing the venture and what this skill is for]
+user-invocable: true
+---
+```
+Followed by: brand personality summary, hard rules (never-violate constraints), and file inventory.
+
+**`brand.html`** — human-readable rendering of the full design system. Should include: color palette with hex values and semantic roles, typography specimens (display, heading, body, caption, label, mono), spacing scale, component gallery (button states, card, input, link, badge at minimum).
+
+**`colors_and_type.css`** — drop-in CSS variables for all tokens. Import this first in any artifact built from this system.
+
+**`preview/_base.css`** — shared base CSS imported by all preview cards:
+```css
+/* Standard structure */
+@import url('[Google Fonts URL for this venture's chosen fonts]');
+:root { /* all token variables */ }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font-family: var(--font-body); }
+.card { width: 700px; padding: 28px 32px; background: var(--bg); }
+.card-label { /* standard label style */ }
+```
+
+**`preview/[component-name].html`** — one file per component, following `@dsCard` convention:
+```html
+<!-- @dsCard group="[Group]" name="[Component name]" subtitle="[States shown]" viewport="700x[height]" -->
+```
+Required preview cards: colors-brand, type-scale, type-display, type-body, components-button-primary, components-button-secondary, components-card, components-input, spacing-scale.
+
+**`assets/`** — venture logo SVGs (if available). Placeholder structure if not yet designed.
+
+**`_ds_manifest.json`** — Design System pane manifest (generated automatically by Claude Design).
+```
+
+When the brief is complete, rename `artifacts/1-3-design-system-brief-WIP.md` to `artifacts/1-3-design-system-brief.md` and commit.
 
 ---
 
-**How to execute**
+### 4. Generate the Concept Brief
 
-*Step A — Register the domain*
-Register the venture's domain now. A real URL makes the concept feel credible to users and takes five minutes to configure with GitHub Pages. Naming conventions: prefer `.com` where available; `.co`, `.app`, or `.io` are acceptable alternatives.
+Write to `artifacts/1-3-concept-brief-WIP.md` incrementally.
 
-*Step B — Export and publish the concept*
-1. Ask Claude Design to export the concept screens as self-contained HTML files — one file per screen, or a linked multi-screen flow
-2. Push the HTML to the venture's GitHub repo under `/docs/`
-3. Enable GitHub Pages on the repo (Settings → Pages → Deploy from branch → `main` → `/docs/`) and configure the registered domain — GitHub Pages natively supports `/docs/` as a source folder; no GitHub Action required
-4. The concept is live at the registered domain within minutes
+The Concept Brief defines the screens Claude Design generates after the design system is complete. Screen selection should demonstrate the core value proposition — not a full product, but enough to evaluate whether the concept is compelling.
 
-*Step C — Add BugDrop feedback widget*
-BugDrop creates annotated screenshot feedback directly as GitHub Issues — no token, no backend, no separate account required beyond the GitHub App installation.
+**Template:**
 
-1. Install the BugDrop GitHub App on the venture's repo from the GitHub Marketplace (bugdrop.dev → Install) — one step, done
-2. Ask Claude Code to:
-   - Fetch the current BugDrop script tag format from bugdrop.dev
-   - Inject it into every HTML file in `/docs/` before `</body>`
-   - Configure it with the venture's repo owner/name, label `poc-feedback`, and the venture's primary color (or Grove `#2E5428` if not yet established)
-   - Commit the changes
+```markdown
+# Concept Brief: [Venture Name]
+*Date · Skill: 3-concept v2.0*
 
-No credentials appear in the HTML. Authentication is handled entirely by the GitHub App. Feedback from users appears automatically as labeled GitHub Issues in the venture's repo.
+## What these screens need to demonstrate
+[The core user action or value moment this concept should make visible. What should someone be able to immediately understand from seeing these screens?]
 
-*Step D — Share and synthesize*
-Share the URL with 3–5 target users. Give them no framing about what the product is meant to do — unprimed reactions are the most valuable signal. Ask them to use the feedback button for any reaction, question, or confusion as they explore.
+## Screen inventory (3–5 screens)
 
-Review the GitHub Issues before the founder session in Step 8. Synthesize the headline reactions — what users thought it was, what confused them, what they wanted to do.
+### Screen 1 — [Name]
+**What it shows:** [Specific content/state]
+**Why this screen:** [What it demonstrates about the value proposition]
+**Key elements:** [Primary components that must appear]
 
-**What this produces:** A domain, a shareable proof-of-concept URL, and annotated screenshot feedback as GitHub Issues. The same BugDrop setup — GitHub App installation plus script tag — carries forward into Phase 7 beta testing with a label change and no additional infrastructure work.
+### Screen 2 — [Name]
+[Same structure]
 
-**Add to the Concept Summary if used:** Note that a proof-of-concept was run, how many users responded, and what the headline reaction was.
----
+[Continue for each screen]
 
-### 9. Evaluate with the founder
+## Design anchors
+- Design system: [Venture Name] Design System (Claude Design Project 1)
+- Primary user context: [From signal brief]
+- Viewport: [Desktop / Mobile / Both]
+- Fidelity target: High enough to evaluate the concept — not a polished finished UI, but not a wireframe
 
-Present the concept screens with context:
+## What these screens are NOT
+These are concept screens for a commit-or-kill gate decision, not production designs. They do not need to represent a complete product.
+```
 
-- Walk through each screen and explain what it is trying to communicate
-- Ask the founder to react before explaining — first impressions are the most valuable data
-- Focus the discussion on three questions:
-  1. Does this feel like a product worth building?
-  2. Does it accurately reflect the thesis — the gap, the user, the differentiation?
-  3. Is there anything here that makes you more or less confident in the commit decision?
-
-Do not defend the designs. The founder's reaction is the data. If the reaction is negative, diagnose whether it is a concept problem or a visual problem — they require different responses.
-
-### 10. Assess concept readiness
-
-Before presenting the gate, assess whether the concept is strong enough to support a commit decision:
-
-**Ready to commit if:**
-- The core user journey is legible from the screens without extended explanation
-- The key differentiation from existing products is visible in at least one screen
-- The founder can articulate what they are committing to build
-
-**Revise if:**
-- The screens feel generic — they could belong to any product in this category
-- The thesis is not visible in the design
-- The founder cannot identify the differentiation without extended explanation
-
-If revision is needed, identify the specific problem and update the Claude Design brief. Focus on concept-level clarity, not aesthetic preferences.
-
-### 11. Gate: Commit, Kill, or Defer
-
-This is a 1-way-door decision — committing to Track 2 is a significant investment of time and focus. Before presenting the gate question, run `retro.md` **Mode C (adversarial review)**:
-
-- State the case for committing: what the Signal Brief, Thesis Document, and concept together support
-- Argue the strongest case against committing: what would have to be wrong for this to be a mistake
-- Give the founder the opportunity to engage with the adversarial argument before confirming
-
-Once the adversarial review is complete, present the gate:
-
-> Based on this concept, are you ready to commit to Track 2 — or would you kill or defer this idea?
-
-Walk through the commit criteria from the Playbook:
-
-- The Signal Brief holds up ✓/✗
-- The Thesis Document is believable ✓/✗
-- The visual concept is compelling ✓/✗
-- You are willing to invest the time Track 2 requires ✓/✗
-
-**To commit:** All four criteria are met. Document the commit decision and move to Track 2.
-
-**To kill:** One or more criteria fails. Document why. A clean kill is a good outcome — it frees capacity for something better.
-
-**To defer:** The idea is real but a specific dependency is unresolved or timing is wrong. Park all artifacts intact with a revisit condition stated explicitly.
-
-### 12. Prepare handoff to Track 2
-
-If committed, produce a Concept Summary:
+When complete, rename to `artifacts/1-3-concept-brief.md` and commit.
 
 ---
 
-**Concept Summary: [Venture Name]**
-*Committed: [Date] · Skill: 3-concept v1.0*
+### 5. HITL — Review briefs before Claude Design
 
-**What we are building**
-[One sentence — the product, for whom, doing what.]
+Present both briefs to the founder. Ask:
+- Does the Design System Brief capture the right emotional register?
+- Are the reference points accurate and useful?
+- Is the screen inventory the right set for the gate decision?
 
-**What we validated in Track 1**
-[The gap, the user, the timing argument — carried forward from the Thesis Document.]
+Do not proceed to DesignSync until the founder approves both briefs.
 
-**Design system established**
-[Brief summary of the visual identity established for this venture.]
+---
 
-**The concept screens**
-[Reference or attach the Claude Design output.]
+### 6. Create Claude Design Project 1 — Design System
 
-**What the MVP must do**
-[2–3 non-negotiable capabilities implied by the concept — the minimum needed to validate the core thesis.]
+Using DesignSync, create a new Claude Design project for the venture's design system and push the design brief:
 
-**What the MVP must not become**
-[The scope boundary — what was deliberately excluded.]
+```
+DesignSync: create_project
+  name: "[Venture Name] Design System"
+  type: design_system
 
-**Open questions for Phase 4 (Spec)**
-[Anything the concept raised that the spec needs to resolve.]
+DesignSync: push_file
+  projectId: [new project ID]
+  path: "BRIEF.md"
+  content: [contents of artifacts/1-3-design-system-brief.md]
+```
 
-**Gate brief**
-Commit `artifacts/1-3-gate-brief.md` to the venture repo at phase close. Structure:
+Also push the studio design-system as a reference for file conventions:
+```
+DesignSync: push_file
+  path: "REFERENCE_STUDIO.md"
+  content: [reference note pointing to studio conventions]
+```
+
+Record the Project 1 ID in `STATUS.md` for future DesignSync operations.
+
+---
+
+### 7. ⏸ Waiting — Design system generation in claude.ai/design
+
+```
+## ⏸ Waiting — action required in claude.ai/design
+
+**What to do:**
+1. Open claude.ai/design
+2. Open the "[Venture Name] Design System" project
+3. Review BRIEF.md — the creative brief is in there
+4. Generate the design system: colors, type, spacing, components, brand.html
+5. Follow the file conventions in the brief exactly (preview cards, @dsCard markers, _base.css)
+6. When complete, return here and confirm
+
+**What to bring back:**
+- Confirmation the design system is generated
+- Any questions or decisions that came up during generation
+
+**What happens next:**
+Claude Code will sync the output, derive DESIGN.md, push it back, then set up the concept screens project.
+```
+
+**Do not proceed past this step until the founder confirms.**
+
+---
+
+### 8. Sync Project 1 output
+
+Using DesignSync, sync all files from Claude Design Project 1 back to the venture repo:
+
+```
+DesignSync: list_files / get_file for each file in Project 1
+```
+
+Write synced files to a `design-system/` folder in the venture repo. Commit.
+
+---
+
+### 9. Derive DESIGN.md from Project 1 output
+
+Read the synced Claude Design output (particularly `colors_and_type.css`, `brand.html`, and `SKILL.md`) and derive `DESIGN.md` — the machine-readable translation for Phase 6 implementation.
+
+**DESIGN.md schema:**
+
+```markdown
+# [Venture Name] — Design System
+*Derived from Claude Design on [date] · Phase 3 · Skill: 3-concept v2.0*
+
+## Color tokens
+```css
+:root {
+  /* Semantic roles */
+  --color-primary:    [hex];   /* [usage rule] */
+  --color-accent:     [hex];   /* [usage rule — sparingly?] */
+  --color-bg:         [hex];   /* Page background */
+  --color-surface:    [hex];   /* Card/panel background */
+  --color-text:       [hex];   /* Primary text */
+  --color-text-muted: [hex];   /* Secondary text */
+  --color-rule:       [hex];   /* Borders and dividers */
+  /* State colors */
+  --color-success:    [hex];
+  --color-warning:    [hex];
+  --color-error:      [hex];
+}
+```
+
+## Typography
+**Display font:** [Family name] — [Google Fonts URL]
+**Body font:** [Family name] — [Google Fonts URL]
+**Mono font:** [Family name or none]
+
+### Type scale
+| Role     | Size  | Weight | Line height | Usage |
+|----------|-------|--------|-------------|-------|
+| display  | [px]  | [wt]   | [lh]        | [when to use] |
+| h1       | [px]  | [wt]   | [lh]        | |
+| h2       | [px]  | [wt]   | [lh]        | |
+| body     | [px]  | [wt]   | [lh]        | |
+| caption  | [px]  | [wt]   | [lh]        | |
+| label    | [px]  | [wt]   | [lh]        | |
+| mono     | [px]  | [wt]   | [lh]        | |
+
+## Spacing scale
+Base unit: [value]px
+Scale: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96
+
+## Border radius
+[sm / md / lg / full values]
+
+## Component definitions
+
+### Button — primary
+- Background: `var(--color-primary)`
+- Text: [token]
+- Padding: [values]
+- Radius: [token]
+- Hover: [token]
+- Press: [token]
+- Disabled: [token]
+
+### Button — secondary
+[Same structure]
+
+### Card
+[Background, border, radius, padding, shadow if any]
+
+### Input
+[Background, border, focus ring, placeholder, error state]
+
+### [Additional components from design system]
+
+## Hard rules
+[Derived from SKILL.md — the inviolable constraints. Copy exactly from Claude Design's output.]
+- [Rule 1]
+- [Rule 2]
+- [etc.]
+
+## Phase 6 implementation notes
+- Always use CSS custom properties — never hardcode hex values
+- Import `design-system/colors_and_type.css` as the token source
+- Reference `design-system/preview/` cards for component implementation targets
+```
+
+Commit `DESIGN.md` to the venture repo root.
+
+---
+
+### 10. Push DESIGN.md back to Project 1
+
+```
+DesignSync: push_file
+  projectId: [Project 1 ID]
+  path: "DESIGN.md"
+  content: [DESIGN.md contents]
+```
+
+This anchors concept screen generation to the derived token system.
+
+---
+
+### 11. Create Claude Design Project 2 — Concept Screens
+
+**Note:** Validate whether DesignSync supports non-Design-System project types before this step. If only Design System projects are supported, create Project 2 as a Design System project with concept-screen conventions. If Prototype or other types are available, use the most appropriate type.
+
+```
+DesignSync: create_project
+  name: "[Venture Name] — Phase 3 Concepts"
+  type: [design_system or prototype, pending validation]
+
+DesignSync: push_file
+  path: "CONCEPT_BRIEF.md"
+  content: [contents of artifacts/1-3-concept-brief.md]
+
+DesignSync: push_file
+  path: "DESIGN_SYSTEM_REF.md"
+  content: "Reference design system: [Venture Name] Design System (Project ID: [Project 1 ID])"
+```
+
+Record Project 2 ID in `STATUS.md`.
+
+---
+
+### 12. ⏸ Waiting — Concept screen generation in claude.ai/design
+
+```
+## ⏸ Waiting — action required in claude.ai/design
+
+**What to do:**
+1. Open claude.ai/design
+2. Open the "[Venture Name] — Phase 3 Concepts" project
+3. Review CONCEPT_BRIEF.md — the screen inventory is defined there
+4. Import or reference the design system from the [Venture Name] Design System project
+5. Generate 3–5 concept screens per the brief
+6. When complete, return here and confirm
+
+**What to bring back:**
+- Confirmation screens are generated
+- Any screens you want to discuss or revise before the gate
+- Any design decisions that surfaced during generation worth capturing
+
+**What happens next:**
+Claude Code will sync the concept screens and produce the gate brief.
+```
+
+**Do not proceed past this step until the founder confirms.**
+
+---
+
+### 13. Sync Project 2 output and commit
+
+Sync all concept screen files from Project 2 back to the venture repo:
+
+```
+DesignSync: list_files / get_file for each file in Project 2
+```
+
+Write to `concepts/` folder in the venture repo. Commit alongside `DESIGN.md` and `design-system/`.
+
+---
+
+### 14. Produce the gate brief
+
+Write `artifacts/1-3-gate-brief-WIP.md` incrementally, then rename to `artifacts/1-3-gate-brief.md` at completion.
 
 ```markdown
 # Gate Brief — Track 1 / Phase 3
-*Date · Venture: [Name] · Skill: 3-concept v1.4*
+*Date · Venture: [Name] · Skill: 3-concept v2.0*
 
 ## What we found
-[2–3 sentences summarising the concept and design system output]
+[2–3 sentences: what the design system and concept screens produced, what surprised you, what held up from the thesis]
 
 ## Three strongest signals
-1. [Signal]
+1. [Signal — something the concept revealed that strengthens the case for committing]
 2. [Signal]
 3. [Signal]
 
 ## Three highest risks
-1. [Risk]
+1. [Risk — something the concept revealed or confirmed as a real threat]
 2. [Risk]
 3. [Risk]
+
+## Design system notes for Phase 5
+[Anything the Phase 3 design process revealed that Phase 5 should be aware of — design directions that were explored and rejected, constraints discovered, components that will need extension for the full MVP]
 
 ## Recommendation
 [Go / No-go — one sentence of honest reasoning]
@@ -311,33 +441,51 @@ Commit `artifacts/1-3-gate-brief.md` to the venture repo at phase close. Structu
 
 ---
 
+### 15. Gate: Commit, Kill, or Defer
+
+This is a 1-way-door decision — committing to Track 2 is a significant investment of time and focus. Before presenting the gate question, run `retro.md` **Mode C (adversarial review)**:
+
+- State the case for committing: what the Signal Brief, Thesis Document, design system, and concept screens together support
+- Argue the strongest case against committing: what would have to be wrong for this to be a mistake
+- Give the founder the opportunity to engage with the adversarial argument before confirming
+
+**Track 1 terminal gate — higher bar:** This gate commits the venture to Track 2. Run `retro.md` Mode C before confirming. Track 2 requires meaningful investment of time across six phases; committing to it lightly is the most common source of wasted studio capacity.
+
+Once the adversarial review is complete, present the gate:
+
+> Based on this concept, are you ready to commit to Track 2 — or would you kill or defer this idea?
+
+**To commit:** Signal Brief holds up · Thesis is believable · Design system and concept are compelling · Willing to invest Track 2 time
+**To kill:** Document why. Institutional memory.
+**To defer:** Park with all artifacts intact. Note the specific condition that would trigger revisiting.
+
+> **Session management:** Before starting Track 2, start a new session. Track transitions always warrant a fresh context. CLAUDE.md will re-orient Claude Code to the current state automatically.
+
+---
+
 ## Guardrails
 
-**Perspective:** Maintain the stance of a realistic, neutral third party. A visually strong concept does not mean the business is sound. A visually weak concept does not mean the business is not. Evaluate the concept on whether it serves the commit decision — nothing more.
+**Claude Code does not generate brand.html or concept screens.** These are Claude Design's outputs. Claude Code's role is orchestration, DesignSync operations, DESIGN.md derivation, and gate brief production.
 
-**Journey before screens.** Do not brief Claude Design before the user journey is defined. Screens without a journey are decoration.
+**Wait at handoff steps.** Steps 7 and 12 are explicit waiting states. Do not proceed past them until the founder confirms. Surface the waiting block clearly and stop.
 
-**Design system before screens.** Do not brief Claude Design on screens before the design system is established. Screens without a design system are exercises in style, not product thinking.
+**DESIGN.md is derived, not speculated.** Generate DESIGN.md from Claude Design's actual output — read `colors_and_type.css` and `brand.html` for token values, read `SKILL.md` for hard rules. Do not invent token values.
 
-**Aesthetic feedback ≠ conceptual feedback.** If the founder dislikes the visual style but the concept communicates clearly, the concept is working. Redirect aesthetic feedback to the design system brief, not the concept evaluation.
+**Phase boundary discipline.** Phase 3 produces a design system, concept screens, and a gate decision. It does not produce a product spec, user stories, or implementation code. If strong product ideas surface during design work, log them in the gate brief's "Design system notes for Phase 5" section and stay at the concept level.
 
-**Do not defend designs.** The founder's reaction is the data. If they react negatively, diagnose — do not explain why the design is actually good.
+**DesignSync project type validation.** Before creating Project 2 in Step 11, confirm DesignSync supports the intended project type. If Prototype/Wireframe types are unavailable, use Design System type with concept-screen conventions. Note the outcome in `STATUS.md` for future phases.
 
-**Fidelity serves the decision.** These are commit-or-kill screens, not production designs. Do not over-invest in visual polish at the expense of concept speed.
+**Context files are inputs, not conclusions.** Rich prior art in `context/` informs the brief but does not replace the design work.
 
-**Do not proceed to Track 2 without explicit founder confirmation.**
-
-**A Defer is not a Kill.** Preserve all artifacts. Document the specific condition that would trigger revisiting.
-
-> **Session management:** Before starting the next phase, follow the session rules in `venture.md` — `/compact` for phase transitions within a track, new session for track transitions.
 ---
 
 ## Changelog
 
-**v1.6** — Session management pointer added at gate step.
-**v1.5** — WIP file pattern for gate brief; brand.html explicitly noted as the human-readable validation artifact for DESIGN.md; Step 1 artifact check added.
-**v1.4** — Artifact paths updated to `artifacts/1-3-gate-brief.md`; check-before-rebuild added.
-**v1.3** — Tool updated to Claude Code VS Code extension throughout; no CLI distinction.
-**v1.2** — Stitch removed; Claude Design (via `/design`) is the only screen generation path; brand.html generated in Phase 3 alongside concept screens; HITL checkpoint added before screen generation (Steps A–D structure).
-**v1.1** — Two-path design model (Claude Design vs Stitch); DESIGN.md as explicit phase output; gate brief template (`gate-brief-t1.md`) added; adversarial review (retro.md Mode C) required at commit gate.
+**v2.0** — Full structural rewrite. New workflow: Claude Design generates the visual system and concept screens; Claude Code orchestrates via DesignSync and derives DESIGN.md from Claude Design's output. Two new artifacts: `1-3-design-system-brief.md` and `1-3-concept-brief.md`. DESIGN.md schema defined. Studio design-system file conventions baked in for brief generation. Explicit waiting states at Claude Design handoff steps. Two Claude Design projects: Project 1 (Design System, persistent across phases), Project 2 (Concept Screens, phase-specific). DESIGN.md pushed back to Project 1 after derivation.
+**v1.6** — Session management pointer at gate step.
+**v1.5** — WIP file pattern for gate brief; brand.html noted as validation artifact.
+**v1.4** — Artifact paths → `artifacts/1-3-gate-brief.md`; check-before-rebuild added.
+**v1.3** — Tool updated to Claude Code VS Code extension.
+**v1.2** — Stitch removed; Claude Design via `/design` as sole path; brand.html in Phase 3; HITL checkpoint.
+**v1.1** — Two-path model; DESIGN.md as explicit output; gate brief template; adversarial review at commit gate.
 **v1.0** — Initial skill.
