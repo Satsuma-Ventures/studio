@@ -5,7 +5,7 @@
 **Overall Phase:** 3
 **Tool:** Claude Code VS Code extension (orchestration, DesignSync, DESIGN.md derivation); claude.ai/design (design system generation, concept screens — founder-driven)
 **Compatible with:** 2-thesis v1.0+
-**Version:** 2.0
+**Version:** 2.2
 **Input:** `artifacts/1-2-thesis.md`, `artifacts/1-1-signal-brief.md`, studio design-system conventions from `../studio/design-system/`
 **Output:** `artifacts/1-3-design-system-brief.md`, `artifacts/1-3-concept-brief.md`, `DESIGN.md` (repo root), `artifacts/1-3-gate-brief.md`, synced Claude Design projects
 
@@ -128,6 +128,16 @@ Required preview cards: colors-brand, type-scale, type-display, type-body, compo
 **`assets/`** — venture logo SVGs (if available). Placeholder structure if not yet designed.
 
 **`_ds_manifest.json`** — Design System pane manifest (generated automatically by Claude Design).
+
+### Output conventions for docs/ deployment
+
+All files generated in this project will be synced to the venture repo and served via GitHub Pages from the `docs/` folder. Follow these conventions so files work correctly when served from that path:
+
+- **Self-contained HTML files.** Every `.html` file must work standalone — no dependencies on files outside the project that won't be present in `docs/`. No local asset paths that don't resolve from `docs/`.
+- **CDN fonts only.** Use Google Fonts CDN `@import` in `<style>` or `<link>` tags. No local font files.
+- **Relative paths within the project.** References between files (e.g. `_base.css` from a preview card) use relative paths that will resolve correctly when synced to `docs/` and `design-system/` in the repo.
+- **brand.html** will be placed at `docs/brand.html` — write it as a standalone document that works at that path.
+- **Concept screens** will be placed at `docs/concepts/[name].html` — write each as a fully self-contained file with no external dependencies beyond CDN fonts.
 ```
 
 When the brief is complete, rename `artifacts/1-3-design-system-brief-WIP.md` to `artifacts/1-3-design-system-brief.md` and commit.
@@ -186,29 +196,25 @@ Do not proceed to DesignSync until the founder approves both briefs.
 
 ---
 
-### 6. Create Claude Design Project 1 — Design System
+### 6. Create the venture Claude Design project
 
-Using DesignSync, create a new Claude Design project for the venture's design system and push the design brief:
+Using DesignSync, create a single Design System project for the venture. This project holds both the design system and the concept screens, organized by subfolder. DesignSync only supports Design System projects — this is the confirmed project type for all Claude Design work.
 
 ```
 DesignSync: create_project
   name: "[Venture Name] Design System"
   type: design_system
+```
 
+Push the Design System Brief and a reference to the studio conventions:
+```
 DesignSync: push_file
-  projectId: [new project ID]
+  projectId: [project ID]
   path: "BRIEF.md"
   content: [contents of artifacts/1-3-design-system-brief.md]
 ```
 
-Also push the studio design-system as a reference for file conventions:
-```
-DesignSync: push_file
-  path: "REFERENCE_STUDIO.md"
-  content: [reference note pointing to studio conventions]
-```
-
-Record the Project 1 ID in `STATUS.md` for future DesignSync operations.
+Record the project ID in `STATUS.md`. This single project is reused across phases — Phase 5 extends it, Phase 6 anchors to it.
 
 ---
 
@@ -245,7 +251,14 @@ Using DesignSync, sync all files from Claude Design Project 1 back to the ventur
 DesignSync: list_files / get_file for each file in Project 1
 ```
 
-Write synced files to a `design-system/` folder in the venture repo. Commit.
+Write to these locations:
+
+| Claude Design location | Repo location |
+|---|---|
+| `preview/`, `SKILL.md`, `colors_and_type.css`, `assets/` | `design-system/` |
+| `brand.html` | `docs/brand.html` |
+
+Commit. `docs/brand.html` is immediately viewable via GitHub Pages.
 
 ---
 
@@ -351,25 +364,16 @@ This anchors concept screen generation to the derived token system.
 
 ---
 
-### 11. Create Claude Design Project 2 — Concept Screens
+### 11. Push concept brief to the venture project
 
-**Note:** Validate whether DesignSync supports non-Design-System project types before this step. If only Design System projects are supported, create Project 2 as a Design System project with concept-screen conventions. If Prototype or other types are available, use the most appropriate type.
+Push the concept brief into the same project, in a `concepts/` subfolder. The design system tokens and components are already in this project — screens generated here have direct access to them.
 
 ```
-DesignSync: create_project
-  name: "[Venture Name] — Phase 3 Concepts"
-  type: [design_system or prototype, pending validation]
-
 DesignSync: push_file
-  path: "CONCEPT_BRIEF.md"
+  projectId: [project ID from Step 6]
+  path: "concepts/CONCEPT_BRIEF.md"
   content: [contents of artifacts/1-3-concept-brief.md]
-
-DesignSync: push_file
-  path: "DESIGN_SYSTEM_REF.md"
-  content: "Reference design system: [Venture Name] Design System (Project ID: [Project 1 ID])"
 ```
-
-Record Project 2 ID in `STATUS.md`.
 
 ---
 
@@ -380,10 +384,10 @@ Record Project 2 ID in `STATUS.md`.
 
 **What to do:**
 1. Open claude.ai/design
-2. Open the "[Venture Name] — Phase 3 Concepts" project
-3. Review CONCEPT_BRIEF.md — the screen inventory is defined there
-4. Import or reference the design system from the [Venture Name] Design System project
-5. Generate 3–5 concept screens per the brief
+2. Open the "[Venture Name] Design System" project (same project as Step 7)
+3. Review `concepts/CONCEPT_BRIEF.md` — the screen inventory is defined there
+4. Generate 3–5 concept screens in the `concepts/` subfolder — the design system tokens and components are already available in this project
+5. Name screens clearly: `concepts/screen-[n]-[name].html`
 6. When complete, return here and confirm
 
 **What to bring back:**
@@ -399,12 +403,13 @@ Claude Code will sync the concept screens and produce the gate brief.
 
 ---
 
-### 13. Sync Project 2 output and commit
+### 13. Sync concept screens and commit
 
-Sync all concept screen files from Project 2 back to the venture repo:
+Sync the concept screen files from the `concepts/` subfolder of the venture project back to the repo:
 
 ```
-DesignSync: list_files / get_file for each file in Project 2
+DesignSync: list_files  →  filter for paths starting with "concepts/"
+DesignSync: get_file    →  for each concept screen file
 ```
 
 Write to `concepts/` folder in the venture repo. Commit alongside `DESIGN.md` and `design-system/`.
@@ -473,7 +478,7 @@ Once the adversarial review is complete, present the gate:
 
 **Phase boundary discipline.** Phase 3 produces a design system, concept screens, and a gate decision. It does not produce a product spec, user stories, or implementation code. If strong product ideas surface during design work, log them in the gate brief's "Design system notes for Phase 5" section and stay at the concept level.
 
-**DesignSync project type validation.** Before creating Project 2 in Step 11, confirm DesignSync supports the intended project type. If Prototype/Wireframe types are unavailable, use Design System type with concept-screen conventions. Note the outcome in `STATUS.md` for future phases.
+**DesignSync only supports Design System projects.** This is confirmed — there is no Prototype, Wireframe, or other project type available via DesignSync. All Claude Design work for a venture lives in a single Design System project, organized by subfolder.
 
 **Context files are inputs, not conclusions.** Rich prior art in `context/` informs the brief but does not replace the design work.
 
@@ -481,6 +486,10 @@ Once the adversarial review is complete, present the gate:
 
 ## Changelog
 
+**v2.2** — docs/ output conventions baked into Design System Brief template: self-contained HTML, CDN fonts, relative paths, brand.html → docs/brand.html, concept screens → docs/concepts/.
+**v2.1** — Consolidated to single Claude Design project per venture (DesignSync confirmed to support Design System projects only). Concept screens live in `concepts/` subfolder of the same project. Removed two-project structure and project type validation note.
+**v2.2** — docs/ output conventions baked into Design System Brief template: self-contained HTML, CDN fonts, relative paths, brand.html → docs/brand.html, concept screens → docs/concepts/.
+**v2.1** — Single persistent Claude Design project per venture (DesignSync confirmed Design System only); concept screens in concepts/ subfolder of Project 1; sync targets updated: design system → design-system/, brand.html and concepts → docs/ for GitHub Pages serving.
 **v2.0** — Full structural rewrite. New workflow: Claude Design generates the visual system and concept screens; Claude Code orchestrates via DesignSync and derives DESIGN.md from Claude Design's output. Two new artifacts: `1-3-design-system-brief.md` and `1-3-concept-brief.md`. DESIGN.md schema defined. Studio design-system file conventions baked in for brief generation. Explicit waiting states at Claude Design handoff steps. Two Claude Design projects: Project 1 (Design System, persistent across phases), Project 2 (Concept Screens, phase-specific). DESIGN.md pushed back to Project 1 after derivation.
 **v1.6** — Session management pointer at gate step.
 **v1.5** — WIP file pattern for gate brief; brand.html noted as validation artifact.
