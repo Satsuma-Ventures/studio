@@ -6,6 +6,10 @@
 set -e
 
 VENTURE_NAME="$1"
+SCAFFOLD_ONLY=false
+for arg in "$@"; do
+  [ "$arg" = "--scaffold-only" ] && SCAFFOLD_ONLY=true
+done
 STUDIO_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 PARENT_DIR="$(cd "$STUDIO_DIR/.." && pwd)"
 TEMPLATE_CLAUDE="$STUDIO_DIR/skills/templates/CLAUDE.md"
@@ -18,11 +22,15 @@ fi
 
 # ── 1. Create and scaffold venture repo ──────────────────────────────────────
 
-echo "→ Creating repo satsuma-ventures/$VENTURE_NAME..."
-cd "$PARENT_DIR"
-gh repo create "satsuma-ventures/$VENTURE_NAME" --public --clone
-cd "$VENTURE_NAME"
-
+if [ "$SCAFFOLD_ONLY" = false ]; then
+  echo "→ Creating repo satsuma-ventures/$VENTURE_NAME..."
+  cd "$PARENT_DIR"
+  gh repo create "satsuma-ventures/$VENTURE_NAME" --public --clone
+  cd "$VENTURE_NAME"
+else
+  echo "→ Scaffold-only mode — skipping repo creation..."
+  cd "$PARENT_DIR/$VENTURE_NAME"
+fi
 echo "→ Scaffolding from studio template..."
 
 # CLAUDE.md
