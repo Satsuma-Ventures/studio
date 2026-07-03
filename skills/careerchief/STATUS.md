@@ -1,12 +1,12 @@
-# CareerChief — Status
-*Last updated: 2026-06-23*
+# careerchief — Status
+*Last updated: 2026-07-03*
 
-**Stage:** Sprouting
-**Current phase:** 4 — Spec
-**Phase started:** 2026-06-23
-**Last gate completed:** Phase 3 — Concept (commit decision)
-**Next gate:** Phase 4 sign-off — MVP Spec
+**Stage:** Planted
+**Current phase:** 1 — Signal
+**Phase started:** 2026-07-03
+**Last gate completed:** None
+**Next gate:** Phase 1 gate — Signal Brief
 **Blocking issues:** None
 **Open backlog items:** 0 (0 high priority)
 **Rocks:** None set
-**Latest note:** Validated via Claude skills. Web MVP spec in progress.
+**Latest note:** Repo scaffolded. Beginning Phase 1 — Signal.

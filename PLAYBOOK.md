@@ -382,6 +382,7 @@ Current ventures:
 | Cellarbook | Sprouting |
 | CareerChief | Sprouting |
 | Corner Street Commerce | Planted |
+| careerchief | Planted |
 | Zavari | Planted |
 | Weeknight Supper Club | Planted |
 
