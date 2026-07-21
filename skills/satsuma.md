@@ -201,5 +201,5 @@ Current scope. Weekly brief, quarterly Rocks, cross-venture intelligence, backlo
 
 ## Changelog
 
-**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension; careerchief spelling corrected.
+**v1.1** — Tool updated from Claude Chat to Claude Code VS Code extension; Meritous spelling corrected.
 **v1.0** — Initial skill. Weekly brief, quarterly Rocks, cross-venture intelligence, prioritization framework, future evolution section.

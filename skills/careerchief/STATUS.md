@@ -1,4 +1,4 @@
-# careerchief — Status
+# Meritous — Status
 *Last updated: 2026-07-08*
 
 **Stage:** Planted

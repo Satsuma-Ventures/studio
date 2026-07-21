@@ -1,6 +1,6 @@
 # Exploration Brief — Refero (design-reference tooling + MCP)
 
-*Prepared for: Studio lead · Surfaced from: CareerChief (Meritous) Phase 3 · Date: 2026-07-16*
+*Prepared for: Studio lead · Surfaced from: Meritous (Meritous) Phase 3 · Date: 2026-07-16*
 
 ## TL;DR
 **Refero** (refero.design) turns any real website into a precise, implementation-ready design-system spec — exact color tokens, per-font type scales (size / line-height / tracking), spacing, radii, elevation, component recipes, do's/don'ts, "similar brands," and copy-paste CSS custom properties + Tailwind theme. It exposes an **MCP server**, so our design agents (Claude Design / Claude Code) could pull these reference specs directly. **Recommend trialing it as a standard input to Phase 3 (Concept)** — it directly attacks the "feels AI-generated / generic" failure mode in AI design generation.
