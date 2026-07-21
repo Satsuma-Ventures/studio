@@ -142,6 +142,14 @@ Brief Claude Design on the epic's screens using the screen inventory as scope. F
 
 Ask Claude Design to produce high-fidelity HTML screens. HTML output is the requirement — not wireframes, not static images. Claude Code implements from the HTML directly.
 
+**Imagery: real photography vs. geometric placeholders**
+
+Where a screen calls for photography — hero images, background fills, photo-driven sections — source real images with the `pexels_search_photos` tool rather than shipping grey boxes or `placeholder.co` URLs. Real photography changes how a design reads at review; placeholder blocks make founders evaluate the layout instead of the screen.
+
+Where the design intent is iconographic or illustrative rather than photographic, do the opposite: use geometric placeholders. A stand-in shape is honest about what the final asset will be; a stock photo dropped into an icon slot is not.
+
+Any delivered HTML that uses a Pexels image must carry attribution inline, adjacent to the image: `Photo by [Photographer] on Pexels`, with the photographer's name or the credit line linking to the photo page on Pexels. Use the design system's `pexels-link` class for the link. Attribution is part of the deliverable, not a follow-up task — screens that omit it are not complete.
+
 *B — Edge cases for primary flows*
 For the primary flow in each epic, design three edge cases:
 
@@ -203,6 +211,8 @@ On sign-off: note in the Spec Amendment Log that Phase 5 is complete.
 **DESIGN.md before screens.** `DESIGN.md` must be committed and finalized before any epic screens are designed. Screens generated without a committed design system produce inconsistent output that Claude Code cannot implement reliably.
 
 **HTML output, not static images.** Claude Design produces high-fidelity HTML. This is what Claude Code implements from. Static images are not sufficient for Phase 6.
+
+**Real photography where the design is photographic; geometric placeholders where it is not.** Source photographs via `pexels_search_photos`; never ship a grey box where a hero image belongs. Every Pexels image carries inline attribution — "Photo by [Photographer] on Pexels", linked to the photo page — in the delivered HTML.
 
 **The screen inventory is the scope.** Do not design screens outside the inventory without a Phase 4 spec amendment.
 

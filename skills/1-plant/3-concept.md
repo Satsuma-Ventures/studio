@@ -138,6 +138,9 @@ All files generated in this project will be synced to the venture repo and serve
 - **Relative paths within the project.** References between files (e.g. `_base.css` from a preview card) use relative paths that will resolve correctly when synced to `docs/` and `design-system/` in the repo.
 - **brand.html** will be placed at `docs/brand.html` — write it as a standalone document that works at that path.
 - **Concept screens** will be placed at `docs/concepts/[name].html` — write each as a fully self-contained file with no external dependencies beyond CDN fonts.
+- **Photography, where the design is photographic.** Where a screen or component calls for photography — hero images, background fills, photo-driven sections — source real images with the `pexels_search_photos` tool. Do not ship grey boxes or placeholder image services in their place.
+- **Geometric placeholders, where the design is iconographic.** Where the intent is an icon, a mark, or an illustration rather than a photograph, use a geometric placeholder. A stand-in shape is honest about what the final asset will be; a stock photo in an icon slot is not.
+- **Pexels attribution is inline and required.** Any delivered HTML using a Pexels image must credit it adjacent to the image: `Photo by [Photographer] on Pexels`, linking to the photo page on Pexels, using the `pexels-link` class defined in the design system.
 ```
 
 When the brief is complete, rename `artifacts/1-3-design-system-brief-WIP.md` to `artifacts/1-3-design-system-brief.md` and commit.
@@ -176,6 +179,13 @@ The Concept Brief defines the screens Claude Design generates after the design s
 - Primary user context: [From signal brief]
 - Viewport: [Desktop / Mobile / Both]
 - Fidelity target: High enough to evaluate the concept — not a polished finished UI, but not a wireframe
+
+## Imagery
+Where a screen calls for photography — hero images, background fills, photo-driven sections — source real images with the `pexels_search_photos` tool rather than placeholders. Concept screens are evaluated at a commit-or-kill gate; grey boxes make the founder assess the layout instead of the concept.
+
+Where the intent is iconographic or illustrative rather than photographic, use geometric placeholders instead.
+
+Every Pexels image in the delivered HTML carries inline attribution adjacent to it — `Photo by [Photographer] on Pexels`, linked to the photo page, using the design system's `pexels-link` class.
 
 ## What these screens are NOT
 These are concept screens for a commit-or-kill gate decision, not production designs. They do not need to represent a complete product.

@@ -28,6 +28,24 @@ Read the rules in `README.md` and the tokens in `colors_and_type.css`. Use the C
 
 Ask the user what they want to build or design. Ask a few short clarifying questions about audience, scope, and surface (landing, deck, app screen, brand asset). Then act as an expert designer and produce HTML artifacts or production code, depending on the need.
 
+## Photo credits — the `pexels-link` class
+
+Where photography is sourced from Pexels (via the `pexels_search_photos` tool), the delivered HTML must credit it inline, adjacent to the image: "Photo by [Photographer] on Pexels", linked to the photo page.
+
+The credit is a caption, not a call to action — it should read as quiet text. Define and use a `pexels-link` class for the anchor:
+
+- Inherits the caption's size, weight, and muted color — no link color, no underline at rest
+- On hover: a standard arrow glyph (`↗`) appears after the text; color shifts to the accent, still no underline
+- Focus-visible: standard focus ring, per the rest of the system
+- Never bolded, never boxed, never a button
+
+```css
+.pexels-link { color: inherit; text-decoration: none; }
+.pexels-link::after { content: " ↗"; opacity: 0; transition: opacity var(--dur-fast) var(--ease-out); }
+.pexels-link:hover { color: var(--satsuma); }
+.pexels-link:hover::after { opacity: 1; }
+```
+
 ## Hard rules — never violate
 
 - Never use Satsuma orange `#D4681E` as a dominant color. It is an accent.
