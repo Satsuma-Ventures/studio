@@ -6,7 +6,7 @@
 **Tool:** Human-led; Claude Code VS Code extension (synthesis, framework support, BugDrop setup, Amplitude verification)  
 **Input:** Functional MVP from `2-sprout/6-build.md`, OKR and Amplitude event schema from `2-sprout/4-spec.md`  
 **Output:** Live MVP, beta cohort engaged, feedback infrastructure running, 30-day success framework defined — ready for `2-sprout/8-learn.md`
-**Version:** 1.2  
+**Version:** 1.3  
 **Compatible with:** 6-build v1.0+  
 
 ---
@@ -65,6 +65,9 @@ Walk through the first-time user experience as if you are a new user with no con
 - Is there anything that would cause a new user to abandon before reaching the core feature?
 
 Fix anything that would cause drop-off before the first meaningful action. This is cheaper to fix now than to diagnose from churn data in Phase 8.
+
+**Pith venture-introduction piece drafted**
+The Pith skill lives in the **Studio project on Claude Chat**, not in this repo. To draft the piece, switch to the Studio project in Claude Chat and run Pith's Venture Introduction protocol there. Supply `artifacts/1-1-signal-brief.md` and `artifacts/1-2-thesis.md` as grounding, and link back to Why We Build as the studio's founding argument. Draft this before launch so it's ready — but see the guardrail below on publish timing, which is a separate judgment call from drafting.
 
 ---
 
@@ -179,6 +182,7 @@ Phase 7 is complete when the following are true:
 - BugDrop running with `beta-feedback` label ✓/✗
 - 30-day success framework defined ✓/✗
 - Phase 8 review date set ✓/✗
+- Venture-introduction Pith piece drafted (published or intentionally deferred) ✓/✗
 
 Present the gate to the founder:
 
@@ -205,10 +209,13 @@ Note in the Spec Amendment Log that Phase 7 is complete.
 **Do not instrument new Amplitude events in Phase 7.** Events added post-launch contaminate the baseline. Log any missing events to `BACKLOG.md` for the next iteration.
 
 **Do not proceed to Phase 8 without the 30-day framework defined and the review date set.**
+
+**Pith piece timing is a judgment call, separate from drafting.** Draft the Venture Introduction before launch so it's ready. But consider publishing it a few days after the first cohort members have had unbiased first contact with the product, rather than at the exact moment of DNS transition — publishing simultaneously risks the same pre-framing effect the "do not over-explain" guardrail addresses for cohort onboarding, just extended to a public audience that may overlap with cohort members.
 ---
 
 ## Changelog
 
+**v1.3** — Added Pith venture-introduction piece as a pre-launch deliverable, run via the Pith skill in the Studio project on Claude Chat (Pith is Claude Chat-only for now, not a repo file). Added gate criterion and guardrail on publish timing (draft before launch, but consider publishing after cohort's first unbiased contact to avoid pre-framing).
 **v1.2** — Session management pointer added at gate step.
 **v1.1** — Tool updated; Claude Chat synthesis references updated to Claude Code VS Code extension; BugDrop setup step clarified.
 **v1.0** — Initial skill.
