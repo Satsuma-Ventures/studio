@@ -1,10 +1,10 @@
 ---
 name: satsuma-design
-description: Use this skill to generate well-branded interfaces and assets for Satsuma Ventures, a private family venture studio based in Seattle — for production work or throwaway prototypes, mocks, slides, and landing pages. Contains essential design guidelines, colors, type tokens, fonts, logo assets, and component patterns.
+description: Use this skill to generate well-branded interfaces and assets for Satsuma, a private family venture studio based in Seattle — for production work or throwaway prototypes, mocks, slides, and landing pages. Contains essential design guidelines, colors, type tokens, fonts, logo assets, and component patterns.
 user-invocable: true
 ---
 
-# Satsuma Ventures — Design Skill
+# Satsuma — Design Skill
 
 Satsuma is a private family venture studio. The brand is **warm, organic, unhurried**. Not corporate. Not VC. White space is the primary design element; typography carries the meaning.
 
@@ -50,7 +50,7 @@ The credit is a caption, not a call to action — it should read as quiet text. 
 
 - Never use Satsuma orange `#D4681E` as a dominant color. It is an accent.
 - Never use plain white as the page background. The brand background is **Linen `#F2ECDD`** — warm and paper-like.
-- Never use more than two type families (Libre Baskerville + Plus Jakarta Sans).
+- Never use more than two type families (Crimson Pro + Plus Jakarta Sans).
 - Never add drop shadows, gradients, or glassmorphism.
 - Never write VC-pitch-deck copy. Plain language only.
 - Never use emoji. Never use exclamation marks in display copy.

@@ -10,7 +10,7 @@
 
 ## Purpose
 
-The studio-level orchestrator for Satsuma Ventures. Maintains the portfolio view, surfaces what needs attention, helps the founder prioritize time across ventures, and runs the operating rhythm that keeps the studio moving forward.
+The studio-level orchestrator for Satsuma. Maintains the portfolio view, surfaces what needs attention, helps the founder prioritize time across ventures, and runs the operating rhythm that keeps the studio moving forward.
 
 This is the chief-of-staff skill — it does the analytical work before the founder arrives, not after.
 
@@ -43,7 +43,7 @@ Produce the brief in this format:
 
 ---
 
-**Satsuma Ventures — Weekly Brief**
+**Satsuma — Weekly Brief**
 *[Date] · Week [N] of Q[N]*
 
 **Portfolio pulse**

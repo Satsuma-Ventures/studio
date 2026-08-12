@@ -1,8 +1,8 @@
-# Satsuma Ventures — Operating Playbook
+# Satsuma — Operating Playbook
 
 > A family venture studio cultivating ideas worth growing.
 
-This document is the operating model for Satsuma Ventures. It defines how we move from an idea to a validated concept to a shipped product. It serves two purposes simultaneously: a founder's reference for how we work, and a context document for the AI agents (Claude Chat, Claude Design, Claude Code) that power our workflow.
+This document is the operating model for Satsuma. It defines how we move from an idea to a validated concept to a shipped product. It serves two purposes simultaneously: a founder's reference for how we work, and a context document for the AI agents (Claude Chat, Claude Design, Claude Code) that power our workflow.
 
 **When working in any Satsuma project, AI agents should treat this document as the source of truth for process, stack, and decision-making principles. Design system guidance for AI agents lives in `DESIGN.md` in each venture's repo. `brand.html` is the human-readable visual rendering of that system, published on the venture's website.**
 

@@ -172,7 +172,7 @@ Produce the full Spec document:
 ---
 
 **MVP Spec: [Venture Name]**
-*Version 1.0 · Date · Author: Satsuma Ventures · Skill: 4-spec v1.0*
+*Version 1.0 · Date · Author: Satsuma · Skill: 4-spec v1.0*
 
 **OKR**
 Objective: [thesis validation statement]

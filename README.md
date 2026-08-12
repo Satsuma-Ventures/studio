@@ -1,6 +1,6 @@
-# Satsuma Ventures
+# Satsuma
 
-The website and brand assets for [Satsuma Ventures](https://satsumaventures.com) — a private family venture studio based in Seattle.
+The website and brand assets for [Satsuma](https://satsumaventures.com) — a private family venture studio based in Seattle.
 
 > *A family venture studio cultivating ideas worth growing.*
 
@@ -13,4 +13,4 @@ The website and brand assets for [Satsuma Ventures](https://satsumaventures.com)
 
 ## License
 
-Brand assets and design tokens are proprietary to Satsuma Ventures. Logos may not be used or modified outside of Satsuma materials.
+Brand assets and design tokens are proprietary to Satsuma. Logos may not be used or modified outside of Satsuma materials.

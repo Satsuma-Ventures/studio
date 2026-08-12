@@ -1,5 +1,5 @@
 #!/bin/bash
-# new-venture.sh — Satsuma Ventures
+# new-venture.sh — Satsuma
 # Usage: ./new-venture.sh <venture-name>
 # Scaffolds a new venture repo from the studio template.
 
@@ -77,7 +77,7 @@ BACKLOGEOF
 cat > README.md << READMEOF
 # $VENTURE_NAME
 
-A Satsuma Ventures venture. Currently in Track 1 — Plant the Seed.
+A Satsuma venture. Currently in Track 1 — Plant the Seed.
 
 See \`STATUS.md\` for current phase and progress.
 See \`CLAUDE.md\` for AI agent context.

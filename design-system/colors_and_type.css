@@ -1,9 +1,9 @@
 /* ─────────────────────────────────────────────────────────────────────────
-   Satsuma Ventures — Colors & Type
+   Satsuma — Colors & Type
    A family venture studio cultivating ideas worth growing.
    ───────────────────────────────────────────────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   /* ── Brand colors ──────────────────────────────────────────────────── */
@@ -74,13 +74,15 @@
   --border:       var(--rule);
 
   /* ── Type families ─────────────────────────────────────────────────── */
-  --font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-display: 'Crimson Pro', Georgia, 'Times New Roman', serif;
   --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
 
   /* ── Type scale ────────────────────────────────────────────────────── */
-  --text-display: clamp(2.5rem, 6vw, 4rem);   /* 40–64px */
-  --text-h1:      clamp(2rem, 4vw, 2.625rem); /* 32–42px */
+  /* Serif headings run on Crimson Pro — a touch smaller in stature than
+     Libre Baskerville, so the display + h1 steps are nudged up. */
+  --text-display: clamp(2.75rem, 6.5vw, 4.5rem); /* 44–72px */
+  --text-h1:      clamp(2.25rem, 4.4vw, 2.875rem); /* 36–46px */
   --text-h2:      1.5rem;                     /* 24px */
   --text-h3:      1.125rem;                   /* 18px */
   --text-body:    1rem;                       /* 16px */
@@ -88,8 +90,8 @@
   --text-label:   0.75rem;                    /* 12px */
   --text-meta:    0.7rem;                     /* 11px */
 
-  --lh-display: 1.1;
-  --lh-heading: 1.2;
+  --lh-display: 1.05;
+  --lh-heading: 1.15;
   --lh-body:    1.75;
   --lh-tight:   1.4;
 

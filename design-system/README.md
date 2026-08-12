@@ -1,6 +1,6 @@
 # Satsuma Design System
 
-A working design system for **Satsuma Ventures** — a private family venture studio based in Seattle. The brand is warm, organic, and unhurried.
+A working design system for **Satsuma** — a private family venture studio based in Seattle. The brand is warm, organic, and unhurried.
 
 > *A family venture studio cultivating ideas worth growing.*
 
@@ -8,9 +8,9 @@ The canonical brand book is [`../brand.html`](../brand.html) at the repository r
 
 ---
 
-## What is Satsuma Ventures?
+## What is Satsuma?
 
-Satsuma Ventures is a private family holding studio. It serves as the parent entity for a portfolio of internally ideated and built businesses — concepts developed, validated, and spun out as independent entities over time. The studio may also support select angel investments.
+Satsuma is a private family holding studio. It serves as the parent entity for a portfolio of internally ideated and built businesses — concepts developed, validated, and spun out as independent entities over time. The studio may also support select angel investments.
 
 It sits at the intersection of **founder thinking** and **patient capital**. The studio cultivates a small number of ideas with genuine care — building the structure that lets them bear fruit.
 
@@ -108,7 +108,7 @@ Each primary (Grove, Satsuma, Sage) has a full 11-stop scale in `colors_and_type
 
 Two families. No more.
 
-- **Libre Baskerville** — display serif. Regular & italic only. Used for headlines, tagline, and editorial moments.
+- **Crimson Pro** — display serif. Used for headlines, tagline, and editorial moments; regular weight as default, italic for tagline moments.
 - **Plus Jakarta Sans** — body & UI. Weights 300 / 400 / 500 / 600. Generous line height (1.75).
 - **JetBrains Mono** — system mono, used only for inline code chips and hex codes.
 
@@ -116,8 +116,8 @@ Two families. No more.
 
 | Step | Size | Family / weight |
 |---|---|---|
-| Display / Hero | 48 – 64px | Libre Baskerville, regular |
-| H1 | 36 – 42px | Libre Baskerville, regular |
+| Display / Hero | 44 – 72px | Crimson Pro, regular |
+| H1 | 36 – 46px | Crimson Pro, regular |
 | H2 | 24 – 28px | Plus Jakarta Sans, 500 |
 | H3 | 18 – 20px | Plus Jakarta Sans, 500 |
 | Body | 16 – 17px | Plus Jakarta Sans, 400, line-height 1.75 |

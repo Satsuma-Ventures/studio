@@ -128,7 +128,7 @@ Produce a one-page document:
 ---
 
 **Signal Brief: [Venture Name or Working Title]**
-*Date · Author: Satsuma Ventures · Skill: 1-signal v[current version — see skill header]*
+*Date · Author: Satsuma · Skill: 1-signal v[current version — see skill header]*
 
 **The Problem**
 [2–3 sentences. What is broken, for whom, in what specific context.]

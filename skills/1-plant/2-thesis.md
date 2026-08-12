@@ -157,7 +157,7 @@ Be honest. A weak right to win does not automatically kill the idea, but it belo
 ---
 
 **Thesis Document: [Venture Name or Working Title]**
-*Date · Author: Satsuma Ventures · Skill: 2-thesis v[current version — see skill header]*
+*Date · Author: Satsuma · Skill: 2-thesis v[current version — see skill header]*
 
 **The Landscape**
 [2–3 sentences. The current state of the market and who the key players are.]
