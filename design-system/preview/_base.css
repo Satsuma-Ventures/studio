@@ -1,5 +1,5 @@
 /* Shared base for all preview cards */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   --grove:      #2E5428;
@@ -12,7 +12,7 @@
   --warm-bark:  #E8DED0;
   --rule:       #D8DDD0;
   --muted:      #5A6B52;
-  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-display: 'Crimson Pro', Georgia, serif;
   --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 }
