@@ -75,6 +75,20 @@
     /* ── Cover ──────────────────────────────────────────────────────────────── */
     .cover { padding: var(--space-xl) 0 var(--space-lg); border-bottom: 1px solid var(--rule); }
     .cover .logo-lockup-s { height: clamp(10rem, 28vw, 18rem); width: auto; display: block; margin-bottom: var(--space-lg); }
+
+    /* ── Brand lockup: logomark + live "Satsuma" wordmark ─────────────
+       Scales off --mark-h (the logomark height), per the Figma construction:
+       horizontal — word 600/550·H, gap 95/550·H right of the mark;
+       stacked    — word 600/880·H, centered 49/880·H below the mark.
+       Crimson Pro 400, -4% tracking. */
+    .lockup { display: inline-flex; font-family: var(--font-display); color: var(--deep-ink); line-height: 1; }
+    .lockup-mark { height: var(--mark-h); width: auto; display: block; }
+    .lockup-word { font-weight: 400; letter-spacing: -0.04em; line-height: 1; }
+    .lockup--h { flex-direction: row; align-items: center; gap: calc(var(--mark-h) * 42.5 / 550); }
+    .lockup--h .lockup-word { font-size: calc(var(--mark-h) * 600 / 550); }
+    .lockup--v { flex-direction: column; align-items: center; gap: calc(var(--mark-h) * 49 / 880); }
+    .lockup--v .lockup-word { font-size: calc(var(--mark-h) * 600 / 880); line-height: 0.5; }
+    .cover .cover-lockup { --mark-h: clamp(6.5rem, 17vw, 11rem); margin-bottom: var(--space-lg); }
     .cover-subtitle { font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--satsuma); margin-bottom: var(--space-sm); }
     .cover-tagline { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.6; margin-bottom: var(--space-md); }
     .cover-meta { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em; }
@@ -205,7 +219,7 @@
       .nav-brand .logo-mark-mobile { display: block; }
       .nav-links { display: none; }
       .nav-menu-btn { display: flex; }
-      .cover .logo-lockup-s { height: clamp(8rem, 40vw, 12rem); }
+      .cover .cover-lockup { --mark-h: clamp(5rem, 24vw, 7.5rem); }
       .logo-showcase { grid-template-columns: 1fr; }
       .swatches { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
       .shade-grid { grid-template-columns: 1fr; }
@@ -264,7 +278,10 @@
 
 <div class="page">
   <div class="cover">
-    <img src="assets/satsuma-lockup-stacked.svg" alt="Satsuma" class="logo-lockup-s">
+    <span class="cover-lockup lockup lockup--v">
+      <img src="assets/satsuma-logomark.svg" alt="" class="lockup-mark">
+      <span class="lockup-word">Satsuma</span>
+    </span>
     <p class="cover-subtitle">Brand Book &amp; Design System</p>
     <p class="cover-tagline">A family venture studio cultivating ideas worth growing.</p>
     <p class="cover-meta">Seattle, WA &nbsp;·&nbsp; satsumaventures.com &nbsp;·&nbsp; 2026</p>

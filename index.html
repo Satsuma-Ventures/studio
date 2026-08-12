@@ -82,9 +82,7 @@
     }
 
     .topnav-mark {
-      height: 2.34375rem;
-      width: auto;
-      display: block;
+      --mark-h: 2.34375rem;
       opacity: 0;
       transform: translateY(-3px);
       transition: opacity var(--dur-base) var(--ease-out),
@@ -95,7 +93,22 @@
       display: inline-flex;
       align-items: center;
       line-height: 0;
+      text-decoration: none;
     }
+
+    /* ── Brand lockup: logomark + live "Satsuma" wordmark ─────────────
+       Every dimension scales off --mark-h (the logomark height), matching
+       the Figma lockup construction:
+         horizontal — word 600/550·H, set 95/550·H right of the mark
+         stacked    — word 600/880·H, centered 49/880·H below the mark
+       Letter-spacing is -4% (‑0.04em), Crimson Pro 400. */
+    .lockup { display: inline-flex; font-family: var(--font-display); color: var(--deep-ink); line-height: 1; }
+    .lockup-mark { height: var(--mark-h); width: auto; display: block; }
+    .lockup-word { font-weight: 400; letter-spacing: -0.04em; line-height: 1; }
+    .lockup--h { flex-direction: row; align-items: center; gap: calc(var(--mark-h) * 42.5 / 550); }
+    .lockup--h .lockup-word { font-size: calc(var(--mark-h) * 600 / 550); }
+    .lockup--v { flex-direction: column; align-items: center; gap: calc(var(--mark-h) * 49 / 880); }
+    .lockup--v .lockup-word { font-size: calc(var(--mark-h) * 600 / 880); line-height: 0.5; }
 
     .topnav-links {
       display: flex;
@@ -173,10 +186,9 @@
 
     .hero-lockup {
       /* The stacked lockup is the largest brand statement on the page.
-         Sized to feel anchor-weight without bleeding past the reading column. */
-      height: clamp(12.5rem, 27.5vw, 18.75rem);
-      width: auto;
-      display: block;
+         --mark-h is the logomark height; wordmark + gap scale off it,
+         sized to feel anchor-weight without bleeding past the reading column. */
+      --mark-h: clamp(7.5rem, 16.5vw, 11rem);
       /* Generous gap before the tagline cluster sits on its own. */
       margin-bottom: clamp(3.5rem, 8vh, 5.5rem);
     }
@@ -429,7 +441,7 @@
 
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 760px) {
-      .topnav-mark { height: 2.03125rem; }
+      .topnav-mark { --mark-h: 2.03125rem; }
       .topnav-links { gap: 1.25rem; }
       .topnav-links a { font-size: 0.65rem; letter-spacing: 0.12em; }
       .section-head { grid-template-columns: 1fr; row-gap: 0.5rem; }
@@ -440,7 +452,7 @@
     }
     @media (max-width: 560px) {
       :root { --nav-h: 3.5rem; }
-      .topnav-mark { height: 1.71875rem; }
+      .topnav-mark { --mark-h: 1.71875rem; }
       .topnav-inner { padding: 0.75rem var(--gutter); }
       .topnav-links { gap: 1rem; }
       .topnav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
@@ -455,7 +467,10 @@
   <header class="topnav" role="banner">
     <div class="topnav-inner">
       <a href="#top" class="topnav-mark-link" aria-label="Satsuma — home">
-        <img src="assets/satsuma-lockup.svg" alt="" class="topnav-mark">
+        <span class="topnav-mark lockup lockup--h" aria-hidden="true">
+          <img src="assets/satsuma-logomark.svg" alt="" class="lockup-mark">
+          <span class="lockup-word">Satsuma</span>
+        </span>
       </a>
       <ul class="topnav-links">
         <li><a href="#how"><span class="full">How we work</span><span class="short">Work</span></a></li>
@@ -474,7 +489,10 @@
         <img src="assets/satsuma-tree-outline.svg" alt="">
       </div>
       <div class="hero-cluster">
-        <img src="assets/satsuma-lockup-stacked.svg" alt="Satsuma" class="hero-lockup">
+        <span class="hero-lockup lockup lockup--v">
+          <img src="assets/satsuma-logomark.svg" alt="" class="lockup-mark">
+          <span class="lockup-word">Satsuma</span>
+        </span>
         <div class="hero-statement">
           <p class="hero-eyebrow">Seattle, Washington</p>
           <h1 class="hero-tagline">A family venture studio cultivating ideas worth growing.</h1>
