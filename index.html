@@ -12,7 +12,7 @@
   <link rel="manifest" href="/assets/favicon/site.webmanifest?" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ── Tokens ─────────────────────────────────────────────────── */
@@ -82,7 +82,7 @@
     }
 
     .topnav-mark {
-      --mark-h: 2.34375rem;
+      --mark-h: 1.9375rem;
       opacity: 0;
       transform: translateY(-3px);
       transition: opacity var(--dur-base) var(--ease-out),
@@ -188,7 +188,7 @@
       /* The stacked lockup is the largest brand statement on the page.
          --mark-h is the logomark height; wordmark + gap scale off it,
          sized to feel anchor-weight without bleeding past the reading column. */
-      --mark-h: clamp(7.5rem, 16.5vw, 11rem);
+      --mark-h: clamp(6rem, 13.5vw, 9rem);
       /* Generous gap before the tagline cluster sits on its own. */
       margin-bottom: clamp(3.5rem, 8vh, 5.5rem);
     }
@@ -441,7 +441,7 @@
 
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 760px) {
-      .topnav-mark { --mark-h: 2.03125rem; }
+      .topnav-mark { --mark-h: 1.6875rem; }
       .topnav-links { gap: 1.25rem; }
       .topnav-links a { font-size: 0.65rem; letter-spacing: 0.12em; }
       .section-head { grid-template-columns: 1fr; row-gap: 0.5rem; }
@@ -452,7 +452,7 @@
     }
     @media (max-width: 560px) {
       :root { --nav-h: 3.5rem; }
-      .topnav-mark { --mark-h: 1.71875rem; }
+      .topnav-mark { --mark-h: 1.4375rem; }
       .topnav-inner { padding: 0.75rem var(--gutter); }
       .topnav-links { gap: 1rem; }
       .topnav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
