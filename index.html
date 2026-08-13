@@ -234,7 +234,8 @@
       font-style: italic;
       color: var(--grove);
       line-height: 1.2;
-      max-width: 22ch;
+      max-width: 8.8em;  /* ~22ch in Crimson Pro, but em is font-stable so the
+                            measure (and line count) doesn't jump on font swap */
       text-wrap: pretty;
       letter-spacing: -0.005em;
     }
@@ -274,7 +275,7 @@
 
     .section-body {
       grid-column: 2;
-      max-width: 56ch;
+      max-width: 26.2em;  /* ~56ch in Plus Jakarta; em keeps the measure stable across the font swap */
     }
 
     .section-body p + p { margin-top: 1.25rem; }
@@ -424,7 +425,7 @@
 
     /* ── Contact ────────────────────────────────────────────────── */
     .contact-copy {
-      max-width: 56ch;
+      max-width: 26.2em;  /* ~56ch in Plus Jakarta; em keeps the measure stable across the font swap */
       font-size: 1.0625rem;
       line-height: 1.75;
       margin-bottom: 1.75rem;
