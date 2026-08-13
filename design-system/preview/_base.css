@@ -1,6 +1,26 @@
 /* Shared base for all preview cards */
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
+/* Metric-matched fallbacks — see colors_and_type.css for the rationale. */
+@font-face {
+  font-family: 'Crimson Pro Fallback';
+  src: local('Times New Roman'), local('TimesNewRomanPSMT');
+  font-display: swap;
+  size-adjust: 98.5577%;
+  ascent-override: 90.9604%;
+  descent-override: 21.7988%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial'), local('ArialMT');
+  font-display: swap;
+  size-adjust: 104.9796%;
+  ascent-override: 98.8763%;
+  descent-override: 21.147%;
+  line-gap-override: 0%;
+}
+
 :root {
   --grove:      #2E5428;
   --satsuma:    #D4681E;
@@ -12,8 +32,8 @@
   --warm-bark:  #E8DED0;
   --rule:       #D8DDD0;
   --muted:      #5A6B52;
-  --font-display: 'Crimson Pro', Georgia, serif;
-  --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
+  --font-display: 'Crimson Pro', 'Crimson Pro Fallback', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', Arial, sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 }
 

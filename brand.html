@@ -8,6 +8,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
+    /* ── Metric-matched fallback faces ──────────────────────────────────────
+       Times New Roman / Arial re-scaled to the web fonts' box so the swap
+       causes no layout shift. Overrides computed with @capsizecss/core from
+       the real font metrics — do not hand-tune. ─────────────────────────── */
+    @font-face {
+      font-family: 'Crimson Pro Fallback';
+      src: local('Times New Roman'), local('TimesNewRomanPSMT');
+      font-display: swap;
+      size-adjust: 98.5577%;
+      ascent-override: 90.9604%;
+      descent-override: 21.7988%;
+      line-gap-override: 0%;
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans Fallback';
+      src: local('Arial'), local('ArialMT');
+      font-display: swap;
+      size-adjust: 104.9796%;
+      ascent-override: 98.8763%;
+      descent-override: 21.147%;
+      line-gap-override: 0%;
+    }
+
     /* ── Design Tokens ─────────────────────────────────────────────────────── */
     :root {
       --grove:       #2E5428;
@@ -22,8 +45,8 @@
       --muted:       #5A6B52;
       --white:       #FFFFFF;
 
-      --font-display: 'Crimson Pro', Georgia, serif;
-      --font-body:    'Plus Jakarta Sans', Arial, sans-serif;
+      --font-display: 'Crimson Pro', 'Crimson Pro Fallback', Georgia, serif;
+      --font-body:    'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', Arial, sans-serif;
       --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
       --space-xs:  0.5rem;

@@ -15,6 +15,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ── Metric-matched fallback faces ──────────────────────────────
+       Times New Roman / Arial re-scaled to the web fonts' box so the swap
+       causes no layout shift. Overrides computed with @capsizecss/core from
+       the real font metrics — do not hand-tune. Keep in sync with the design
+       system (design-system/colors_and_type.css). ───────────────────── */
+    @font-face {
+      font-family: 'Crimson Pro Fallback';
+      src: local('Times New Roman'), local('TimesNewRomanPSMT');
+      font-display: swap;
+      size-adjust: 98.5577%;
+      ascent-override: 90.9604%;
+      descent-override: 21.7988%;
+      line-gap-override: 0%;
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans Fallback';
+      src: local('Arial'), local('ArialMT');
+      font-display: swap;
+      size-adjust: 104.9796%;
+      ascent-override: 98.8763%;
+      descent-override: 21.147%;
+      line-gap-override: 0%;
+    }
+
     /* ── Tokens ─────────────────────────────────────────────────── */
     :root {
       --grove:        #2E5428;
@@ -27,8 +51,8 @@
       --rule:         #D8DDD0;
       --muted:        #5A6B52;
 
-      --font-display: 'Crimson Pro', Georgia, 'Times New Roman', serif;
-      --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-display: 'Crimson Pro', 'Crimson Pro Fallback', Georgia, 'Times New Roman', serif;
+      --font-body:    'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
       --tracking-label: 0.14em;
       --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -575,17 +599,21 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.body.setAttribute('data-tree', 'right');
 
-    // Condense the nav as soon as the user scrolls — small threshold
-    // so the linen background + lockup appear early, not deep into the
-    // page.
+    // Condense the nav once the page has scrolled past the bottom edge of
+    // the nav bar — the trigger point tracks the bar's height, so the linen
+    // background + lockup settle in as the hero clears the bar.
     (function setupNavCondense() {
-      const THRESHOLD = 24; // px scrolled before nav condenses
+      const nav = document.querySelector('.topnav');
+      let threshold = 0;
+      function measure() { threshold = nav ? nav.offsetHeight : 0; }
       let ticking = false;
       function update() {
-        const past = window.scrollY > THRESHOLD;
+        const past = window.scrollY > threshold;
         document.body.classList.toggle('nav-condensed', past);
         ticking = false;
       }
+      measure();
+      window.addEventListener('resize', () => { measure(); update(); }, { passive: true });
       window.addEventListener('scroll', () => {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
       }, { passive: true });
